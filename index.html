@@ -57,6 +57,150 @@
         <div class="korean-word" id="koreanWord">받다</div>
         <div class="label">Nghĩa tiếng Việt</div>
         <div class="meaning" id="vietnameseMeaning">nhận</div>
+      </article>
+
+      <div class="status-actions">
+        <button id="markUnknown" class="danger solid">Chưa thuộc</button>
+        <button id="markReview" class="amber solid">Ôn lại</button>
+        <button id="markKnown" class="good solid">Đã thuộc</button>
+      </div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="plain">Trước</button>
+        <button id="nextBtn" class="plain">Sau</button>
+      </div>
+    </section>
+
+    <section id="examView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker">Kiểm tra nhanh</p>
+          <h2>Kiểm tra</h2>
+        </div>
+        <button class="small plain" data-nav="home">Trang chủ</button>
+      </header>
+
+      <div id="examStart" class="exam-start">
+        <div class="exam-group">
+          <h3>Nhìn tiếng Hàn, chọn tiếng Việt</h3>
+          <div class="exam-buttons">
+            <button class="primary" data-exam="ko_vi" data-size="10">10 câu</button>
+            <button class="dark" data-exam="ko_vi" data-size="20">20 câu</button>
+            <button class="amber solid" data-exam="ko_vi" data-size="25">25 câu</button>
+          </div>
+        </div>
+        <div class="exam-group">
+          <h3>Nhìn tiếng Việt, chọn tiếng Hàn</h3>
+          <div class="exam-buttons">
+            <button class="primary" data-exam="vi_ko" data-size="10">10 câu</button>
+            <button class="dark" data-exam="vi_ko" data-size="20">20 câu</button>
+            <button class="amber solid" data-exam="vi_ko" data-size="25">25 câu</button>
+          </div>
+        </div>
+        <button class="plain wide" data-nav="wrong">Mở sổ lỗi</button>
+      </div>
+
+      <div id="examRun" class="hidden">
+        <article class="word-card">
+          <div class="meta-row">
+            <span id="examCounter">1 / 10</span>
+            <span id="examDay">Day 1</span>
+          </div>
+          <div class="exam-question" id="examQuestion">받다</div>
+        </article>
+        <p class="prompt" id="examPrompt">Chọn nghĩa đúng.</p>
+        <div id="options" class="options"></div>
+        <div id="examFeedback" class="exam-feedback"></div>
+        <button id="examNext" class="dark wide" disabled>Câu tiếp theo</button>
+      </div>
+
+      <div id="examResult" class="hidden result-panel">
+        <h3>Kết quả</h3>
+        <div id="scoreText" class="score">0 / 0</div>
+        <p>Các câu sai được lưu vào sổ lỗi.</p>
+        <button id="retryExam" class="primary wide">Làm lại</button>
+        <button class="plain wide" data-nav="wrong">Xem sổ lỗi</button>
+      </div>
+    </section>
+
+    <section id="wrongView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker" id="wrongCount">0 từ</p>
+          <h2>Sổ lỗi</h2>
+        </div>
+        <button class="small plain" data-nav="home">Trang chủ</button>
+      </header>
+      <div class="wrong-actions">
+        <button id="clearWrong" class="danger solid">Xóa tất cả</button>
+      </div>
+      <div id="wrongList" class="wrong-list"></div>
+    </section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TOPIK 840 - Từ vựng Hàn Việt</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="homeView" class="view home-view">
+      <div class="home-panel">
+        <p class="eyebrow">TOPIK 840</p>
+        <h1>Từ vựng Hàn - Việt</h1>
+        <p class="home-count" id="homeCount">840 từ · 28 ngày</p>
+        <div class="home-actions">
+          <button class="primary action-large" data-nav="study">Từ vựng</button>
+          <button class="dark action-large" data-nav="exam">Kiểm tra</button>
+          <button class="plain action-large" data-nav="wrong">Sổ lỗi</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="studyView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker" id="studyProgress">0 / 0</p>
+          <h2>Từ vựng</h2>
+        </div>
+        <button class="small plain" data-nav="home">Trang chủ</button>
+      </header>
+
+      <div class="toolbar">
+        <input id="searchInput" class="search" type="search" placeholder="Tìm tiếng Hàn, tiếng Việt, số thứ tự">
+        <select id="daySelect" class="select" aria-label="Chọn ngày">
+          <option value="all">Tất cả ngày</option>
+        </select>
+      </div>
+
+      <div class="filter-row">
+        <button class="filter active" data-filter="all">Tất cả</button>
+        <button class="filter danger" data-filter="unknown">Chưa thuộc</button>
+        <button class="filter amber" data-filter="review">Ôn lại</button>
+        <button class="filter good" data-filter="known">Đã thuộc</button>
+      </div>
+
+      <div class="quick-row">
+        <button id="toggleMeaningBtn" class="plain">Ẩn nghĩa</button>
+        <button id="randomBtn" class="plain">↻ Ngẫu nhiên</button>
+      </div>
+
+      <article class="word-card">
+        <div class="meta-row">
+          <span id="wordMeta">Day 1 · No. 1</span>
+          <span id="wordStatus">Chưa đánh dấu</span>
+        </div>
+        <div class="korean-word" id="koreanWord">받다</div>
+        <div class="label">Nghĩa tiếng Việt</div>
+        <div class="meaning" id="vietnameseMeaning">nhận</div>
         <div class="speech-row">
           <button id="speakKoBtn" class="primary">Nghe tiếng Hàn</button>
           <button id="speakViBtn" class="primary secondary-tone">Nghe nghĩa</button>
