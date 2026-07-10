@@ -42,10 +42,10 @@ function bindElements() {
   [
     "homeView", "studyView", "examView", "wrongView", "homeCount", "studyProgress",
     "searchInput", "daySelect", "toggleMeaningBtn", "randomBtn", "wordMeta",
-    "wordStatus", "koreanWord", "vietnameseMeaning", "speakKoBtn", "speakViBtn",
+    "wordStatus", "koreanWord", "vietnameseMeaning",
     "markUnknown", "markReview", "markKnown", "prevBtn", "nextBtn", "examStart",
     "examRun", "examResult", "examCounter", "examDay", "examQuestion",
-    "examSpeakBtn", "examPrompt", "options", "examFeedback", "examNext",
+    "examPrompt", "options", "examFeedback", "examNext",
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
@@ -93,8 +93,6 @@ function bindEvents() {
 
   els.prevBtn.addEventListener("click", () => moveStudy(-1));
   els.nextBtn.addEventListener("click", () => moveStudy(1));
-  els.speakKoBtn.addEventListener("click", () => speak(currentWord().korean, "ko-KR"));
-  els.speakViBtn.addEventListener("click", () => speak(currentWord().vietnamese, "vi-VN"));
 
   els.markUnknown.addEventListener("click", () => markCurrent("unknown"));
   els.markReview.addEventListener("click", () => markCurrent("review"));
@@ -105,7 +103,6 @@ function bindEvents() {
   });
 
   els.examNext.addEventListener("click", nextExam);
-  els.examSpeakBtn.addEventListener("click", () => speak(state.exam.questions[state.exam.index].korean, "ko-KR"));
   els.retryExam.addEventListener("click", () => startExam(state.exam.mode, state.exam.size));
   els.clearWrong.addEventListener("click", () => {
     localStorage.setItem("topik840Wrong", JSON.stringify([]));
@@ -238,7 +235,6 @@ function renderExamQuestion() {
   els.examDay.textContent = `Ngày ${word.day}`;
   els.examQuestion.textContent = state.exam.mode === "ko_vi" ? word.korean : word.vietnamese;
   els.examPrompt.textContent = state.exam.mode === "ko_vi" ? "Chọn nghĩa tiếng Việt đúng." : "Chọn từ tiếng Hàn đúng.";
-  els.examSpeakBtn.classList.toggle("hidden", state.exam.mode !== "ko_vi");
   els.examFeedback.textContent = "";
   els.examNext.disabled = true;
   els.examNext.textContent = state.exam.index + 1 === state.exam.questions.length ? "Xem kết quả" : "Câu tiếp theo";
@@ -326,11 +322,7 @@ function renderWrong() {
       <div class="wrong-meaning">${escapeHtml(word.vietnamese)}</div>
     `;
     const actions = document.createElement("div");
-    actions.className = "speech-row";
-    const speakButton = document.createElement("button");
-    speakButton.className = "primary";
-    speakButton.textContent = "Nghe";
-    speakButton.addEventListener("click", () => speak(word.korean, "ko-KR"));
+    actions.className = "wrong-item-actions";
     const deleteButton = document.createElement("button");
     deleteButton.className = "danger solid";
     deleteButton.textContent = "Xóa";
@@ -338,7 +330,7 @@ function renderWrong() {
       removeWrong(word);
       renderWrong();
     });
-    actions.append(speakButton, deleteButton);
+    actions.append(deleteButton);
     row.appendChild(actions);
     els.wrongList.appendChild(row);
   });
@@ -376,15 +368,6 @@ function shuffle(list) {
     [list[index], list[target]] = [list[target], list[index]];
   }
   return list;
-}
-
-function speak(text, lang) {
-  if (!("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = lang;
-  utterance.rate = lang === "ko-KR" ? 0.86 : 0.95;
-  window.speechSynthesis.speak(utterance);
 }
 
 function escapeHtml(value) {
