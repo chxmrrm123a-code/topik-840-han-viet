@@ -47,6 +47,7 @@ function bindElements() {
     "examRun", "examResult", "examCounter", "examDay", "examQuestion",
     "examPrompt", "options", "examFeedback", "examNext",
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
+    "speakKoBtn", "examSpeakBtn",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -107,6 +108,16 @@ function bindEvents() {
   els.clearWrong.addEventListener("click", () => {
     localStorage.setItem("topik840Wrong", JSON.stringify([]));
     renderWrong();
+  });
+
+  els.speakKoBtn.addEventListener("click", () => {
+    const word = currentWord();
+    if (word) speakText(word.korean, "ko-KR");
+  });
+
+  els.examSpeakBtn.addEventListener("click", () => {
+    const word = state.exam.questions[state.exam.index];
+    if (word) speakText(word.korean, "ko-KR");
   });
 }
 
@@ -239,6 +250,12 @@ function renderExamQuestion() {
   els.examNext.disabled = true;
   els.examNext.textContent = state.exam.index + 1 === state.exam.questions.length ? "Xem kết quả" : "Câu tiếp theo";
 
+  if (state.exam.mode === "ko_vi") {
+    els.examSpeakBtn.classList.remove("hidden");
+  } else {
+    els.examSpeakBtn.classList.add("hidden");
+  }
+
   els.options.innerHTML = "";
   buildOptions(word).forEach((optionText) => {
     const button = document.createElement("button");
@@ -282,6 +299,10 @@ function selectAnswer(button, selected) {
     }
   });
   els.examNext.disabled = false;
+
+  if (state.exam.mode === "vi_ko") {
+    els.examSpeakBtn.classList.remove("hidden");
+  }
 }
 
 function nextExam() {
@@ -376,4 +397,22 @@ function escapeHtml(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function speakText(text, lang) {
+  if (!('speechSynthesis' in window)) {
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = lang;
+  
+  // Try to find a voice matching the language exactly
+  const voices = window.speechSynthesis.getVoices();
+  const voice = voices.find(v => v.lang.startsWith(lang));
+  if (voice) {
+    utterance.voice = voice;
+  }
+  
+  window.speechSynthesis.speak(utterance);
 }

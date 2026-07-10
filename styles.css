@@ -403,6 +403,16 @@ h3 {
   font-weight: 800;
 }
 
+.speech-row {
+  display: block;
+  margin-top: 16px;
+}
+
+#examSpeakBtn {
+  margin-top: 12px;
+  width: 100%;
+}
+
 @media (min-width: 640px) {
   .toolbar {
     grid-template-columns: 1fr 180px;
