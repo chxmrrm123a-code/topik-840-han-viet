@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderHome();
     showView("home");
   } catch (error) {
+    console.error(error);
     els.homeSummary.textContent = "단어 데이터를 불러오지 못했습니다.";
   }
 });
