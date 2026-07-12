@@ -39,6 +39,7 @@ const statusLabels = {
 document.addEventListener("DOMContentLoaded", () => {
   bindElements();
   buildDayOptions();
+  buildExamDayOptions();
   bindEvents();
   refreshStudyList();
   renderHome();
@@ -55,7 +56,7 @@ function bindElements() {
     "examRun", "examResult", "examCounter", "examDay", "examQuestion",
     "examPrompt", "options", "examFeedback", "examNext",
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
-    "speakKoBtn", "examSpeakBtn",
+    "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -174,6 +175,30 @@ function buildDayOptions() {
   });
 }
 
+function buildExamDayOptions() {
+  const days = [...new Set(words.map((word) => word.day))].sort((a, b) => a - b);
+  
+  els.examStartDay.innerHTML = "";
+  els.examEndDay.innerHTML = "";
+
+  days.forEach((day) => {
+    const optStart = document.createElement("option");
+    optStart.value = String(day);
+    optStart.textContent = `Ngày ${day}`;
+    els.examStartDay.appendChild(optStart);
+
+    const optEnd = document.createElement("option");
+    optEnd.value = String(day);
+    optEnd.textContent = `Ngày ${day}`;
+    els.examEndDay.appendChild(optEnd);
+  });
+
+  if (days.length > 0) {
+    els.examStartDay.value = String(days[0]);
+    els.examEndDay.value = String(days[days.length - 1]);
+  }
+}
+
 function refreshStudyList() {
   state.filtered = words.filter((word) => {
     if (state.day !== "all" && String(word.day) !== state.day) return false;
@@ -270,7 +295,28 @@ function renderExamStart() {
 function startExam(mode, size) {
   state.exam.mode = mode;
   state.exam.size = size;
-  state.exam.questions = shuffle([...words]).slice(0, Math.min(size, words.length));
+
+  let startDay = Number(els.examStartDay.value);
+  let endDay = Number(els.examEndDay.value);
+
+  // Auto-adjust if startDay is greater than endDay
+  if (startDay > endDay) {
+    const temp = startDay;
+    startDay = endDay;
+    endDay = temp;
+    els.examStartDay.value = String(startDay);
+    els.examEndDay.value = String(endDay);
+  }
+
+  // Filter word bank by day range
+  const examPool = words.filter((word) => word.day >= startDay && word.day <= endDay);
+
+  if (examPool.length === 0) {
+    alert("Không có từ vựng nào trong phạm vi đã chọn.");
+    return;
+  }
+
+  state.exam.questions = shuffle([...examPool]).slice(0, Math.min(size, examPool.length));
   state.exam.index = 0;
   state.exam.score = 0;
   state.exam.selected = false;
