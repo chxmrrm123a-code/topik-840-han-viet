@@ -69,6 +69,7 @@ function bindEvents() {
   els.searchInput.addEventListener("input", () => {
     state.query = els.searchInput.value.trim().toLowerCase();
     state.index = 0;
+    state.analysisWordKey = null;
     refreshStudyList();
     renderStudy();
   });
@@ -76,6 +77,7 @@ function bindEvents() {
   els.daySelect.addEventListener("change", () => {
     state.day = els.daySelect.value;
     state.index = 0;
+    state.analysisWordKey = null;
     refreshStudyList();
     renderStudy();
   });
@@ -84,6 +86,7 @@ function bindEvents() {
     button.addEventListener("click", () => {
       state.filter = button.dataset.filter;
       state.index = 0;
+      state.analysisWordKey = null;
       refreshStudyList();
       renderStudy();
     });
