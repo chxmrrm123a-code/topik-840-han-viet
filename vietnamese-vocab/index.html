@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#183b3f">
+  <meta name="description" content="베트남어 단어 2063개를 예문과 함께 공부하고 시험과 말하기 연습을 할 수 있는 단어장">
+  <title>베트남어 단어장</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="homeView" class="view home-view">
+      <div class="home-panel">
+        <p class="eyebrow">1–2063</p>
+        <h1>베트남어 단어장</h1>
+        <p id="homeSummary" class="home-summary">2063개 단어</p>
+        <div class="home-actions">
+          <button class="primary action-large" data-nav="study">단어장</button>
+          <button class="dark action-large" data-nav="exam">시험</button>
+          <button class="amber solid action-large" data-nav="speaking">말하기 연습</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="studyView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p id="studyProgress" class="section-kicker">0 / 0</p>
+          <h2>단어장</h2>
+        </div>
+        <button class="small plain" data-nav="home">홈</button>
+      </header>
+
+      <input id="studySearch" class="control" type="search" placeholder="번호, 단어, 뜻, 예문 검색">
+
+      <div class="filter-row" aria-label="암기 상태 필터">
+        <button class="filter active" data-filter="all">전체</button>
+        <button class="filter danger" data-filter="unknown">몰라요</button>
+        <button class="filter amber" data-filter="review">다시 보기</button>
+        <button class="filter good" data-filter="known">알아요</button>
+      </div>
+
+      <div class="two-column-row">
+        <button id="toggleAnswer" class="plain">뜻 가리기</button>
+        <button id="randomStudy" class="plain">↻ 랜덤</button>
+      </div>
+
+      <article class="word-card">
+        <div class="meta-row">
+          <span id="wordNumber">No. 1</span>
+          <span id="wordStatus">새 단어</span>
+        </div>
+
+        <div id="wordText" class="word-text">anh</div>
+        <div class="label">뜻</div>
+        <div id="wordMeaning" class="meaning">형·오빠</div>
+
+        <section id="meaningNoteBlock" class="content-block">
+          <div class="label">뜻 설명</div>
+          <p id="meaningNote"></p>
+        </section>
+
+        <section id="exampleBlock" class="example-block">
+          <div class="section-heading">
+            <span>예문</span>
+            <button id="speakExample" class="small plain">문장 듣기</button>
+          </div>
+          <p id="exampleVi" class="example-main"></p>
+          <p id="exampleKo" class="example-translation"></p>
+        </section>
+
+        <button id="analysisToggle" class="plain wide analysis-toggle">예문 분석 펼쳐보기</button>
+        <section id="analysisPanel" class="analysis-panel hidden">
+          <pre id="analysisText"></pre>
+        </section>
+
+        <button id="speakWord" class="primary wide">단어 듣기</button>
+      </article>
+
+      <div class="status-actions">
+        <button id="markUnknown" class="danger solid">몰라요</button>
+        <button id="markReview" class="amber solid">다시 보기</button>
+        <button id="markKnown" class="good solid">알아요</button>
+      </div>
+
+      <div class="two-column-row nav-row">
+        <button id="previousWord" class="plain">이전</button>
+        <button id="nextWord" class="plain">다음</button>
+      </div>
+    </section>
+
+    <section id="examView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker">무작위 출제</p>
+          <h2>시험</h2>
+        </div>
+        <button class="small plain" data-nav="home">홈</button>
+      </header>
+
+      <div id="examStart" class="exam-start">
+        <section class="range-panel">
+          <div class="label">시험 범위</div>
+          <div class="range-row">
+            <input id="rangeStart" class="control range-input" type="number" min="1" max="2063" value="1" aria-label="시작 번호">
+            <span>~</span>
+            <input id="rangeEnd" class="control range-input" type="number" min="1" max="2063" value="2063" aria-label="끝 번호">
+            <button id="fullRange" class="small plain">전체</button>
+          </div>
+        </section>
+
+        <section class="exam-group">
+          <h3>베트남어를 보고 한국어 뜻 고르기</h3>
+          <div class="exam-buttons">
+            <button class="primary" data-exam="vi_ko" data-size="10">10</button>
+            <button class="dark" data-exam="vi_ko" data-size="20">20</button>
+            <button class="amber solid" data-exam="vi_ko" data-size="25">25</button>
+          </div>
+        </section>
+
+        <section class="exam-group">
+          <h3>한국어 뜻을 보고 베트남어 고르기</h3>
+          <div class="exam-buttons">
+            <button class="primary" data-exam="ko_vi" data-size="10">10</button>
+            <button class="dark" data-exam="ko_vi" data-size="20">20</button>
+            <button class="amber solid" data-exam="ko_vi" data-size="25">25</button>
+          </div>
+        </section>
+
+        <section class="exam-group">
+          <h3>한국어 뜻을 보고 베트남어 직접 입력</h3>
+          <div class="exam-buttons">
+            <button class="primary" data-exam="ko_vi_input" data-size="10">10</button>
+            <button class="dark" data-exam="ko_vi_input" data-size="20">20</button>
+            <button class="amber solid" data-exam="ko_vi_input" data-size="25">25</button>
+          </div>
+        </section>
+
+        <button class="plain wide" data-nav="wrong">오답노트</button>
+      </div>
+
+      <div id="examRun" class="hidden">
+        <article class="word-card exam-card">
+          <div class="meta-row">
+            <span id="examCounter">1 / 10</span>
+            <span id="examWordNumber">No. 1</span>
+          </div>
+          <div id="examQuestion" class="exam-question"></div>
+          <button id="examSpeak" class="primary hidden">단어 듣기</button>
+        </article>
+        <p id="examPrompt" class="prompt"></p>
+        <div id="examOptions" class="options"></div>
+        <div id="typedAnswerWrap" class="typed-answer hidden">
+          <input id="typedAnswer" class="control" type="text" autocomplete="off" placeholder="베트남어 입력">
+          <button id="checkTypedAnswer" class="primary">정답 확인</button>
+        </div>
+        <div id="examFeedback" class="exam-feedback" aria-live="polite"></div>
+        <button id="examNext" class="dark wide" disabled>다음 문제</button>
+      </div>
+
+      <div id="examResult" class="result-panel hidden">
+        <h3>결과</h3>
+        <div id="examScore" class="score">0 / 0</div>
+        <p id="examResultRange"></p>
+        <button id="retryExam" class="primary wide">다시 시험</button>
+        <button class="plain wide" data-nav="wrong">오답노트</button>
+      </div>
+    </section>
+
+    <section id="speakingView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker">베트남어 음성인식</p>
+          <h2>말하기 연습</h2>
+        </div>
+        <button class="small plain" data-nav="home">홈</button>
+      </header>
+
+      <div class="search-row">
+        <input id="speakingSearch" class="control" type="search" placeholder="번호, 단어, 뜻 검색">
+        <button id="findSpeakingWord" class="primary small">찾기</button>
+      </div>
+
+      <article class="word-card">
+        <div class="meta-row">
+          <span id="speakingNumber">No. 1</span>
+          <span>단어 연습</span>
+        </div>
+        <div id="speakingWord" class="word-text">anh</div>
+        <div id="speakingMeaning" class="meaning">형·오빠</div>
+        <div class="two-column-row">
+          <button id="listenSpeakingWord" class="primary">단어 듣기</button>
+          <button id="randomSpeakingWord" class="plain">랜덤 단어</button>
+        </div>
+      </article>
+
+      <button id="startRecognition" class="amber solid wide speaking-button">말하기 시작</button>
+
+      <section id="recognitionPanel" class="recognition-panel" aria-live="polite">
+        <div class="recognition-state">
+          <span id="recognitionState">상태: 대기</span>
+          <div id="speechMeter" class="speech-meter" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div id="recognizedText" class="recognized-text">인식된 단어: -</div>
+        <div id="recognitionScore" class="recognition-score">일치도: -</div>
+      </section>
+    </section>
+
+    <section id="wrongView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p id="wrongCount" class="section-kicker">0개</p>
+          <h2>오답노트</h2>
+        </div>
+        <button class="small plain" data-nav="home">홈</button>
+      </header>
+      <button id="clearWrong" class="danger solid wide">전체 삭제</button>
+      <div id="wrongList" class="wrong-list"></div>
+    </section>
+  </main>
+
+  <script src="assets/vocab-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
