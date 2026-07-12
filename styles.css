@@ -408,6 +408,67 @@ h3 {
   margin-top: 16px;
 }
 
+.example-panel {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.example-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.example-speak {
+  min-height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.example-ko {
+  margin: 12px 0 6px;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.example-vi {
+  margin: 0;
+  color: var(--teal);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.analysis-toggle {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.analysis-panel {
+  margin-top: 10px;
+  padding: 12px;
+  border-left: 3px solid var(--teal);
+  background: #f3f7f5;
+}
+
+.analysis-panel .label {
+  margin-top: 0;
+}
+
+.analysis-panel p {
+  margin: 7px 0 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 #examSpeakBtn {
   margin-top: 12px;
   width: 100%;
