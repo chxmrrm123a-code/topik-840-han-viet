@@ -1,5 +1,11 @@
+const exampleById = new Map(
+  (window.TOPIK_EXAMPLES && window.TOPIK_EXAMPLES.words ? window.TOPIK_EXAMPLES.words : [])
+    .map((word) => [word.id, word]),
+);
+
 const words = (window.TOPIK_DATA && window.TOPIK_DATA.words ? window.TOPIK_DATA.words : []).map((word) => ({
   ...word,
+  ...(exampleById.get(word.id) || {}),
   key: String(word.id),
 }));
 
@@ -11,6 +17,7 @@ const state = {
   query: "",
   day: "all",
   hiddenMeaning: false,
+  analysisWordKey: null,
   exam: {
     mode: "ko_vi",
     size: 10,
@@ -42,7 +49,8 @@ function bindElements() {
   [
     "homeView", "studyView", "examView", "wrongView", "homeCount", "studyProgress",
     "searchInput", "daySelect", "toggleMeaningBtn", "randomBtn", "wordMeta",
-    "wordStatus", "koreanWord", "vietnameseMeaning",
+    "wordStatus", "koreanWord", "vietnameseMeaning", "examplePanel", "koreanExample",
+    "vietnameseExample", "speakExampleBtn", "analysisToggleBtn", "analysisPanel", "analysisText",
     "markUnknown", "markReview", "markKnown", "prevBtn", "nextBtn", "examStart",
     "examRun", "examResult", "examCounter", "examDay", "examQuestion",
     "examPrompt", "options", "examFeedback", "examNext",
@@ -89,6 +97,7 @@ function bindEvents() {
   els.randomBtn.addEventListener("click", () => {
     if (!state.filtered.length) return;
     state.index = Math.floor(Math.random() * state.filtered.length);
+    state.analysisWordKey = null;
     renderStudy();
   });
 
@@ -113,6 +122,17 @@ function bindEvents() {
   els.speakKoBtn.addEventListener("click", () => {
     const word = currentWord();
     if (word) speakText(word.korean, "ko-KR");
+  });
+
+  els.speakExampleBtn.addEventListener("click", () => {
+    const word = currentWord();
+    if (word && word.koreanExample) speakText(word.koreanExample, "ko-KR");
+  });
+
+  els.analysisToggleBtn.addEventListener("click", () => {
+    const word = currentWord();
+    state.analysisWordKey = state.analysisWordKey === word.key ? null : word.key;
+    renderExample(word);
   });
 
   els.examSpeakBtn.addEventListener("click", () => {
@@ -156,7 +176,7 @@ function refreshStudyList() {
     if (state.day !== "all" && String(word.day) !== state.day) return false;
     if (state.filter !== "all" && getStatus(word) !== state.filter) return false;
     if (!state.query) return true;
-    const joined = `${word.id} ${word.day} ${word.number} ${word.korean} ${word.vietnamese}`.toLowerCase();
+    const joined = `${word.id} ${word.day} ${word.number} ${word.korean} ${word.vietnamese} ${word.koreanExample || ""} ${word.vietnameseExample || ""}`.toLowerCase();
     return joined.includes(state.query);
   });
   if (state.index >= state.filtered.length) {
@@ -173,6 +193,7 @@ function renderStudy() {
     els.koreanWord.textContent = "-";
     els.vietnameseMeaning.textContent = "Không tìm thấy từ phù hợp";
     els.vietnameseMeaning.classList.remove("masked");
+    els.examplePanel.classList.add("hidden");
     return;
   }
 
@@ -184,6 +205,22 @@ function renderStudy() {
   els.vietnameseMeaning.textContent = state.hiddenMeaning ? "••••••" : word.vietnamese;
   els.vietnameseMeaning.classList.toggle("masked", state.hiddenMeaning);
   els.toggleMeaningBtn.textContent = state.hiddenMeaning ? "Hiện nghĩa" : "Ẩn nghĩa";
+  renderExample(word);
+}
+
+function renderExample(word) {
+  const hasExample = Boolean(word.koreanExample && word.vietnameseExample);
+  els.examplePanel.classList.toggle("hidden", !hasExample);
+  if (!hasExample) return;
+
+  const analysisVisible = !state.hiddenMeaning && state.analysisWordKey === word.key;
+  els.koreanExample.textContent = word.koreanExample;
+  els.vietnameseExample.textContent = state.hiddenMeaning ? "••••••" : word.vietnameseExample;
+  els.vietnameseExample.classList.toggle("masked", state.hiddenMeaning);
+  els.analysisToggleBtn.classList.toggle("hidden", state.hiddenMeaning || !word.analysisVi);
+  els.analysisPanel.classList.toggle("hidden", !analysisVisible);
+  els.analysisToggleBtn.textContent = analysisVisible ? "Ẩn phân tích" : "Xem phân tích";
+  els.analysisText.textContent = word.analysisVi || "";
 }
 
 function currentWord() {
@@ -193,6 +230,7 @@ function currentWord() {
 function moveStudy(delta) {
   if (!state.filtered.length) return;
   state.index = (state.index + delta + state.filtered.length) % state.filtered.length;
+  state.analysisWordKey = null;
   renderStudy();
 }
 
