@@ -1,0 +1,632 @@
+:root {
+  --bg: #f5f3ed;
+  --paper: #ffffff;
+  --text: #1b2728;
+  --muted: #697573;
+  --line: #d8d2c6;
+  --dark: #183b3f;
+  --teal: #2e7d70;
+  --red: #b5524b;
+  --amber: #806a19;
+  --green: #23684d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--dark);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-weight: 750;
+  letter-spacing: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+p,
+pre {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.12;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.app-shell {
+  width: min(720px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--bg);
+}
+
+.view {
+  min-height: 100vh;
+  padding: 24px 16px calc(20px + env(safe-area-inset-bottom));
+}
+
+.hidden {
+  display: none !important;
+}
+
+.home-view {
+  display: grid;
+  align-items: center;
+  padding: 48px 24px;
+}
+
+.home-panel {
+  width: 100%;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 4px;
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.home-summary {
+  margin: 10px 0 22px;
+  color: var(--muted);
+}
+
+.home-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.action-large {
+  min-height: 58px;
+  font-size: 20px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+.topbar > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.control {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  background: var(--paper);
+  color: var(--text);
+  padding: 0 12px;
+}
+
+.control:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(46, 125, 112, 0.14);
+}
+
+.primary {
+  background: var(--teal);
+  color: #ffffff;
+}
+
+.dark {
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.plain {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--dark);
+}
+
+.solid {
+  color: #ffffff;
+}
+
+.danger.solid {
+  background: var(--red);
+}
+
+.amber.solid {
+  background: var(--amber);
+}
+
+.good.solid {
+  background: var(--green);
+}
+
+.small {
+  min-height: 40px;
+  font-size: 13px;
+}
+
+.wide {
+  width: 100%;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.filter {
+  flex: 0 0 auto;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--dark);
+}
+
+.filter.active {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.filter.danger {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.filter.danger.active {
+  background: var(--red);
+  color: #ffffff;
+}
+
+.filter.amber {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.filter.amber.active {
+  background: var(--amber);
+  color: #ffffff;
+}
+
+.filter.good {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.filter.good.active {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.two-column-row,
+.status-actions,
+.exam-buttons,
+.search-row,
+.typed-answer {
+  display: grid;
+  gap: 8px;
+}
+
+.two-column-row {
+  grid-template-columns: 1fr 1fr;
+}
+
+.status-actions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.nav-row {
+  margin-top: 10px;
+}
+
+.word-card,
+.exam-group,
+.range-panel,
+.result-panel,
+.recognition-panel,
+.wrong-row {
+  border: 1px solid #e3ded3;
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.word-card {
+  margin-top: 10px;
+  padding: 16px;
+}
+
+.meta-row,
+.recognition-state,
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.meta-row {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.word-text {
+  padding: 8px 0 4px;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.label {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.meaning {
+  min-height: 34px;
+  padding: 3px 0 14px;
+  color: var(--teal);
+  font-size: 23px;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.masked {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.content-block {
+  padding-bottom: 14px;
+}
+
+.content-block p {
+  color: #3e4b49;
+  line-height: 1.55;
+}
+
+.example-block {
+  border-top: 1px solid #ece7dd;
+  padding: 14px 0;
+}
+
+.section-heading {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.example-main {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.example-translation {
+  margin-top: 6px;
+  color: #5d665f;
+  line-height: 1.55;
+}
+
+.analysis-toggle {
+  margin-bottom: 10px;
+}
+
+.analysis-panel {
+  margin-bottom: 12px;
+  border-left: 3px solid var(--teal);
+  background: #f2f7f5;
+  padding: 12px;
+}
+
+.analysis-panel pre {
+  white-space: pre-wrap;
+  color: #3f4b49;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.58;
+  overflow-wrap: anywhere;
+}
+
+.exam-start,
+.wrong-list {
+  display: grid;
+  gap: 12px;
+}
+
+.range-panel,
+.exam-group,
+.result-panel {
+  padding: 14px;
+}
+
+.range-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 64px;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.range-input {
+  min-width: 0;
+  text-align: center;
+}
+
+.exam-group h3 {
+  margin-bottom: 10px;
+}
+
+.exam-buttons {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.exam-question {
+  padding: 12px 0;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.prompt {
+  padding: 14px 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+}
+
+.option {
+  min-height: 54px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.option.correct {
+  border-color: var(--green);
+  background: var(--green);
+  color: #ffffff;
+}
+
+.option.wrong {
+  border-color: var(--red);
+  background: var(--red);
+  color: #ffffff;
+}
+
+.typed-answer {
+  grid-template-columns: 1fr auto;
+}
+
+.exam-feedback {
+  min-height: 46px;
+  padding: 10px 0;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.feedback-good {
+  color: var(--green);
+}
+
+.feedback-bad {
+  color: var(--red);
+}
+
+.result-panel {
+  text-align: center;
+}
+
+.result-panel .wide + .wide {
+  margin-top: 8px;
+}
+
+.score {
+  padding: 14px 0 6px;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.result-panel p {
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.search-row {
+  grid-template-columns: 1fr 72px;
+}
+
+.speaking-button {
+  min-height: 56px;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.speaking-button.listening {
+  background: var(--red);
+}
+
+.recognition-panel {
+  margin-top: 10px;
+  padding: 14px;
+}
+
+.recognition-state {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.speech-meter {
+  display: flex;
+  align-items: end;
+  gap: 3px;
+  width: 42px;
+  height: 22px;
+}
+
+.speech-meter span {
+  width: 6px;
+  height: 5px;
+  border-radius: 2px 2px 0 0;
+  background: var(--line);
+}
+
+.recognition-panel.listening .speech-meter span {
+  background: var(--teal);
+  animation: meter 0.72s ease-in-out infinite alternate;
+}
+
+.recognition-panel.listening .speech-meter span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.recognition-panel.listening .speech-meter span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.recognition-panel.listening .speech-meter span:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.recognition-panel.listening .speech-meter span:nth-child(5) {
+  animation-delay: 0.48s;
+}
+
+@keyframes meter {
+  from { height: 5px; }
+  to { height: 21px; }
+}
+
+.recognized-text {
+  margin-top: 10px;
+  font-size: 19px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.recognition-score {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.wrong-list {
+  margin-top: 12px;
+}
+
+.wrong-row {
+  padding: 14px;
+}
+
+.wrong-word {
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.wrong-meaning {
+  margin: 4px 0 10px;
+  color: var(--muted);
+}
+
+.wrong-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (min-width: 620px) {
+  .view {
+    padding: 30px 24px 24px;
+  }
+
+  .home-view {
+    padding-inline: 48px;
+  }
+}
+
+@media (max-width: 390px) {
+  .view {
+    padding-inline: 12px;
+  }
+
+  .word-text {
+    font-size: 34px;
+  }
+
+  .status-actions button {
+    padding-inline: 7px;
+    font-size: 13px;
+  }
+
+  .typed-answer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recognition-panel.listening .speech-meter span {
+    animation: none;
+    height: 14px;
+  }
+}
