@@ -60,6 +60,19 @@
         <div class="speech-row">
           <button id="speakKoBtn" class="primary wide">🔊 Nghe phát âm</button>
         </div>
+        <section id="examplePanel" class="example-panel">
+          <div class="example-heading">
+            <span>Ví dụ</span>
+            <button id="speakExampleBtn" class="example-speak plain" type="button">🔊 Nghe câu ví dụ</button>
+          </div>
+          <p class="example-ko" id="koreanExample">친구에게서 선물을 받았어요.</p>
+          <p class="example-vi" id="vietnameseExample">Tôi đã nhận quà từ bạn.</p>
+          <button id="analysisToggleBtn" class="analysis-toggle plain" type="button">Xem phân tích</button>
+          <div id="analysisPanel" class="analysis-panel hidden">
+            <div class="label">Phân tích bằng tiếng Việt</div>
+            <p id="analysisText"></p>
+          </div>
+        </section>
       </article>
 
       <div class="status-actions">
@@ -143,6 +156,7 @@
   </main>
 
   <script src="assets/data.js"></script>
+  <script src="assets/examples.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
