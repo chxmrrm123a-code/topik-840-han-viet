@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
   refreshStudyList();
   renderHome();
   showView("home");
+
+  // Register Service Worker for Offline PWA Support
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("sw.js")
+        .then((reg) => console.log("Service Worker registered successfully:", reg.scope))
+        .catch((err) => console.error("Service Worker registration failed:", err));
+    });
+  }
 });
 
 function bindElements() {
@@ -56,7 +66,7 @@ function bindElements() {
     "examRun", "examResult", "examCounter", "examDay", "examQuestion",
     "examPrompt", "options", "examFeedback", "examNext",
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
-    "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay",
+    "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay", "examStatusFilter",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -308,11 +318,24 @@ function startExam(mode, size) {
     els.examEndDay.value = String(endDay);
   }
 
-  // Filter word bank by day range
-  const examPool = words.filter((word) => word.day >= startDay && word.day <= endDay);
+  const statusFilter = els.examStatusFilter.value;
+  const wrongKeys = getWrongKeys();
+
+  // Filter word bank by day range AND word status
+  const examPool = words.filter((word) => {
+    // 1. Filter by day range
+    if (word.day < startDay || word.day > endDay) return false;
+
+    // 2. Filter by word status
+    if (statusFilter === "all") return true;
+    if (statusFilter === "wrong") return wrongKeys.includes(word.key);
+
+    const wordStatus = getStatus(word);
+    return wordStatus === statusFilter;
+  });
 
   if (examPool.length === 0) {
-    alert("Không có từ vựng nào trong phạm vi đã chọn.");
+    alert("Không có từ vựng nào trong phạm vi và trạng thái đã chọn.");
     return;
   }
 
@@ -355,9 +378,19 @@ function renderExamQuestion() {
 
 function buildOptions(correctWord) {
   const correct = state.exam.mode === "ko_vi" ? correctWord.vietnamese : correctWord.korean;
-  const pool = words
+  
+  // Attempt to pull distractors from the current exam pool first
+  let pool = state.exam.questions
     .map((word) => state.exam.mode === "ko_vi" ? word.vietnamese : word.korean)
     .filter((value) => value && value !== correct);
+    
+  // If there are not enough unique distractors (fewer than 3), fall back to the full word bank
+  if (new Set(pool).size < 3) {
+    pool = words
+      .map((word) => state.exam.mode === "ko_vi" ? word.vietnamese : word.korean)
+      .filter((value) => value && value !== correct);
+  }
+  
   return shuffle([correct, ...shuffle([...new Set(pool)]).slice(0, 3)]);
 }
 

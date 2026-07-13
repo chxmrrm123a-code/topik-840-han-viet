@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TOPIK 840 - Từ vựng Hàn Việt</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <!-- PWA Theme Color -->
+  <meta name="theme-color" content="#183b3f">
+  <!-- iOS PWA Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 </head>
 <body>
   <main class="app-shell">
@@ -110,6 +117,17 @@
               <select id="examEndDay" class="select" style="margin-top: 4px;">
               </select>
             </div>
+          </div>
+          <div style="margin-top: 12px;">
+            <label for="examStatusFilter" style="font-size: 13px; font-weight: 700; color: var(--muted);">Trạng thái từ</label>
+            <select id="examStatusFilter" class="select" style="margin-top: 4px;">
+              <option value="all">Tất cả từ (Tất cả)</option>
+              <option value="new">Chưa đánh dấu (Mới)</option>
+              <option value="unknown">Chưa thuộc (Đã đánh dấu)</option>
+              <option value="review">Ôn lại</option>
+              <option value="known">Đã thuộc</option>
+              <option value="wrong">Sổ lỗi (Chỉ từ trong sổ lỗi)</option>
+            </select>
           </div>
         </div>
 
