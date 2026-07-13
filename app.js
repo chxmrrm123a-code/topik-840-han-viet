@@ -493,6 +493,7 @@ function speakText(text, lang) {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang;
+  utterance.rate = 0.8; // Slow down to 0.8x for beginner learners
   
   // Try to find a voice matching the language exactly
   const voices = window.speechSynthesis.getVoices();
