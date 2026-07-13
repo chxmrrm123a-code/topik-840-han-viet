@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#183b3f">
   <meta name="description" content="베트남어 단어 2063개를 예문과 함께 공부하고 시험과 말하기 연습을 할 수 있는 단어장">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="베트남어 단어장">
   <title>베트남어 단어장</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192/clipboard.png">
+  <link rel="apple-touch-icon" href="assets/icon-192/clipboard.png">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <main class="app-shell">
@@ -15,6 +21,10 @@
         <p class="eyebrow">1–2063</p>
         <h1>베트남어 단어장</h1>
         <p id="homeSummary" class="home-summary">2063개 단어</p>
+        <button id="startToday" class="today-action">
+          <span>오늘의 학습</span>
+          <small id="todaySummary">오늘 학습 준비 중</small>
+        </button>
         <div class="home-actions">
           <button class="primary action-large" data-nav="study">단어장</button>
           <button class="dark action-large" data-nav="exam">시험</button>
@@ -27,21 +37,23 @@
       <header class="topbar">
         <div>
           <p id="studyProgress" class="section-kicker">0 / 0</p>
-          <h2>단어장</h2>
+          <h2 id="studyTitle">단어장</h2>
         </div>
         <button class="small plain" data-nav="home">홈</button>
       </header>
 
-      <input id="studySearch" class="control" type="search" placeholder="번호, 단어, 뜻, 예문 검색">
+      <div id="studyTools">
+        <input id="studySearch" class="control" type="search" placeholder="번호, 단어, 뜻, 예문 검색">
 
-      <div class="filter-row" aria-label="암기 상태 필터">
-        <button class="filter active" data-filter="all">전체</button>
-        <button class="filter danger" data-filter="unknown">몰라요</button>
-        <button class="filter amber" data-filter="review">다시 보기</button>
-        <button class="filter good" data-filter="known">알아요</button>
+        <div class="filter-row" aria-label="암기 상태 필터">
+          <button class="filter active" data-filter="all">전체</button>
+          <button class="filter danger" data-filter="unknown">몰라요</button>
+          <button class="filter amber" data-filter="review">다시 보기</button>
+          <button class="filter good" data-filter="known">알아요</button>
+        </div>
       </div>
 
-      <div class="two-column-row">
+      <div id="studyUtilityRow" class="two-column-row">
         <button id="toggleAnswer" class="plain">뜻 가리기</button>
         <button id="randomStudy" class="plain">↻ 랜덤</button>
       </div>
@@ -108,6 +120,17 @@
             <input id="rangeEnd" class="control range-input" type="number" min="1" max="2063" value="2063" aria-label="끝 번호">
             <button id="fullRange" class="small plain">전체</button>
           </div>
+          <label class="exam-source-field" for="examSource">
+            <span class="label">출제 대상</span>
+            <select id="examSource" class="control">
+              <option value="all">전체 단어</option>
+              <option value="new">새 단어</option>
+              <option value="unknown">몰라요</option>
+              <option value="review">다시 보기</option>
+              <option value="known">알아요</option>
+              <option value="wrong">오답노트</option>
+            </select>
+          </label>
         </section>
 
         <section class="exam-group">
@@ -222,7 +245,7 @@
     </section>
   </main>
 
-  <script src="assets/vocab-data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="assets/vocab-data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
