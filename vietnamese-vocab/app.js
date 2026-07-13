@@ -4,6 +4,15 @@ const STORAGE = {
   status: "vietnameseVocab2063.status.v1",
   wrong: "vietnameseVocab2063.wrong.v1",
   range: "vietnameseVocab2063.examRange.v1",
+  examSource: "vietnameseVocab2063.examSource.v1",
+  daily: "vietnameseVocab2063.daily.v1",
+  lastWord: "vietnameseVocab2063.lastWord.v1",
+};
+
+const DAILY_SIZE = 30;
+const TTS_RATES = {
+  word: 0.78,
+  sentence: 0.92,
 };
 
 const statusLabels = {
@@ -11,6 +20,15 @@ const statusLabels = {
   unknown: "몰라요",
   review: "다시 보기",
   known: "알아요",
+};
+
+const examSourceLabels = {
+  all: "전체 단어",
+  new: "새 단어",
+  unknown: "몰라요",
+  review: "다시 보기",
+  known: "알아요",
+  wrong: "오답노트",
 };
 
 const state = {
@@ -21,6 +39,7 @@ const state = {
   index: 0,
   answersHidden: false,
   analysisOpen: false,
+  studyMode: "all",
   statuses: readJson(STORAGE.status, {}),
   speakingWord: null,
   exam: {
@@ -28,7 +47,9 @@ const state = {
     size: 10,
     rangeStart: 1,
     rangeEnd: words.length,
+    source: "all",
     pool: [],
+    candidates: [],
     questions: [],
     index: 0,
     score: 0,
@@ -88,11 +109,12 @@ async function loadVocabularyData() {
 function bindElements() {
   [
     "homeView", "studyView", "examView", "speakingView", "wrongView", "homeSummary",
+    "startToday", "todaySummary", "studyTitle", "studyTools", "studyUtilityRow",
     "studyProgress", "studySearch", "toggleAnswer", "randomStudy", "wordNumber",
     "wordStatus", "wordText", "wordMeaning", "meaningNoteBlock", "meaningNote",
     "exampleBlock", "exampleVi", "exampleKo", "speakExample", "analysisToggle",
     "analysisPanel", "analysisText", "speakWord", "markUnknown", "markReview",
-    "markKnown", "previousWord", "nextWord", "examStart", "rangeStart", "rangeEnd",
+    "markKnown", "previousWord", "nextWord", "examStart", "rangeStart", "rangeEnd", "examSource",
     "fullRange", "examRun", "examResult", "examCounter", "examWordNumber",
     "examQuestion", "examSpeak", "examPrompt", "examOptions", "typedAnswerWrap",
     "typedAnswer", "checkTypedAnswer", "examFeedback", "examNext", "examScore",
@@ -107,8 +129,16 @@ function bindElements() {
 
 function bindEvents() {
   document.querySelectorAll("[data-nav]").forEach((button) => {
-    button.addEventListener("click", () => showView(button.dataset.nav));
+    button.addEventListener("click", () => {
+      if (button.dataset.nav === "study") {
+        openStudy("all");
+      } else {
+        showView(button.dataset.nav);
+      }
+    });
   });
+
+  els.startToday.addEventListener("click", () => openStudy("daily"));
 
   els.studySearch.addEventListener("input", () => {
     state.query = els.studySearch.value.trim().toLocaleLowerCase("vi-VN");
@@ -159,7 +189,7 @@ function bindEvents() {
 
   els.speakExample.addEventListener("click", () => {
     const word = currentWord();
-    if (word) speakVietnamese(word.example);
+    if (word) speakVietnamese(word.example, "sentence");
   });
 
   els.fullRange.addEventListener("click", () => {
@@ -220,10 +250,32 @@ function showView(view) {
   window.scrollTo({ top: 0, behavior: "auto" });
 }
 
+function openStudy(mode) {
+  state.studyMode = mode;
+  state.query = "";
+  state.filter = "all";
+  state.index = 0;
+  state.analysisOpen = false;
+  els.studySearch.value = "";
+  refreshStudyList();
+  if (mode === "all") {
+    const lastKey = localStorage.getItem(STORAGE.lastWord);
+    const lastIndex = state.filtered.findIndex((word) => word.key === lastKey);
+    state.index = lastIndex >= 0 ? lastIndex : 0;
+  }
+  showView("study");
+}
+
 function renderHome() {
   const statuses = getStatuses();
   const known = words.reduce((count, word) => count + (statuses[word.key] === "known" ? 1 : 0), 0);
   els.homeSummary.textContent = `${words.length}개 단어 · 알아요 ${known}개`;
+  const daily = getDailySession();
+  const completed = new Set(daily.completed);
+  const remaining = daily.keys.filter((key) => !completed.has(key)).length;
+  els.todaySummary.textContent = remaining
+    ? `${daily.keys.length}개 중 ${remaining}개 남음`
+    : "오늘 학습 완료";
 }
 
 function getStatuses() {
@@ -239,7 +291,74 @@ function setStatus(word, status) {
   localStorage.setItem(STORAGE.status, JSON.stringify(state.statuses));
 }
 
+function localDateKey() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getDailySession() {
+  const date = localDateKey();
+  const saved = readJson(STORAGE.daily, null);
+  if (saved && saved.date === date && Array.isArray(saved.keys) && Array.isArray(saved.completed)) {
+    const validKeys = saved.keys.filter((key) => words.some((word) => word.key === key));
+    const validKeySet = new Set(validKeys);
+    const completed = [...new Set(saved.completed.filter((key) => validKeySet.has(key)))];
+    if (validKeys.length) return { date, keys: validKeys, completed };
+  }
+
+  const groups = {
+    unknown: shuffle(words.filter((word) => getStatus(word) === "unknown")),
+    review: shuffle(words.filter((word) => getStatus(word) === "review")),
+    new: shuffle(words.filter((word) => getStatus(word) === "new")),
+    known: shuffle(words.filter((word) => getStatus(word) === "known")),
+  };
+  const selected = [];
+  const selectedKeys = new Set();
+  const take = (group, count) => {
+    while (group.length && count > 0 && selected.length < DAILY_SIZE) {
+      const word = group.shift();
+      if (!selectedKeys.has(word.key)) {
+        selected.push(word);
+        selectedKeys.add(word.key);
+        count -= 1;
+      }
+    }
+  };
+
+  take(groups.unknown, 10);
+  take(groups.review, 10);
+  take(groups.new, 10);
+  [groups.unknown, groups.review, groups.new, groups.known].forEach((group) => {
+    take(group, DAILY_SIZE - selected.length);
+  });
+
+  const session = { date, keys: selected.map((word) => word.key), completed: [] };
+  localStorage.setItem(STORAGE.daily, JSON.stringify(session));
+  return session;
+}
+
+function completeDailyWord(word) {
+  const session = getDailySession();
+  if (!session.keys.includes(word.key) || session.completed.includes(word.key)) return;
+  session.completed.push(word.key);
+  localStorage.setItem(STORAGE.daily, JSON.stringify(session));
+}
+
 function refreshStudyList() {
+  if (state.studyMode === "daily") {
+    const daily = getDailySession();
+    const completed = new Set(daily.completed);
+    state.filtered = daily.keys
+      .filter((key) => !completed.has(key))
+      .map((key) => words.find((word) => word.key === key))
+      .filter(Boolean);
+    if (state.index >= state.filtered.length) state.index = Math.max(0, state.filtered.length - 1);
+    return;
+  }
+
   const query = state.query;
   state.filtered = words.filter((word) => {
     if (state.filter !== "all" && getStatus(word) !== state.filter) return false;
@@ -264,21 +383,41 @@ function currentWord() {
 
 function renderStudy() {
   refreshStudyList();
+  const isDaily = state.studyMode === "daily";
+  els.studyTitle.textContent = isDaily ? "오늘의 학습" : "단어장";
+  els.studyTools.classList.toggle("hidden", isDaily);
+  els.randomStudy.classList.toggle("hidden", isDaily);
+  els.studyUtilityRow.classList.toggle("single-column", isDaily);
   const word = currentWord();
   if (!word) {
-    els.studyProgress.textContent = "0 / 0";
-    els.wordNumber.textContent = "검색 결과 없음";
+    if (isDaily) {
+      const daily = getDailySession();
+      els.studyProgress.textContent = `오늘 ${daily.completed.length} / ${daily.keys.length}`;
+    } else {
+      els.studyProgress.textContent = "0 / 0";
+    }
+    els.wordNumber.textContent = isDaily ? "오늘 학습 완료" : "검색 결과 없음";
     els.wordStatus.textContent = "";
     els.wordText.textContent = "-";
-    els.wordMeaning.textContent = "조건에 맞는 단어가 없습니다.";
+    els.wordMeaning.textContent = isDaily ? "오늘의 단어를 모두 학습했습니다." : "조건에 맞는 단어가 없습니다.";
     els.meaningNoteBlock.classList.add("hidden");
     els.exampleBlock.classList.add("hidden");
     els.analysisToggle.classList.add("hidden");
     els.analysisPanel.classList.add("hidden");
+    [els.speakWord, els.markUnknown, els.markReview, els.markKnown, els.previousWord, els.nextWord]
+      .forEach((button) => { button.disabled = true; });
     return;
   }
 
-  els.studyProgress.textContent = `${state.index + 1} / ${state.filtered.length}`;
+  [els.speakWord, els.markUnknown, els.markReview, els.markKnown, els.previousWord, els.nextWord]
+    .forEach((button) => { button.disabled = false; });
+  if (!isDaily) localStorage.setItem(STORAGE.lastWord, word.key);
+  if (isDaily) {
+    const daily = getDailySession();
+    els.studyProgress.textContent = `오늘 ${daily.completed.length + 1} / ${daily.keys.length}`;
+  } else {
+    els.studyProgress.textContent = `${state.index + 1} / ${state.filtered.length}`;
+  }
   els.wordNumber.textContent = `No. ${word.number}`;
   els.wordStatus.textContent = statusLabels[getStatus(word)];
   els.wordText.textContent = word.word;
@@ -317,9 +456,12 @@ function markCurrent(status) {
   const word = currentWord();
   if (!word) return;
   setStatus(word, status);
+  if (state.studyMode === "daily") completeDailyWord(word);
   const previousIndex = state.index;
   refreshStudyList();
-  if (state.filter === "all" && state.filtered.length) {
+  if (state.studyMode === "daily") {
+    state.index = Math.min(previousIndex, Math.max(0, state.filtered.length - 1));
+  } else if (state.filter === "all" && state.filtered.length) {
     state.index = (previousIndex + 1) % state.filtered.length;
   } else {
     state.index = Math.min(previousIndex, Math.max(0, state.filtered.length - 1));
@@ -337,6 +479,8 @@ function loadExamRange() {
     state.exam.rangeStart = 1;
     state.exam.rangeEnd = words.length;
   }
+  const savedSource = localStorage.getItem(STORAGE.examSource);
+  state.exam.source = Object.hasOwn(examSourceLabels, savedSource) ? savedSource : "all";
 }
 
 function renderExamStart() {
@@ -345,6 +489,7 @@ function renderExamStart() {
   els.examResult.classList.add("hidden");
   els.rangeStart.value = String(state.exam.rangeStart);
   els.rangeEnd.value = String(state.exam.rangeEnd);
+  els.examSource.value = state.exam.source;
 }
 
 function readExamRange() {
@@ -366,15 +511,27 @@ function startExam(mode, requestedSize, reuseRange = false) {
     : readExamRange();
   if (!range) return;
 
-  const pool = words.filter((word) => word.number >= range.start && word.number <= range.end && word.word && word.meaning);
+  if (!reuseRange) {
+    state.exam.source = Object.hasOwn(examSourceLabels, els.examSource.value) ? els.examSource.value : "all";
+    localStorage.setItem(STORAGE.examSource, state.exam.source);
+  }
+
+  const candidates = words.filter((word) => word.number >= range.start && word.number <= range.end && word.word && word.meaning);
+  const wrongKeys = new Set(getWrongKeys());
+  const pool = candidates.filter((word) => {
+    if (state.exam.source === "all") return true;
+    if (state.exam.source === "wrong") return wrongKeys.has(word.key);
+    return getStatus(word) === state.exam.source;
+  });
   if (!pool.length) {
-    window.alert("선택한 범위에 출제할 단어가 없습니다.");
+    window.alert(`선택한 범위의 '${examSourceLabels[state.exam.source]}' 항목에 출제할 단어가 없습니다.`);
     return;
   }
 
   state.exam.mode = mode;
   state.exam.size = requestedSize;
   state.exam.pool = pool;
+  state.exam.candidates = candidates;
   state.exam.questions = shuffle([...pool]).slice(0, Math.min(requestedSize, pool.length));
   state.exam.index = 0;
   state.exam.score = 0;
@@ -415,7 +572,7 @@ function renderExamQuestion() {
 
   if (!isTyped) {
     const correct = isViToKo ? word.meaning : word.word;
-    const values = state.exam.pool.map((item) => (isViToKo ? item.meaning : item.word));
+    const values = state.exam.candidates.map((item) => (isViToKo ? item.meaning : item.word));
     const options = createOptions(correct, values);
     options.forEach((value) => {
       const button = document.createElement("button");
@@ -489,7 +646,7 @@ function showExamResult() {
   els.examRun.classList.add("hidden");
   els.examResult.classList.remove("hidden");
   els.examScore.textContent = `${state.exam.score} / ${state.exam.questions.length}`;
-  els.examResultRange.textContent = `시험 범위 ${state.exam.rangeStart}~${state.exam.rangeEnd}`;
+  els.examResultRange.textContent = `시험 범위 ${state.exam.rangeStart}~${state.exam.rangeEnd} · ${examSourceLabels[state.exam.source]}`;
 }
 
 function renderSpeaking() {
@@ -700,6 +857,7 @@ function renderWrong() {
 }
 
 function focusStudyWord(word) {
+  state.studyMode = "all";
   state.filter = "all";
   state.query = "";
   els.studySearch.value = "";
@@ -709,12 +867,12 @@ function focusStudyWord(word) {
   showView("study");
 }
 
-function speakVietnamese(text) {
+function speakVietnamese(text, kind = "word") {
   if (!text || !("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "vi-VN";
-  utterance.rate = 0.86;
+  utterance.rate = TTS_RATES[kind] || TTS_RATES.word;
   const voices = window.speechSynthesis.getVoices();
   const vietnameseVoice = voices.find((voice) => voice.lang.toLocaleLowerCase().startsWith("vi"));
   if (vietnameseVoice) utterance.voice = vietnameseVoice;
@@ -771,4 +929,10 @@ function readJson(key, fallback) {
 function clampNumber(value, min, max, fallback) {
   const number = Number(value);
   return Number.isFinite(number) ? Math.min(max, Math.max(min, Math.round(number))) : fallback;
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch((error) => console.error("Service worker registration failed", error));
+  });
 }
