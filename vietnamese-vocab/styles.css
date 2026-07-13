@@ -28,7 +28,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -117,6 +118,30 @@ h3 {
 .home-actions {
   display: grid;
   gap: 12px;
+}
+
+.today-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 66px;
+  margin-bottom: 12px;
+  border: 2px solid var(--teal);
+  background: var(--paper);
+  color: var(--dark);
+  padding: 10px 16px;
+  text-align: left;
+}
+
+.today-action > span {
+  font-size: 20px;
+}
+
+.today-action small {
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .action-large {
@@ -256,6 +281,10 @@ h3 {
 
 .two-column-row {
   grid-template-columns: 1fr 1fr;
+}
+
+.two-column-row.single-column {
+  grid-template-columns: 1fr;
 }
 
 .status-actions {
@@ -402,6 +431,16 @@ h3 {
 .range-input {
   min-width: 0;
   text-align: center;
+}
+
+.exam-source-field {
+  display: block;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.exam-source-field .control {
+  appearance: auto;
 }
 
 .exam-group h3 {
@@ -621,6 +660,13 @@ h3 {
 
   .typed-answer {
     grid-template-columns: 1fr;
+  }
+
+  .today-action {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
   }
 }
 
