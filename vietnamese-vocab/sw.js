@@ -1,11 +1,11 @@
-const CACHE_NAME = "vietnamese-vocab-v8";
+const CACHE_NAME = "vietnamese-vocab-v9";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css?v=8",
   "./config.js?v=7",
   "./app.js?v=7",
-  "./sync.js?v=8",
+  "./sync.js?v=9",
   "./sync-core.mjs?v=7",
   "./assets/vocab-data.js?v=5",
   "./manifest.webmanifest?v=3",

@@ -299,9 +299,14 @@ async function signUp() {
     const supabaseClient = await ensureClient();
     const { data, error } = await supabaseClient.auth.signUp(credentials);
     if (error) throw error;
+    if (data.user) {
+      // Explicit signup attaches this device's existing study history to the new account.
+      localStorage.setItem(STORAGE.owner, data.user.id);
+      localStorage.removeItem(STORAGE.lastSync);
+    }
     ui.syncPassword.value = "";
     if (!data.session) {
-      setSyncState("local", "가입 완료. 이제 같은 이메일과 비밀번호로 로그인하세요.");
+      setSyncState("local", "가입 완료. 이메일 확인이 필요하면 메일을 확인한 뒤 로그인하세요.");
     }
   } catch (error) {
     setSyncState("error", readableError(error));
