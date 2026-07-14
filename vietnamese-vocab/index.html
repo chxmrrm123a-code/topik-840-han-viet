@@ -12,19 +12,19 @@
   <link rel="manifest" href="manifest.webmanifest?v=3">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192/clipboard.png">
   <link rel="apple-touch-icon" href="assets/icon-192/clipboard.png">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <main class="app-shell">
     <section id="homeView" class="view home-view">
       <div class="home-panel">
-        <div class="home-header-row">
-          <p class="eyebrow">1–2063</p>
-          <button id="openSyncModalBtn" class="sync-badge offline" aria-label="구름 동기화 설정">
-            <span class="sync-icon">☁️</span>
-            <span id="syncBadgeText">동기화 오프라인</span>
+        <div id="homeSyncRow" class="home-sync-row" hidden>
+          <button id="syncOpen" class="sync-open" type="button" hidden>
+            <span id="syncDot" class="sync-dot local" aria-hidden="true"></span>
+            <span id="syncButtonLabel">동기화</span>
           </button>
         </div>
+        <p class="eyebrow">1–2063</p>
         <h1>베트남어 단어장</h1>
         <p id="homeSummary" class="home-summary">2063개 단어</p>
         <button id="startToday" class="today-action">
@@ -256,55 +256,42 @@
     </section>
   </main>
 
-  <!-- 구름 동기화 설정 모달 -->
-  <div id="syncModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="syncModalTitle">
-    <div class="modal-content">
-      <header class="modal-header">
-        <h2 id="syncModalTitle">구름 동기화 설정</h2>
-        <button id="closeSyncModalBtn" class="small plain modal-close" aria-label="닫기">닫기</button>
+  <dialog id="syncDialog" class="sync-dialog">
+    <div class="sync-sheet">
+      <header class="sync-header">
+        <div>
+          <p class="section-kicker">학습 기록</p>
+          <h2>기기 간 동기화</h2>
+        </div>
+        <button id="syncClose" class="sync-close" type="button" aria-label="닫기" title="닫기">×</button>
       </header>
-      
-      <div class="modal-body">
-        <!-- 로그인 안 된 상태 -->
-        <div id="syncLoggedOutSection" class="sync-section">
-          <p class="sync-desc">
-            이메일 로그인으로 여러 기기(PC, 휴대폰 등)에서 학습 기록을 자동으로 안전하게 연동할 수 있습니다. 비밀번호 없이 이메일 인증 링크로 로그인합니다.
-          </p>
-          <form id="magicLinkForm" class="sync-form" onsubmit="event.preventDefault();">
-            <label for="syncEmailInput" class="label">이메일 주소</label>
-            <input id="syncEmailInput" class="control" type="email" required placeholder="example@email.com" autocomplete="email">
-            <button id="sendMagicLinkBtn" class="primary wide" type="submit">인증 이메일 발송</button>
-          </form>
-          <p id="authMessage" class="auth-message hidden"></p>
-        </div>
 
-        <!-- 로그인 완료된 상태 -->
-        <div id="syncLoggedInSection" class="sync-section hidden">
-          <div class="user-info-card">
-            <div class="label">로그인 계정</div>
-            <p id="loggedInUserEmail" class="user-email">-</p>
-            <span id="syncConnectionStatus" class="connection-status offline">오프라인</span>
-          </div>
-          
-          <div class="sync-status-row">
-            <div>
-              <span class="label">마지막 동기화 시점</span>
-              <p id="lastSyncTimeText" class="sync-time">기록 없음</p>
-            </div>
-            <button id="manualSyncBtn" class="primary small">지금 동기화</button>
-          </div>
+      <div id="syncStatus" class="sync-status local" role="status">이 기기에만 저장 중</div>
+      <p id="syncLastTime" class="sync-last-time">아직 동기화하지 않음</p>
 
-          <div class="sync-actions-group">
-            <button id="logoutBtn" class="danger solid wide">로그아웃</button>
-          </div>
+      <section id="syncSignedOut" class="sync-auth-section">
+        <label class="sync-field" for="syncEmail">
+          <span>이메일</span>
+          <input id="syncEmail" class="control" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com">
+        </label>
+        <button id="syncSendLink" class="primary wide" type="button">로그인 링크 받기</button>
+        <p class="sync-help">메일에서 <strong>Sign in</strong>을 누르면 자동으로 로그인됩니다.</p>
+      </section>
+
+      <section id="syncSignedIn" class="sync-auth-section hidden">
+        <p id="syncAccount" class="sync-account"></p>
+        <div class="two-column-row">
+          <button id="syncNow" class="primary" type="button">지금 동기화</button>
+          <button id="syncLogout" class="plain" type="button">로그아웃</button>
         </div>
-      </div>
+      </section>
+      <p class="sync-note">단어 상태, 오답노트, 오늘의 학습과 마지막 위치만 저장됩니다.</p>
     </div>
-  </div>
+  </dialog>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js?v=4"></script>
+  <script src="config.js?v=7"></script>
   <script src="assets/vocab-data.js?v=5"></script>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=7"></script>
+  <script type="module" src="sync.js?v=7"></script>
 </body>
 </html>
