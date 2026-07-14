@@ -142,7 +142,7 @@ window.VocabSync = { recordStatus, recordWrongKeys, recordDaily, recordLastWord,
 function bindUi() {
   [
     "homeSyncRow", "syncOpen", "syncButtonLabel", "syncDot", "syncDialog", "syncClose", "syncStatus",
-    "syncLastTime", "syncSignedOut", "syncSignedIn", "syncEmail", "syncSendLink",
+    "syncLastTime", "syncSignedOut", "syncSignedIn", "syncEmail", "syncPassword", "syncSignIn", "syncSignUp",
     "syncAccount", "syncNow", "syncLogout",
   ].forEach((id) => { ui[id] = document.getElementById(id); });
 
@@ -157,9 +157,13 @@ function bindUi() {
   ui.syncDialog.addEventListener("click", (event) => {
     if (event.target === ui.syncDialog) ui.syncDialog.close();
   });
-  ui.syncSendLink.addEventListener("click", sendMagicLink);
+  ui.syncSignIn.addEventListener("click", signIn);
+  ui.syncSignUp.addEventListener("click", signUp);
   ui.syncEmail.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") sendMagicLink();
+    if (event.key === "Enter") ui.syncPassword.focus();
+  });
+  ui.syncPassword.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") signIn();
   });
   ui.syncNow.addEventListener("click", () => performSync(true));
   ui.syncLogout.addEventListener("click", logout);
@@ -244,12 +248,11 @@ async function ensureClient() {
   if (client) return client;
   const library = await loadSupabaseLibrary();
   client = library.createClient(config.supabaseUrl.replace(/\/$/, ""), config.supabasePublishableKey, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: "implicit" },
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
   });
   client.auth.onAuthStateChange((event, session) => {
     currentUser = session?.user || null;
     saveSessionHint(currentUser);
-    if (currentUser && event === "SIGNED_IN") clearAuthUrl();
     renderSyncUi();
     if (currentUser) window.setTimeout(() => scheduleSync(0), 0);
   });
@@ -260,34 +263,46 @@ async function ensureClient() {
   return client;
 }
 
-function loginRedirectUrl() {
-  return `${window.location.origin}${window.location.pathname}`;
-}
-
-function clearAuthUrl() {
-  const url = new URL(window.location.href);
-  const hasAuthData = url.hash.includes("access_token") || url.searchParams.has("code");
-  if (!hasAuthData) return;
-  ["code", "error", "error_code", "error_description"].forEach((key) => url.searchParams.delete(key));
-  url.hash = "";
-  window.history.replaceState({}, document.title, `${url.pathname}${url.search}`);
-}
-
-async function sendMagicLink() {
+function readCredentials() {
   const email = ui.syncEmail.value.trim();
+  const password = ui.syncPassword.value;
   if (!/^\S+@\S+\.\S+$/.test(email)) {
     setSyncState("error", "이메일 주소를 확인해 주세요.");
-    return;
+    return null;
   }
+  if (password.length < 6) {
+    setSyncState("error", "비밀번호는 6자 이상이어야 합니다.");
+    return null;
+  }
+  return { email, password };
+}
+
+async function signIn() {
+  const credentials = readCredentials();
+  if (!credentials) return;
   try {
     setSyncState("syncing");
     const supabaseClient = await ensureClient();
-    const { error } = await supabaseClient.auth.signInWithOtp({
-      email,
-      options: { shouldCreateUser: true, emailRedirectTo: loginRedirectUrl() },
-    });
+    const { error } = await supabaseClient.auth.signInWithPassword(credentials);
     if (error) throw error;
-    setSyncState("local", "이메일에서 Sign in 링크를 눌러주세요.");
+    ui.syncPassword.value = "";
+  } catch (error) {
+    setSyncState("error", readableError(error));
+  }
+}
+
+async function signUp() {
+  const credentials = readCredentials();
+  if (!credentials) return;
+  try {
+    setSyncState("syncing");
+    const supabaseClient = await ensureClient();
+    const { data, error } = await supabaseClient.auth.signUp(credentials);
+    if (error) throw error;
+    ui.syncPassword.value = "";
+    if (!data.session) {
+      setSyncState("local", "가입 완료. 이제 같은 이메일과 비밀번호로 로그인하세요.");
+    }
   } catch (error) {
     setSyncState("error", readableError(error));
   }
@@ -477,7 +492,10 @@ async function logout() {
 
 function readableError(error) {
   const message = String(error?.message || error || "동기화 오류");
-  if (/invalid login|token/i.test(message)) return "로그인 링크가 올바르지 않거나 만료됐습니다.";
+  if (/invalid login credentials/i.test(message)) return "이메일 또는 비밀번호가 올바르지 않습니다.";
+  if (/already registered|already exists|user already/i.test(message)) return "이미 가입된 이메일입니다. 로그인해 주세요.";
+  if (/email not confirmed|not confirmed/i.test(message)) return "이메일 확인이 필요합니다. 받은 메일에서 확인 후 로그인하세요.";
+  if (/password/i.test(message)) return "비밀번호는 6자 이상이어야 합니다.";
   if (/fetch|network|internet/i.test(message)) return "인터넷 연결을 확인해 주세요.";
   if (/relation .* does not exist/i.test(message)) return "Supabase 테이블 설정이 필요합니다.";
   return message.length > 80 ? "동기화 중 오류가 발생했습니다." : message;

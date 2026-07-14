@@ -12,7 +12,7 @@
   <link rel="manifest" href="manifest.webmanifest?v=3">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192/clipboard.png">
   <link rel="apple-touch-icon" href="assets/icon-192/clipboard.png">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <main class="app-shell">
@@ -274,8 +274,13 @@
           <span>이메일</span>
           <input id="syncEmail" class="control" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com">
         </label>
-        <button id="syncSendLink" class="primary wide" type="button">로그인 링크 받기</button>
-        <p class="sync-help">메일에서 <strong>Sign in</strong>을 누르면 자동으로 로그인됩니다.</p>
+        <label class="sync-field" for="syncPassword">
+          <span>비밀번호</span>
+          <input id="syncPassword" class="control" type="password" autocomplete="current-password" placeholder="6자 이상">
+        </label>
+        <button id="syncSignIn" class="primary wide" type="button">로그인</button>
+        <button id="syncSignUp" class="plain wide" type="button">처음이신가요? 가입하기</button>
+        <p class="sync-help">이메일과 비밀번호로 로그인하면 기기 간 학습 기록이 연결됩니다. 메일 확인 없이 바로 로그인돼요.</p>
       </section>
 
       <section id="syncSignedIn" class="sync-auth-section hidden">
@@ -292,6 +297,6 @@
   <script src="config.js?v=7"></script>
   <script src="assets/vocab-data.js?v=5"></script>
   <script src="app.js?v=7"></script>
-  <script type="module" src="sync.js?v=7"></script>
+  <script type="module" src="sync.js?v=8"></script>
 </body>
 </html>

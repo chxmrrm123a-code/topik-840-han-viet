@@ -754,6 +754,10 @@ h3 {
   margin-top: 18px;
 }
 
+.sync-auth-section .wide + .wide {
+  margin-top: 8px;
+}
+
 .sync-field {
   display: grid;
   gap: 7px;
