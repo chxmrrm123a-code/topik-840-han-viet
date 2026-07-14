@@ -2,11 +2,16 @@ let words = [];
 
 const STORAGE = {
   status: "vietnameseVocab2063.status.v1",
+  statusTimestamps: "vietnameseVocab2063.statusTimestamps.v1",
   wrong: "vietnameseVocab2063.wrong.v1",
+  wrongStates: "vietnameseVocab2063.wrongStates.v1",
   range: "vietnameseVocab2063.examRange.v1",
   examSource: "vietnameseVocab2063.examSource.v1",
   daily: "vietnameseVocab2063.daily.v1",
   lastWord: "vietnameseVocab2063.lastWord.v1",
+  lastWordTimestamp: "vietnameseVocab2063.lastWordTimestamp.v1",
+  syncQueue: "vietnameseVocab2063.syncQueue.v1",
+  lastSyncTime: "vietnameseVocab2063.lastSyncTime.v1"
 };
 
 const DAILY_SIZE = 30;
@@ -41,6 +46,9 @@ const state = {
   analysisOpen: false,
   studyMode: "all",
   statuses: readJson(STORAGE.status, {}),
+  statusTimestamps: readJson(STORAGE.statusTimestamps, {}),
+  wrongStates: readJson(STORAGE.wrongStates, {}),
+  syncQueue: readJson(STORAGE.syncQueue, []),
   speakingWord: null,
   exam: {
     mode: "vi_ko",
@@ -68,8 +76,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     state.filtered = [...words];
     state.speakingWord = words[0] || null;
     state.exam.rangeEnd = words.length;
+    
+    // 데이터 마이그레이션 실행
+    migrateData();
+    
     loadExamRange();
     bindEvents();
+    
+    // Supabase 및 동기화 초기화
+    initSupabaseAuth();
+    
     refreshStudyList();
     renderHome();
     showView("home");
@@ -122,6 +138,12 @@ function bindElements() {
     "speakingNumber", "speakingWord", "speakingMeaning", "listenSpeakingWord",
     "randomSpeakingWord", "startRecognition", "recognitionPanel", "recognitionState",
     "recognizedText", "recognitionScore", "wrongCount", "clearWrong", "wrongList",
+    
+    // 구름 동기화 관련 요소
+    "openSyncModalBtn", "syncBadgeText", "syncModal", "closeSyncModalBtn",
+    "syncLoggedOutSection", "syncEmailInput", "sendMagicLinkBtn", "authMessage",
+    "syncLoggedInSection", "loggedInUserEmail", "syncConnectionStatus",
+    "lastSyncTimeText", "manualSyncBtn", "logoutBtn", "magicLinkForm"
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -232,6 +254,27 @@ function bindEvents() {
     setWrongKeys([]);
     renderWrong();
   });
+
+  // 구름 동기화 관련 이벤트 바인딩
+  if (els.openSyncModalBtn) {
+    els.openSyncModalBtn.addEventListener("click", openSyncModal);
+    els.closeSyncModalBtn.addEventListener("click", closeSyncModal);
+    els.syncModal.addEventListener("click", (e) => {
+      if (e.target === els.syncModal) closeSyncModal();
+    });
+    els.magicLinkForm.addEventListener("submit", handleMagicLinkSubmit);
+    els.manualSyncBtn.addEventListener("click", () => triggerSync(true));
+    els.logoutBtn.addEventListener("click", handleLogout);
+    
+    window.addEventListener("online", () => {
+      updateSyncBadgeUI("online");
+      triggerSync();
+    });
+    window.addEventListener("offline", () => {
+      updateSyncBadgeUI("offline");
+      updateSyncModalUI();
+    });
+  }
 }
 
 function showView(view) {
@@ -288,7 +331,10 @@ function getStatus(word) {
 
 function setStatus(word, status) {
   state.statuses[word.key] = status;
+  state.statusTimestamps[word.key] = Date.now();
   localStorage.setItem(STORAGE.status, JSON.stringify(state.statuses));
+  localStorage.setItem(STORAGE.statusTimestamps, JSON.stringify(state.statusTimestamps));
+  queueSyncAction("statuses");
 }
 
 function localDateKey() {
@@ -336,7 +382,7 @@ function getDailySession() {
   });
 
   const session = { date, keys: selected.map((word) => word.key), completed: [] };
-  localStorage.setItem(STORAGE.daily, JSON.stringify(session));
+  saveDailySession(session);
   return session;
 }
 
@@ -344,7 +390,7 @@ function completeDailyWord(word) {
   const session = getDailySession();
   if (!session.keys.includes(word.key) || session.completed.includes(word.key)) return;
   session.completed.push(word.key);
-  localStorage.setItem(STORAGE.daily, JSON.stringify(session));
+  saveDailySession(session);
 }
 
 function refreshStudyList() {
@@ -411,7 +457,7 @@ function renderStudy() {
 
   [els.speakWord, els.markUnknown, els.markReview, els.markKnown, els.previousWord, els.nextWord]
     .forEach((button) => { button.disabled = false; });
-  if (!isDaily) localStorage.setItem(STORAGE.lastWord, word.key);
+  if (!isDaily) setLastWord(word.key);
   if (isDaily) {
     const daily = getDailySession();
     els.studyProgress.textContent = `오늘 ${daily.completed.length + 1} / ${daily.keys.length}`;
@@ -801,17 +847,32 @@ function recognitionErrorMessage(error) {
 }
 
 function addWrong(word) {
-  const keys = getWrongKeys();
-  if (!keys.includes(word.key)) keys.push(word.key);
-  setWrongKeys(keys);
+  const now = Date.now();
+  state.wrongStates[word.key] = { w: true, t: now };
+  localStorage.setItem(STORAGE.wrongStates, JSON.stringify(state.wrongStates));
+  queueSyncAction("wrongStates");
 }
 
 function getWrongKeys() {
-  return readJson(STORAGE.wrong, []);
+  return Object.keys(state.wrongStates)
+    .filter((key) => state.wrongStates[key] && state.wrongStates[key].w);
 }
 
 function setWrongKeys(keys) {
-  localStorage.setItem(STORAGE.wrong, JSON.stringify(keys));
+  const now = Date.now();
+  const currentKeys = getWrongKeys();
+  for (const key of currentKeys) {
+    if (!keys.includes(key)) {
+      state.wrongStates[key] = { w: false, t: now };
+    }
+  }
+  for (const key of keys) {
+    if (!state.wrongStates[key] || !state.wrongStates[key].w) {
+      state.wrongStates[key] = { w: true, t: now };
+    }
+  }
+  localStorage.setItem(STORAGE.wrongStates, JSON.stringify(state.wrongStates));
+  queueSyncAction("wrongStates");
 }
 
 function renderWrong() {
@@ -935,4 +996,373 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch((error) => console.error("Service worker registration failed", error));
   });
+}
+
+// ==========================================
+//            구름 동기화 및 Supabase 관련 로직
+// ==========================================
+
+let supabase = null;
+let isSyncing = false;
+
+function initSupabaseAuth() {
+  if (typeof supabasejs !== "undefined" && window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url !== "https://your-project-ref.supabase.co") {
+    supabase = supabasejs.createClient(window.SUPABASE_CONFIG.url, window.SUPABASE_CONFIG.anonKey);
+    
+    // Auth 상태 변경 리스너
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("Supabase Auth Event:", event);
+      if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
+        updateSyncBadgeUI("online");
+        updateSyncModalUI();
+        await triggerSync();
+      } else if (event === "SIGNED_OUT") {
+        updateSyncBadgeUI("logged-out");
+        updateSyncModalUI();
+        state.syncQueue = [];
+        localStorage.setItem(STORAGE.syncQueue, "[]");
+      }
+    });
+
+    // 현재 세션 상태 확인
+    getSupabaseSession().then((session) => {
+      if (session) {
+        triggerSync();
+      } else {
+        updateSyncBadgeUI("logged-out");
+      }
+    });
+  } else {
+    console.warn("Supabase가 설정되지 않았거나 클라이언트 라이브러리를 불러오지 못했습니다.");
+    updateSyncBadgeUI("not-configured");
+  }
+}
+
+async function getSupabaseSession() {
+  if (!supabase) return null;
+  try {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) return null;
+    return data.session;
+  } catch (err) {
+    return null;
+  }
+}
+
+function openSyncModal() {
+  if (els.syncModal) {
+    els.syncModal.classList.remove("hidden");
+    updateSyncModalUI();
+  }
+}
+
+function closeSyncModal() {
+  if (els.syncModal) {
+    els.syncModal.classList.add("hidden");
+  }
+}
+
+function updateSyncBadgeUI(status) {
+  if (!els.openSyncModalBtn) return;
+  
+  els.openSyncModalBtn.className = "sync-badge";
+  
+  if (!supabase) {
+    els.openSyncModalBtn.classList.add("offline");
+    els.syncBadgeText.textContent = "동기화 미설정";
+    return;
+  }
+
+  if (!navigator.onLine) {
+    els.openSyncModalBtn.classList.add("offline");
+    els.syncBadgeText.textContent = "동기화 오프라인";
+    return;
+  }
+
+  if (status === "syncing") {
+    els.openSyncModalBtn.classList.add("syncing");
+    els.syncBadgeText.textContent = "동기화 중...";
+  } else if (status === "online") {
+    els.openSyncModalBtn.classList.add("online");
+    els.syncBadgeText.textContent = "동기화 완료";
+  } else if (status === "logged-out") {
+    els.openSyncModalBtn.classList.add("offline");
+    els.syncBadgeText.textContent = "로그인 필요";
+  } else {
+    els.openSyncModalBtn.classList.add("offline");
+    els.syncBadgeText.textContent = "동기화 오프라인";
+  }
+}
+
+async function updateSyncModalUI() {
+  if (!els.syncModal) return;
+  
+  const session = await getSupabaseSession();
+  const isOnline = navigator.onLine;
+
+  if (session) {
+    els.syncLoggedOutSection.classList.add("hidden");
+    els.syncLoggedInSection.classList.remove("hidden");
+    els.loggedInUserEmail.textContent = session.user.email;
+    
+    if (isOnline) {
+      els.syncConnectionStatus.textContent = "연결됨";
+      els.syncConnectionStatus.className = "connection-status online";
+    } else {
+      els.syncConnectionStatus.textContent = "오프라인";
+      els.syncConnectionStatus.className = "connection-status offline";
+    }
+
+    const lastSync = localStorage.getItem(STORAGE.lastSyncTime) || "기록 없음";
+    els.lastSyncTimeText.textContent = lastSync;
+  } else {
+    els.syncLoggedOutSection.classList.remove("hidden");
+    els.syncLoggedInSection.classList.add("hidden");
+    els.authMessage.classList.add("hidden");
+    els.syncEmailInput.value = "";
+  }
+}
+
+async function handleMagicLinkSubmit(e) {
+  e.preventDefault();
+  if (!supabase) {
+    showAuthMessage("Supabase 설정이 완료되지 않았습니다. config.js 파일을 확인해 주세요.", "error");
+    return;
+  }
+
+  const email = els.syncEmailInput.value.trim();
+  if (!email) return;
+
+  els.sendMagicLinkBtn.disabled = true;
+  els.sendMagicLinkBtn.textContent = "전송 중...";
+  showAuthMessage("인증 메일을 전송 중입니다...", "success");
+
+  try {
+    const redirectUrl = window.location.href.split("?")[0];
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: redirectUrl
+      }
+    });
+
+    if (error) throw error;
+    showAuthMessage("이메일로 인증 링크를 발송했습니다! 메일함을 확인해 주세요.", "success");
+  } catch (error) {
+    console.error("Magic link request failed:", error);
+    showAuthMessage("인증 이메일 발송 실패: " + (error.message || "오류 발생"), "error");
+  } finally {
+    els.sendMagicLinkBtn.disabled = false;
+    els.sendMagicLinkBtn.textContent = "인증 이메일 발송";
+  }
+}
+
+function showAuthMessage(message, type) {
+  if (!els.authMessage) return;
+  els.authMessage.textContent = message;
+  els.authMessage.className = `auth-message ${type}`;
+  els.authMessage.classList.remove("hidden");
+}
+
+async function handleLogout() {
+  if (!supabase) return;
+  
+  if (confirm("로그아웃 하시겠습니까? 로컬 데이터는 기기에 보존되며 서버 동기화만 해제됩니다.")) {
+    try {
+      await supabase.auth.signOut();
+      alert("로그아웃 되었습니다.");
+      closeSyncModal();
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  }
+}
+
+function queueSyncAction(type) {
+  if (!state.syncQueue.includes(type)) {
+    state.syncQueue.push(type);
+    localStorage.setItem(STORAGE.syncQueue, JSON.stringify(state.syncQueue));
+  }
+  triggerSync();
+}
+
+async function triggerSync(forceManualAlert = false) {
+  if (!supabase) return;
+  
+  const session = await getSupabaseSession();
+  if (!session) {
+    updateSyncBadgeUI("logged-out");
+    return;
+  }
+
+  if (!navigator.onLine) {
+    updateSyncBadgeUI("offline");
+    if (forceManualAlert) {
+      alert("현재 오프라인 상태입니다. 네트워크 연결을 확인해 주세요.");
+    }
+    return;
+  }
+
+  if (isSyncing) return;
+  isSyncing = true;
+  updateSyncBadgeUI("syncing");
+
+  try {
+    const userId = session.user.id;
+    
+    // 1. 서버에서 최신 상태 로드
+    const { data: serverState, error } = await supabase
+      .from("user_vocab_state")
+      .select("*")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (error) throw error;
+
+    let mergedStatuses = { ...state.statuses };
+    let mergedTimestamps = { ...state.statusTimestamps };
+    let mergedWrongStates = { ...state.wrongStates };
+    let mergedDaily = readJson(STORAGE.daily, {});
+    let mergedLastWord = localStorage.getItem(STORAGE.lastWord) || "";
+    let mergedLastWordTimestamp = Number(localStorage.getItem(STORAGE.lastWordTimestamp) || 0);
+
+    if (serverState) {
+      // --- 단어 암기 상태 병합 (타임스탬프 비교) ---
+      const serverStatuses = serverState.statuses || {};
+      const serverStatusTimestamps = serverState.status_timestamps || {};
+      const allStatusKeys = new Set([...Object.keys(state.statuses), ...Object.keys(serverStatuses)]);
+      
+      for (const key of allStatusKeys) {
+        const localT = state.statusTimestamps[key] || 0;
+        const serverT = serverStatusTimestamps[key] || 0;
+        if (serverT > localT) {
+          mergedStatuses[key] = serverStatuses[key];
+          mergedTimestamps[key] = serverT;
+        }
+      }
+
+      // --- 오답노트 상태 병합 ---
+      const serverWrongStates = serverState.wrong_states || {};
+      const allWrongKeys = new Set([...Object.keys(state.wrongStates), ...Object.keys(serverWrongStates)]);
+      
+      for (const key of allWrongKeys) {
+        const localT = (state.wrongStates[key] && state.wrongStates[key].t) || 0;
+        const serverT = (serverWrongStates[key] && serverWrongStates[key].t) || 0;
+        if (serverT > localT) {
+          mergedWrongStates[key] = serverWrongStates[key];
+        }
+      }
+
+      // --- 오늘의 학습 세션 병합 ---
+      const serverDaily = serverState.daily_session || {};
+      if (serverDaily.date && serverDaily.date === mergedDaily.date) {
+        const mergedCompleted = [...new Set([...(mergedDaily.completed || []), ...(serverDaily.completed || [])])];
+        mergedDaily.completed = mergedCompleted;
+      } else if (serverDaily.date && (!mergedDaily.date || serverDaily.date > mergedDaily.date)) {
+        mergedDaily = serverDaily;
+      }
+
+      // --- 마지막 학습 단어 병합 ---
+      const serverLastWordTimestamp = Number(serverState.last_word_timestamp || 0);
+      if (serverLastWordTimestamp > mergedLastWordTimestamp) {
+        mergedLastWord = serverState.last_word_key || "";
+        mergedLastWordTimestamp = serverLastWordTimestamp;
+      }
+    }
+
+    // 2. 병합된 결과 로컬에 반영
+    state.statuses = mergedStatuses;
+    state.statusTimestamps = mergedTimestamps;
+    state.wrongStates = mergedWrongStates;
+    localStorage.setItem(STORAGE.status, JSON.stringify(state.statuses));
+    localStorage.setItem(STORAGE.statusTimestamps, JSON.stringify(state.statusTimestamps));
+    localStorage.setItem(STORAGE.wrongStates, JSON.stringify(state.wrongStates));
+    localStorage.setItem(STORAGE.daily, JSON.stringify(mergedDaily));
+    localStorage.setItem(STORAGE.lastWord, mergedLastWord);
+    localStorage.setItem(STORAGE.lastWordTimestamp, String(mergedLastWordTimestamp));
+
+    // 3. 병합된 최신 결과를 서버에 저장 (업로드)
+    const { error: upsertError } = await supabase
+      .from("user_vocab_state")
+      .upsert({
+        user_id: userId,
+        statuses: state.statuses,
+        status_timestamps: state.statusTimestamps,
+        wrong_states: state.wrongStates,
+        daily_session: mergedDaily,
+        last_word_key: mergedLastWord,
+        last_word_timestamp: mergedLastWordTimestamp,
+        updated_at: new Date().toISOString()
+      });
+
+    if (upsertError) throw upsertError;
+
+    // 대기 중이던 동기화 큐 비우기
+    state.syncQueue = [];
+    localStorage.setItem(STORAGE.syncQueue, "[]");
+    
+    // 최종 동기화 시간 기록
+    const nowStr = new Date().toLocaleString("ko-KR");
+    localStorage.setItem(STORAGE.lastSyncTime, nowStr);
+
+    updateSyncBadgeUI("online");
+    updateSyncModalUI();
+    renderHome();
+    
+    if (state.view === "study") renderStudy();
+    if (state.view === "wrong") renderWrong();
+
+    if (forceManualAlert) {
+      alert("동기화가 완료되었습니다.");
+    }
+  } catch (error) {
+    console.error("Sync failed:", error);
+    updateSyncBadgeUI("offline");
+    if (forceManualAlert) {
+      alert("동기화에 실패했습니다: " + (error.message || "서버 통신 실패"));
+    }
+  } finally {
+    isSyncing = false;
+  }
+}
+
+function saveDailySession(session) {
+  localStorage.setItem(STORAGE.daily, JSON.stringify(session));
+  queueSyncAction("daily");
+}
+
+function setLastWord(key) {
+  localStorage.setItem(STORAGE.lastWord, key);
+  const now = Date.now();
+  localStorage.setItem(STORAGE.lastWordTimestamp, String(now));
+  queueSyncAction("lastWord");
+}
+
+function migrateData() {
+  // 1. 단어 마스터 암기 상태 타임스탬프 부여
+  let statusMigrated = false;
+  for (const key of Object.keys(state.statuses)) {
+    if (!state.statusTimestamps[key]) {
+      state.statusTimestamps[key] = Date.now();
+      statusMigrated = true;
+    }
+  }
+  if (statusMigrated) {
+    localStorage.setItem(STORAGE.statusTimestamps, JSON.stringify(state.statusTimestamps));
+  }
+
+  // 2. 오답노트 (단순 배열 -> 타임스탬프 맵 객체 구조로 변환)
+  const oldWrong = readJson(STORAGE.wrong, null);
+  let wrongMigrated = false;
+  if (oldWrong && Array.isArray(oldWrong)) {
+    for (const key of oldWrong) {
+      if (!state.wrongStates[key]) {
+        state.wrongStates[key] = { w: true, t: Date.now() };
+        wrongMigrated = true;
+      }
+    }
+    if (wrongMigrated) {
+      localStorage.setItem(STORAGE.wrongStates, JSON.stringify(state.wrongStates));
+    }
+  }
 }
