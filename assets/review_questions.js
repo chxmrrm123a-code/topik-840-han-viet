@@ -59,6 +59,45 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "Trong tranh, chiếc giường (침대) được đặt ngay bên cạnh (옆) chiếc bàn học (책상). Do đó đáp án là '책상 옆에 있어요' (Ở bên cạnh chiếc bàn)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson1_refrigerator.jpg",
+        "question": "Nhìn hình vẽ và chọn từ tương ứng:",
+        "options": ["냉장고", "거울", "소파", "침대"],
+        "answer": 0,
+        "explanation": "Hình vẽ là chiếc tủ lạnh, tiếng Hàn là '냉장고'. 거울 là cái gương, 소파 là ghế sofa, 침대 là cái giường."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n지영: 방에 무엇이 있어요?\n민우: ___________________.",
+        "options": [
+          "침대가 있어요",
+          "침대는 없어요",
+          "방에 가요",
+          "책상 옆에 있어요"
+        ],
+        "answer": 0,
+        "explanation": "Câu hỏi 'Trong phòng có cái gì?' (무엇이 있어요?). Câu trả lời phù hợp nhất chỉ đồ vật có trong phòng là '침대가 있어요' (Có cái giường)."
+      },
+      {
+        "type": "antonym",
+        "question": "Từ trái nghĩa với '있다' (có, ở) là gì?",
+        "options": ["없다", "오다", "타다", "불다"],
+        "answer": 0,
+        "explanation": "Trái nghĩa với 있다 (có) là 없다 (không có). 오다: đến/rơi, 타다: đi xe, 불다: thổi."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'내 방 옆에 부엌이 있어요. 부엌에 냉장고가 있어요. 냉장고 옆에 텔레비전이 있어요.'\nHỏi: Nhà bếp (부엌) có những đồ vật gì?",
+        "options": [
+          "냉장고와 텔레비전",
+          "침대와 책상",
+          "의자와 소파",
+          "피아노와 거울"
+        ],
+        "answer": 0,
+        "explanation": "Theo đoạn văn: '부엌에 냉장고가 있어요' (Có tủ lạnh ở bếp) và '냉장고 옆에 텔레비전이 있어요' (Bên cạnh tủ lạnh có tivi). Vậy trong bếp có tủ lạnh và tivi (냉장고와 텔레비전)."
       }
     ],
     "lesson2": [
@@ -114,6 +153,45 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "Tranh vẽ mô tả trời đang mưa lớn (비가 와요) và có gió thổi mạnh làm nghiêng ngả cây cối (바람이 불어요). Đáp án đúng là '비가 오고 바람이 불어요'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson2_snow.jpg",
+        "question": "Nhìn hình vẽ và chọn từ/cụm từ mô tả đúng nhất:",
+        "options": ["눈이 와요", "비가 와요", "바람이 불어요", "더워요"],
+        "answer": 0,
+        "explanation": "Tranh vẽ cảnh tuyết rơi trắng xóa và em bé chơi với tuyết, tiếng Hàn là '눈이 와요' (Tuyết rơi)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n윙득: 비가 많이 와요?\n지영: ___________________.",
+        "options": [
+          "네, 비가 많이 와요",
+          "아니요, 눈이 안 와요",
+          "네, 날씨가 맑아요",
+          "아니요, 추워요"
+        ],
+        "answer": 0,
+        "explanation": "Câu hỏi 'Trời mưa nhiều không?' (비가 많이 와요?). Câu trả lời khẳng định phù hợp nhất là '네, 비가 많이 와요' (Vâng, trời mưa nhiều)."
+      },
+      {
+        "type": "antonym",
+        "question": "Từ trái nghĩa với '좋다' (좋아요 - tốt, thích) khi nói về thời tiết là gì?",
+        "options": ["나쁘다 (나빠요)", "흐리다 (흐려요)", "춥다 (추워요)", "덥다 (더워요)"],
+        "answer": 0,
+        "explanation": "Trái nghĩa với 좋다 (tốt) là 나쁘다 (xấu). Thời tiết tốt/đẹp là '날씨가 좋아요', thời tiết xấu là '날씨가 나빠요'."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và chọn câu phát biểu ĐÚNG:\n'오늘은 날씨가 흐려요. 비가 와요. 바람도 불어요. 하지만 춥지는 않아요.'",
+        "options": [
+          "Trời mưa và có cả gió thổi.",
+          "Hôm nay trời nắng đẹp.",
+          "Thời tiết hôm nay rất lạnh.",
+          "Hôm nay tuyết rơi nhiều."
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn viết: '비가 와요. 바람도 불어요' (Trời mưa. Cũng có gió thổi nữa). Vậy đáp án đúng là 'Trời mưa và có cả gió thổi'."
       }
     ],
     "lesson3": [
@@ -143,7 +221,7 @@ window.REVIEW_QUESTIONS = {
         "question": "Điền vào chỗ trống: '엄마는 부엌___ 요리를 해요.' (Mẹ nấu ăn ở trong nhà bếp)",
         "options": ["에서", "에", "도", "를"],
         "answer": 0,
-        "explanation": "Trợ từ chỉ nơi diễn ra hành động, hoạt động là '-에서'. 부엌에서 요리를 해요 = Nấu ăn trong bếp."
+        "explanation": "Trợ từ chỉ nơi diễn ra hành động, hoạt động là '-expand'. 부엌에서 요리를 해요 = Nấu ăn trong bếp."
       },
       {
         "type": "dialogue",
@@ -169,6 +247,45 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "Hình vẽ cho thấy bạn nhỏ đang đạp xe đạp (자전거를 타요). 자전거: chiếc xe đạp, 타다: đi/cưỡi/lên xe."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson3_market.jpg",
+        "question": "Nhìn hình vẽ và chọn từ tương ứng:",
+        "options": ["시장", "공원", "회사", "식당"],
+        "answer": 0,
+        "explanation": "Tranh vẽ các quầy hàng bán hoa quả và biển hiệu buôn bán tấp nập, tiếng Hàn là '시장' (chợ)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n리꽁: 지금 유치원에 있어요?\n수미: 아니요, ___________________.",
+        "options": [
+          "오늘은 집에 있어요",
+          "매일 유치원에 가요",
+          "공원에서 자전거를 타요",
+          "선생님이에요"
+        ],
+        "answer": 0,
+        "explanation": "Lý Công hỏi: 'Bây giờ em bạn đang ở trường mẫu giáo hả?'. Su-mi trả lời: 'Không, hôm nay em mình ở nhà' (아니요, 오늘은 집에 있어요)."
+      },
+      {
+        "type": "antonym",
+        "question": "Từ trái nghĩa với '타다' (đi xe, lên xe) là gì?",
+        "options": ["내리다", "가다", "오다", "자다"],
+        "answer": 0,
+        "explanation": "Trái nghĩa với 타다 (lên xe, đi xe) là 내리다 (xuống xe)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'우리 아빠는 회사에 가요. 엄마는 시장에 가요. 동생은 유치원에 가요. 나는 공원에서 놀아요.'\nHỏi: Hôm nay người mẹ đi đâu?",
+        "options": [
+          "시장에 가요.",
+          "회사에 가요.",
+          "유치원에 가요.",
+          "공원에 가요."
+        ],
+        "answer": 0,
+        "explanation": "Theo đoạn văn: '엄마는 시장에 가요' (Mẹ đi chợ). Đáp án chính xác là '시장에 가요'."
       }
     ],
     "lesson4": [
@@ -216,6 +333,51 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "몇 (mấy) + 자루 (đơn vị đếm bút) + 있어요 (có) = '몇 자루 있어요?'. Hỏi về bút bi: '볼펜은 몇 자루 있어요?'"
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống đếm trái cây: '사과가 세 ___ 있어요.' (Có 3 quả táo)",
+        "options": ["개", "명", "자루", "권"],
+        "answer": 0,
+        "explanation": "Đơn vị đếm hoa quả, các đồ vật nhỏ tròn là '개' (quả, cái). 사과가 세 개 있어요 = Có 3 quả táo."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống đếm động vật: '강아지가 두 ___ 있어요.' (Có 2 con chó con)",
+        "options": ["마리", "명", "개", "권"],
+        "answer": 0,
+        "explanation": "Đơn vị dùng để đếm động vật (con vật) trong tiếng Hàn là '마리'. 강아지가 두 마리 있어요 = Có 2 con chó con."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 책상 위에 연필이 몇 자루 있어요?\n나: ___________________.",
+        "options": [
+          "두 자루 있어요",
+          "두 개 있어요",
+          "두 권 있어요",
+          "두 마리 있어요"
+        ],
+        "answer": 0,
+        "explanation": "Vì câu hỏi hỏi về bút chì (연필) dùng đơn vị '몇 자루', nên câu trả lời cũng phải dùng đơn vị '자루': '두 자루 있어요' (Có 2 cây)."
+      },
+      {
+        "type": "antonym",
+        "question": "Cụm từ trái nghĩa với '많이 있어요' (có nhiều) là gì?",
+        "options": ["조금 있어요", "없어요", "싸요", "커요"],
+        "answer": 0,
+        "explanation": "많이 (nhiều) trái nghĩa với 조금 (một ít, ít). 많이 있어요 (có nhiều) ➔ 조금 있어요 (có ít)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'내 필통에 볼펜이 세 자루 있어요. 지우개는 한 개 있어요. 연필은 없어요.'\nHỏi: Trong hộp bút (필통) có bút chì (연필) không?",
+        "options": [
+          "아니요, 연필은 없어요.",
+          "네, 한 자루 있어요.",
+          "네, 세 자루 있어요.",
+          "아니요, 지우개가 없어요."
+        ],
+        "answer": 0,
+        "explanation": "Theo đoạn văn: '연필은 없어요' (Bút chì thì không có). Đáp án đúng: '아니요, 연필은 없어요'."
       }
     ],
     "lesson5": [
@@ -268,6 +430,61 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "생일 (sinh nhật) + 언제 (khi nào) + -예요 (là) = '생일이 언제예요?'."
+      },
+      {
+        "type": "grammar",
+        "question": "Chọn cách nói đúng của ngày '6월 13일' (Ngày 13 tháng 6):",
+        "options": [
+          "유월 십삼일",
+          "육월 십삼일",
+          "유월 삼십일",
+          "육월 삼십일"
+        ],
+        "answer": 0,
+        "explanation": "Tháng 6 trong tiếng Hàn phát âm đặc biệt là '유월' (bỏ phụ âm 'ㄱ' trong 육). Ngày 13 là '십삼일'. Đáp án đúng: 유월 십삼일."
+      },
+      {
+        "type": "grammar",
+        "question": "Cách nói ngày Noel 'Ngày 25 tháng 12' trong tiếng Hàn là gì?",
+        "options": [
+          "십이월 이십오일",
+          "십이월 이오일",
+          "십월 이십오일",
+          "이십월 이십오일"
+        ],
+        "answer": 0,
+        "explanation": "Tháng 12 là '십이월' (Hán Hàn), Ngày 25 là '이십오일' (Hán Hàn). Ghép lại thành '십이월 이십오일'."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 오늘이 몇 월 며칠이에요?\n나: ___________________.",
+        "options": [
+          "칠월 십육일이에요",
+          "칠요일 십육일이에요",
+          "칠월 십육요일이에요",
+          "칠일 이에요"
+        ],
+        "answer": 0,
+        "explanation": "Hỏi về ngày tháng (몇 월 며칠). Cách trả lời chuẩn: Tháng 7 (칠월) + Ngày 16 (십육일) + -이에요 ➔ '칠월 십육일이에요'."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ để hỏi '언제' trong tiếng Hàn tương đương với từ nào trong tiếng Việt?",
+        "options": ["Khi nào", "Ai", "Ở đâu", "Cái gì"],
+        "answer": 0,
+        "explanation": "언제 là từ dùng để hỏi về thời gian, có nghĩa là 'Khi nào / Bao giờ'."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'내 생일은 오월 오일이에요. 동생 생일은 구월 십일이에요. 우리는 생일에 파티를 해요.'\nHỏi: Sinh nhật của em trai (동생) là khi nào?",
+        "options": [
+          "구월 십일",
+          "오월 오일",
+          "구월 오일",
+          "오월 십일"
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn ghi rõ: '동생 생일은 구월 십일이에요' (Sinh nhật em mình là ngày 10 tháng 9). Đáp án đúng: 구월 십일."
       }
     ],
     "lesson6": [
@@ -315,6 +532,51 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "회사에 다니기 (đi làm/theo làm ở công ty). Khi hỏi về bố bạn, ta thêm kính ngữ '-시-' thành '다니세요'. Do đó câu đúng là: 아버지는 회사에 다니세요?"
+      },
+      {
+        "type": "vocab",
+        "question": "Từ tôn kính (kính ngữ) của từ '밥' (cơm) là gì?",
+        "options": ["진지", "식사", "생신", "댁"],
+        "answer": 0,
+        "explanation": "Kính ngữ của 밥 (cơm) là '진지'. 식사 là bữa ăn (lịch sự), 생신 là kính ngữ của sinh nhật, 댁 là kính ngữ của nhà."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ tôn kính (kính ngữ) của từ '집' (nhà) là gì?",
+        "options": ["댁", "진지", "성함", "연세"],
+        "answer": 0,
+        "explanation": "Kính ngữ của 집 (nhà) là '댁'. Ví dụ: 할아버지 댁 (nhà của ông)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 어머니는 무엇을 하세요?\n나: ___________________.",
+        "options": [
+          "의사예요. 병원에 다니세요.",
+          "의사예요. 병원에 다녀요.",
+          "어머니는 회사에 안 가요.",
+          "어머니가 집에 있어요."
+        ],
+        "answer": 0,
+        "explanation": "Hỏi về mẹ (어머니) dùng kính ngữ '무엇을 하세요?'. Trả lời cũng cần dùng kính ngữ tôn trọng mẹ: '의사예요. 병원에 다니세요' (Mẹ là bác sĩ. Mẹ làm việc ở bệnh viện)."
+      },
+      {
+        "type": "grammar",
+        "question": "Động từ kính ngữ của '먹다' (ăn) dùng cho người lớn tuổi là gì?",
+        "options": ["드시다 / 잡수시다", "주무시다", "계시다", "말씀하시다"],
+        "answer": 0,
+        "explanation": "Kính ngữ của 먹다 (ăn) là 드시다 hoặc 잡수시다. 주무시다 là kính ngữ của 자다 (ngủ), 계시다 là kính ngữ của 있다 (ở)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'우리 할아버지는 댁에 계세요. 아버지는 회사에 다니세요. 어머니는 학교에서 가르치세요.'\nHỏi: Ông nội (할아버지) hiện đang ở đâu?",
+        "options": [
+          "댁(집)에 계세요.",
+          "회사에 다니세요.",
+          "학교에 계세요.",
+          "병원에 계세요."
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn ghi: '우리 할아버지는 댁에 계세요' (Ông chúng tôi đang ở nhà). Kính ngữ của '집에 있어요' là '댁에 계세요'. Đáp án đúng: 댁(집)에 계세요."
       }
     ],
     "lesson7": [
@@ -362,6 +624,61 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "수업 (tiết học) + 몇 시에 (lúc mấy giờ) + 끝나요 (kết thúc) = '수업이 몇 시에 끝나요?'."
+      },
+      {
+        "type": "grammar",
+        "question": "Cách nói thời gian '1 giờ 15 phút' trong tiếng Hàn là gì?",
+        "options": [
+          "한 시 십오 분",
+          "일 시 십오 분",
+          "한 시 열다섯 분",
+          "일 시 열다섯 분"
+        ],
+        "answer": 0,
+        "explanation": "Giờ dùng số Thuần Hàn: 1시 = 한 시 (không phải 일 시). Phút dùng số Hán Hàn: 15분 = 십오 분. Kết quả: 한 시 십오 분."
+      },
+      {
+        "type": "grammar",
+        "question": "Cách nói thời gian '12 giờ 50 phút' trong tiếng Hàn là gì?",
+        "options": [
+          "열두 시 오십 분",
+          "십이 시 오십 분",
+          "열두 시 쉰 분",
+          "십이 시 쉰 분"
+        ],
+        "answer": 0,
+        "explanation": "Giờ dùng số Thuần Hàn: 12시 = 열두 시. Phút dùng số Hán Hàn: 50분 = 오십 분. Kết quả: 열두 시 오십 분."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 지금 몇 시예요?\n나: ___________________.",
+        "options": [
+          "두 시 십 분이에요",
+          "이 시 십 분이에요",
+          "두 시 열 분이에요",
+          "이 시 열 분이에요"
+        ],
+        "answer": 0,
+        "explanation": "Hỏi 'Bây giờ là mấy giờ?'. 2 giờ 10 phút phát âm đúng quy tắc là '두 시 십 분' (2 giờ số Thuần Hàn, 10 phút số Hán Hàn). Kết quả: 두 시 십 분이에요."
+      },
+      {
+        "type": "antonym",
+        "question": "Từ trái nghĩa với '시작하다' (bắt đầu) là gì?",
+        "options": ["끝나다", "오다", "가다", "타다"],
+        "answer": 0,
+        "explanation": "시작하다 (bắt đầu) trái nghĩa với 끝나다 (kết thúc)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'수업은 아침 아홉 시에 시작해요. 오후 한 시에 끝나요. 그리고 점심을 먹어요.'\nHỏi: Lớp học kết thúc lúc mấy giờ?",
+        "options": [
+          "오후 한 시",
+          "아침 아홉 시",
+          "오후 두 시",
+          "아침 여덟 시"
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn viết: '오후 한 시에 끝나요' (Kết thúc lúc 1 giờ chiều). Đáp án đúng: 오후 한 시."
       }
     ]
   }
