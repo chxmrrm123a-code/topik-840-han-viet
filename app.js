@@ -673,23 +673,53 @@ function printReviewLesson() {
     <head>
       <title>In - ${lesson.title}</title>
       <style>
-        body { margin: 0; padding: 20px; font-family: sans-serif; text-align: center; }
-        img { width: 100%; max-width: 800px; display: block; margin: 0 auto 20px auto; page-break-after: always; }
+        html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          background: #fff;
+          overflow: hidden;
+        }
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          max-height: 100vh;
+          object-fit: contain;
+          page-break-after: always;
+          break-after: page;
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+        img:last-child {
+          page-break-after: avoid;
+          break-after: avoid;
+        }
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
         @media print {
-          body { padding: 0; }
-          img { margin: 0; page-break-after: always; width: 100%; height: auto; }
+          html, body {
+            height: 100%;
+            overflow: hidden;
+          }
+          img {
+            width: 100%;
+            height: 100vh;
+            object-fit: contain;
+          }
         }
       </style>
     </head>
     <body>
-      <h2>Sách tiếng Hàn - ${lesson.title}</h2>
       ${imagesHtml}
       <script>
         window.onload = function() {
           setTimeout(function() {
             window.print();
             window.close();
-          }, 300);
+          }, 500);
         };
       </script>
     </body>
