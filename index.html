@@ -22,9 +22,9 @@
         <p class="home-count" id="homeCount">840 từ · 28 ngày</p>
         <div class="home-actions">
           <button class="primary action-large" data-nav="study">Từ vựng</button>
-          <button class="primary action-large secondary-tone" data-nav="review">한국어 복습</button>
           <button class="dark action-large" data-nav="exam">Kiểm tra</button>
           <button class="plain action-large" data-nav="wrong">Sổ lỗi</button>
+          <button class="primary action-large secondary-tone" data-nav="review">Ôn tập giáo trình</button>
         </div>
       </div>
     </section>
@@ -179,9 +179,12 @@
       <header class="topbar">
         <div>
           <p class="section-kicker" id="reviewProgress">Trang 1 / 1</p>
-          <h2>한국어 복습</h2>
+          <h2>Ôn tập giáo trình</h2>
         </div>
-        <button class="small plain" data-nav="home">Trang chủ</button>
+        <div style="display: flex; gap: 8px;">
+          <button id="reviewPrintBtn" class="small plain" type="button">🖨️ In bài</button>
+          <button class="small plain" data-nav="home">Trang chủ</button>
+        </div>
       </header>
 
       <div class="toolbar" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">

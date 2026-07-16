@@ -52,13 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHome();
   showView("home");
 
-  // Register Service Worker for Offline PWA Support
+  // Disable/unregister active service workers to prevent cached layouts on code push
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("sw.js")
-        .then((reg) => console.log("Service Worker registered successfully:", reg.scope))
-        .catch((err) => console.error("Service Worker registration failed:", err));
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (const registration of registrations) {
+        registration.unregister().then((boolean) => {
+          if (boolean) console.log("Active Service Worker unregistered successfully.");
+        });
+      }
     });
   }
 });
@@ -75,7 +76,7 @@ function bindElements() {
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
     "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay", "examStatusFilter",
     "reviewProgress", "reviewBookSelect", "reviewLessonSelect", "reviewImageContainer",
-    "reviewImage", "reviewEmptyPrompt", "reviewPrevBtn", "reviewNextBtn",
+    "reviewImage", "reviewEmptyPrompt", "reviewPrevBtn", "reviewNextBtn", "reviewPrintBtn",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -178,6 +179,7 @@ function bindEvents() {
 
   els.reviewPrevBtn.addEventListener("click", () => moveReview(-1));
   els.reviewNextBtn.addEventListener("click", () => moveReview(1));
+  els.reviewPrintBtn.addEventListener("click", printReviewLesson);
 }
 
 function renderHome() {
@@ -646,4 +648,54 @@ function moveReview(delta) {
 
   state.review.pageIndex = (state.review.pageIndex + delta + lesson.pages.length) % lesson.pages.length;
   renderReview();
+}
+
+function printReviewLesson() {
+  const lesson = currentReviewLesson();
+  if (!lesson || !lesson.pages || lesson.pages.length === 0) {
+    alert("Không có hình ảnh để in.");
+    return;
+  }
+
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) {
+    alert("Vui lòng cho phép mở popup trên trình duyệt để in bài học.");
+    return;
+  }
+
+  let imagesHtml = "";
+  lesson.pages.forEach((page) => {
+    const imgPath = `assets/review/${state.review.bookId}/${state.review.lessonId}/${page}`;
+    imagesHtml += `<img src="${imgPath}" alt="Page">`;
+  });
+
+  printWindow.document.write(`
+    <!doctype html>
+    <html>
+    <head>
+      <title>In - ${lesson.title}</title>
+      <style>
+        body { margin: 0; padding: 20px; font-family: sans-serif; text-align: center; }
+        img { width: 100%; max-width: 800px; display: block; margin: 0 auto 20px auto; page-break-after: always; }
+        @media print {
+          body { padding: 0; }
+          img { margin: 0; page-break-after: always; width: 100%; height: auto; }
+        }
+      </style>
+    </head>
+    <body>
+      <h2>Sách tiếng Hàn - ${lesson.title}</h2>
+      ${imagesHtml}
+      <script>
+        window.onload = function() {
+          setTimeout(function() {
+            window.print();
+            window.close();
+          }, 300);
+        };
+      </script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
 }
