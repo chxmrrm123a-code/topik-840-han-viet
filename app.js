@@ -52,14 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHome();
   showView("home");
 
-  // Disable/unregister active service workers to prevent cached layouts on code push
+  // Register Service Worker to force browser to pull updated self-destroying sw.js and clear cache
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (const registration of registrations) {
-        registration.unregister().then((boolean) => {
-          if (boolean) console.log("Active Service Worker unregistered successfully.");
-        });
-      }
+    navigator.serviceWorker.register("sw.js").then((reg) => {
+      console.log("Service Worker registered in cleanup mode.");
+    }).catch((err) => {
+      console.error("Service worker cleanup registration failed:", err);
     });
   }
 });
