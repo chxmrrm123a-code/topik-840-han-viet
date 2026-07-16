@@ -1,4 +1,4 @@
-const CACHE_NAME = 'topik-840-cache-v2';
+const CACHE_NAME = 'topik-840-cache-v3';
 const ASSETS = [
   './',
   'index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
   'manifest.json',
   'assets/data.js',
   'assets/examples.js',
+  'assets/review_data.js',
   'assets/icon-192.png',
   'assets/icon-512.png',
   'assets/apple-touch-icon.png'
