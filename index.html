@@ -22,6 +22,7 @@
         <p class="home-count" id="homeCount">840 từ · 28 ngày</p>
         <div class="home-actions">
           <button class="primary action-large" data-nav="study">Từ vựng</button>
+          <button class="primary action-large secondary-tone" data-nav="review">한국어 복습</button>
           <button class="dark action-large" data-nav="exam">Kiểm tra</button>
           <button class="plain action-large" data-nav="wrong">Sổ lỗi</button>
         </div>
@@ -174,6 +175,41 @@
       </div>
     </section>
 
+    <section id="reviewView" class="view hidden">
+      <header class="topbar">
+        <div>
+          <p class="section-kicker" id="reviewProgress">Trang 1 / 1</p>
+          <h2>한국어 복습</h2>
+        </div>
+        <button class="small plain" data-nav="home">Trang chủ</button>
+      </header>
+
+      <div class="toolbar" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div>
+          <label for="reviewBookSelect" style="font-size: 11px; font-weight: 800; color: var(--muted); display: block; margin-bottom: 4px;">Chọn sách</label>
+          <select id="reviewBookSelect" class="select" aria-label="Chọn sách">
+          </select>
+        </div>
+        <div>
+          <label for="reviewLessonSelect" style="font-size: 11px; font-weight: 800; color: var(--muted); display: block; margin-bottom: 4px;">Chọn bài</label>
+          <select id="reviewLessonSelect" class="select" aria-label="Chọn bài">
+          </select>
+        </div>
+      </div>
+
+      <article class="word-card" style="margin-top: 14px; padding: 12px; text-align: center;">
+        <div id="reviewImageContainer" style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img id="reviewImage" src="" alt="Trang ôn tập" style="width: 100%; height: auto; border-radius: 4px; display: none; object-fit: contain;">
+          <p id="reviewEmptyPrompt" class="prompt" style="display: none;">Không có hình ảnh ôn tập nào.</p>
+        </div>
+      </article>
+
+      <div class="nav-row" style="margin-top: 16px;">
+        <button id="reviewPrevBtn" class="plain">Trước</button>
+        <button id="reviewNextBtn" class="plain">Sau</button>
+      </div>
+    </section>
+
     <section id="wrongView" class="view hidden">
       <header class="topbar">
         <div>
@@ -191,6 +227,7 @@
 
   <script src="assets/data.js"></script>
   <script src="assets/examples.js"></script>
+  <script src="assets/review_data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

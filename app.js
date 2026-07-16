@@ -18,6 +18,11 @@ const state = {
   day: "all",
   hiddenMeaning: false,
   analysisWordKey: null,
+  review: {
+    bookId: "",
+    lessonId: "",
+    pageIndex: 0,
+  },
   exam: {
     mode: "ko_vi",
     size: 10,
@@ -40,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
   bindElements();
   buildDayOptions();
   buildExamDayOptions();
+  buildReviewBookOptions();
+  buildReviewLessonOptions();
   bindEvents();
   refreshStudyList();
   renderHome();
@@ -58,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function bindElements() {
   [
-    "homeView", "studyView", "examView", "wrongView", "homeCount", "studyProgress",
+    "homeView", "studyView", "reviewView", "examView", "wrongView", "homeCount", "studyProgress",
     "searchInput", "daySelect", "toggleMeaningBtn", "randomBtn", "wordMeta",
     "wordStatus", "koreanWord", "vietnameseMeaning", "examplePanel", "koreanExample",
     "vietnameseExample", "speakExampleBtn", "analysisToggleBtn", "analysisPanel", "analysisText",
@@ -67,6 +74,8 @@ function bindElements() {
     "examPrompt", "options", "examFeedback", "examNext",
     "scoreText", "retryExam", "wrongCount", "clearWrong", "wrongList",
     "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay", "examStatusFilter",
+    "reviewProgress", "reviewBookSelect", "reviewLessonSelect", "reviewImageContainer",
+    "reviewImage", "reviewEmptyPrompt", "reviewPrevBtn", "reviewNextBtn",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -153,6 +162,22 @@ function bindEvents() {
     const word = state.exam.questions[state.exam.index];
     if (word) speakText(word.korean, "ko-KR");
   });
+
+  els.reviewBookSelect.addEventListener("change", () => {
+    state.review.bookId = els.reviewBookSelect.value;
+    buildReviewLessonOptions();
+    state.review.pageIndex = 0;
+    renderReview();
+  });
+
+  els.reviewLessonSelect.addEventListener("change", () => {
+    state.review.lessonId = els.reviewLessonSelect.value;
+    state.review.pageIndex = 0;
+    renderReview();
+  });
+
+  els.reviewPrevBtn.addEventListener("click", () => moveReview(-1));
+  els.reviewNextBtn.addEventListener("click", () => moveReview(1));
 }
 
 function renderHome() {
@@ -163,11 +188,14 @@ function showView(view) {
   state.view = view;
   els.homeView.classList.toggle("hidden", view !== "home");
   els.studyView.classList.toggle("hidden", view !== "study");
+  els.reviewView.classList.toggle("hidden", view !== "review");
   els.examView.classList.toggle("hidden", view !== "exam");
   els.wrongView.classList.toggle("hidden", view !== "wrong");
 
   if (view === "study") {
     renderStudy();
+  } else if (view === "review") {
+    renderReview();
   } else if (view === "exam") {
     renderExamStart();
   } else if (view === "wrong") {
@@ -536,4 +564,86 @@ function speakText(text, lang) {
   }
   
   window.speechSynthesis.speak(utterance);
+}
+
+// ================= Textbook Review Functions =================
+
+function buildReviewBookOptions() {
+  els.reviewBookSelect.innerHTML = "";
+  const data = window.REVIEW_DATA;
+  if (!data || !data.books) return;
+
+  Object.keys(data.books).forEach((key) => {
+    const book = data.books[key];
+    const option = document.createElement("option");
+    option.value = book.id;
+    option.textContent = book.title;
+    els.reviewBookSelect.appendChild(option);
+  });
+
+  if (Object.keys(data.books).length > 0) {
+    const firstKey = Object.keys(data.books)[0];
+    state.review.bookId = data.books[firstKey].id;
+  }
+}
+
+function buildReviewLessonOptions() {
+  els.reviewLessonSelect.innerHTML = "";
+  const data = window.REVIEW_DATA;
+  if (!data || !data.books || !state.review.bookId) return;
+
+  const book = data.books[state.review.bookId];
+  if (!book || !book.lessons) return;
+
+  book.lessons.forEach((lesson) => {
+    const option = document.createElement("option");
+    option.value = lesson.id;
+    option.textContent = lesson.title;
+    els.reviewLessonSelect.appendChild(option);
+  });
+
+  if (book.lessons.length > 0) {
+    state.review.lessonId = book.lessons[0].id;
+  } else {
+    state.review.lessonId = "";
+  }
+}
+
+function currentReviewLesson() {
+  const data = window.REVIEW_DATA;
+  if (!data || !data.books || !state.review.bookId || !state.review.lessonId) return null;
+  const book = data.books[state.review.bookId];
+  if (!book || !book.lessons) return null;
+  return book.lessons.find((l) => l.id === state.review.lessonId) || null;
+}
+
+function renderReview() {
+  const lesson = currentReviewLesson();
+  if (!lesson || !lesson.pages || lesson.pages.length === 0) {
+    els.reviewProgress.textContent = "Trang 0 / 0";
+    els.reviewImage.style.display = "none";
+    els.reviewEmptyPrompt.style.display = "block";
+    return;
+  }
+
+  els.reviewEmptyPrompt.style.display = "none";
+  els.reviewImage.style.display = "block";
+
+  if (state.review.pageIndex >= lesson.pages.length) {
+    state.review.pageIndex = 0;
+  }
+
+  const page = lesson.pages[state.review.pageIndex];
+  const imgPath = `assets/review/${state.review.bookId}/${state.review.lessonId}/${page}`;
+
+  els.reviewImage.src = imgPath;
+  els.reviewProgress.textContent = `Trang ${state.review.pageIndex + 1} / ${lesson.pages.length}`;
+}
+
+function moveReview(delta) {
+  const lesson = currentReviewLesson();
+  if (!lesson || !lesson.pages || lesson.pages.length === 0) return;
+
+  state.review.pageIndex = (state.review.pageIndex + delta + lesson.pages.length) % lesson.pages.length;
+  renderReview();
 }
