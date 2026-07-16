@@ -230,12 +230,23 @@
               <span id="reviewQuizCounter">Câu 1 / 5</span>
               <span id="reviewQuizType" style="color: var(--teal); font-weight: 800;">Từ vựng</span>
             </div>
+            <!-- Image element for visual questions -->
+            <div id="reviewQuizImageContainer" style="margin-top: 12px; text-align: center; display: none;">
+              <img id="reviewQuizImage" src="" alt="Câu hỏi hình ảnh" style="max-width: 100%; max-height: 180px; border-radius: 8px; border: 1px solid var(--line); object-fit: contain;">
+            </div>
             <div id="reviewQuizQuestion" style="font-size: 18px; font-weight: 800; margin: 16px 0; line-height: 1.4; word-break: keep-all;">Từ nào sau đây nghĩa là "cái giường"?</div>
           </article>
           <div id="reviewQuizOptions" class="options" style="margin-top: 12px;">
             <!-- Rendered dynamically -->
           </div>
           <div id="reviewQuizFeedback" class="exam-feedback" style="min-height: 24px; margin-top: 12px; font-weight: 800; font-size: 16px; text-align: center;"></div>
+          
+          <!-- Explanation details panel -->
+          <div id="reviewQuizExplanationPanel" class="analysis-panel hidden" style="margin-top: 12px; text-align: left; padding: 12px; border-left: 3px solid var(--teal); background: #f3f7f5; border-radius: 4px;">
+            <div class="label" style="margin-top: 0; font-size: 13px; font-weight: 800; color: var(--teal);">Giải thích / Dịch nghĩa</div>
+            <p id="reviewQuizExplanationText" style="margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--text);"></p>
+          </div>
+
           <button id="reviewQuizNextBtn" class="dark wide" style="margin-top: 12px;" disabled>Câu tiếp theo</button>
         </div>
 

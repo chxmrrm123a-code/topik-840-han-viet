@@ -85,7 +85,8 @@ function bindElements() {
     "reviewModeViewBtn", "reviewModeQuizBtn", "reviewPageContainer", "reviewQuizContainer",
     "reviewQuizRun", "reviewQuizResult", "reviewQuizCounter", "reviewQuizType",
     "reviewQuizQuestion", "reviewQuizOptions", "reviewQuizFeedback", "reviewQuizNextBtn",
-    "reviewQuizScoreText", "reviewQuizRetryBtn",
+    "reviewQuizScoreText", "reviewQuizRetryBtn", "reviewQuizImageContainer", "reviewQuizImage",
+    "reviewQuizExplanationPanel", "reviewQuizExplanationText",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -798,6 +799,8 @@ function renderReviewQuizQuestion() {
     els.reviewQuizQuestion.textContent = "Không có câu hỏi ôn tập cho bài học này.";
     els.reviewQuizOptions.innerHTML = "";
     els.reviewQuizFeedback.textContent = "";
+    els.reviewQuizExplanationPanel.classList.add("hidden");
+    els.reviewQuizImageContainer.style.display = "none";
     els.reviewQuizNextBtn.disabled = true;
     return;
   }
@@ -807,11 +810,20 @@ function renderReviewQuizQuestion() {
   const q = qList[qIndex];
 
   els.reviewQuizCounter.textContent = `Câu ${qIndex + 1} / ${qList.length}`;
-  els.reviewQuizType.textContent = q.type === "vocab" ? "Từ vựng" : q.type === "grammar" ? "Ngữ pháp" : "Đàm thoại";
+  els.reviewQuizType.textContent = q.type === "vocab" ? "Từ vựng" : q.type === "grammar" ? "Ngữ pháp" : q.type === "visual" ? "Nhìn tranh" : "Đàm thoại";
   els.reviewQuizQuestion.textContent = q.question;
   els.reviewQuizFeedback.textContent = "";
+  els.reviewQuizExplanationPanel.classList.add("hidden");
   els.reviewQuizNextBtn.disabled = true;
   els.reviewQuizNextBtn.textContent = qIndex + 1 === qList.length ? "Xem kết quả" : "Câu tiếp theo";
+
+  // Render question image if available
+  if (q.image) {
+    els.reviewQuizImage.src = q.image;
+    els.reviewQuizImageContainer.style.display = "block";
+  } else {
+    els.reviewQuizImageContainer.style.display = "none";
+  }
 
   els.reviewQuizOptions.innerHTML = "";
   q.options.forEach((opt, idx) => {
@@ -845,9 +857,13 @@ function selectReviewQuizOption(idx) {
     els.reviewQuizFeedback.textContent = "Chính xác! 🎉";
     els.reviewQuizFeedback.style.color = "var(--green)";
   } else {
-    els.reviewQuizFeedback.textContent = `Sai rồi! ❌ (Đáp án: ${q.options[correctIdx]})`;
+    els.reviewQuizFeedback.textContent = `Sai rồi! ❌`;
     els.reviewQuizFeedback.style.color = "var(--red)";
   }
+
+  // Show detailed explanation/translation card
+  els.reviewQuizExplanationText.textContent = q.explanation || "Không có giải thích chi tiết.";
+  els.reviewQuizExplanationPanel.classList.remove("hidden");
 
   els.reviewQuizNextBtn.disabled = false;
 }
