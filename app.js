@@ -27,7 +27,8 @@ const state = {
       questions: [],
       index: 0,
       score: 0,
-      selected: false
+      selected: false,
+      wrongQuestions: []
     }
   },
   exam: {
@@ -86,7 +87,7 @@ function bindElements() {
     "reviewQuizRun", "reviewQuizResult", "reviewQuizCounter", "reviewQuizType",
     "reviewQuizQuestion", "reviewQuizOptions", "reviewQuizFeedback", "reviewQuizNextBtn",
     "reviewQuizScoreText", "reviewQuizRetryBtn", "reviewQuizImageContainer", "reviewQuizImage",
-    "reviewQuizExplanationPanel", "reviewQuizExplanationText",
+    "reviewQuizExplanationPanel", "reviewQuizExplanationText", "reviewQuizWrongSummary", "reviewQuizWrongList",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -784,6 +785,7 @@ function startReviewQuiz() {
   state.review.quiz.index = 0;
   state.review.quiz.score = 0;
   state.review.quiz.selected = false;
+  state.review.quiz.wrongQuestions = [];
 
   els.reviewQuizRun.classList.remove("hidden");
   els.reviewQuizResult.classList.add("hidden");
@@ -859,6 +861,16 @@ function selectReviewQuizOption(idx) {
   } else {
     els.reviewQuizFeedback.textContent = `Sai rồi! ❌`;
     els.reviewQuizFeedback.style.color = "var(--red)";
+
+    // Record wrong answer details
+    state.review.quiz.wrongQuestions.push({
+      index: qIndex,
+      type: q.type,
+      question: q.question,
+      userChoice: q.options[idx],
+      correctAnswer: q.options[correctIdx],
+      explanation: q.explanation
+    });
   }
 
   // Show detailed explanation/translation card
@@ -876,6 +888,36 @@ function nextReviewQuiz() {
     els.reviewQuizRun.classList.add("hidden");
     els.reviewQuizResult.classList.remove("hidden");
     els.reviewQuizScoreText.textContent = `${state.review.quiz.score} / ${qList.length}`;
+
+    // Render wrong answers summary list
+    els.reviewQuizWrongList.innerHTML = "";
+    if (state.review.quiz.wrongQuestions.length > 0) {
+      els.reviewQuizWrongSummary.classList.remove("hidden");
+      state.review.quiz.wrongQuestions.forEach((item) => {
+        const div = document.createElement("div");
+        div.style.background = "#f9f9f9";
+        div.style.borderRadius = "8px";
+        div.style.border = "1px solid var(--line)";
+        div.style.padding = "12px";
+
+        const typeStr = item.type === "vocab" ? "Từ vựng" : item.type === "grammar" ? "Ngữ pháp" : item.type === "visual" ? "Nhìn tranh" : "Đàm thoại";
+
+        div.innerHTML = `
+          <div style="font-size: 11px; font-weight: 800; color: var(--muted);">Câu ${item.index + 1} · ${typeStr}</div>
+          <div style="font-size: 14px; font-weight: 800; margin: 4px 0 8px; color: var(--text); line-height: 1.4; word-break: keep-all;">${item.question}</div>
+          <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+            <div style="color: var(--red); font-weight: 600;">❌ Bạn chọn: ${item.userChoice}</div>
+            <div style="color: var(--green); font-weight: 600;">✅ Đáp án đúng: ${item.correctAnswer}</div>
+          </div>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 12px; color: var(--muted); line-height: 1.4; word-break: keep-all;">
+            ${item.explanation || "Không có giải thích chi tiết."}
+          </div>
+        `;
+        els.reviewQuizWrongList.appendChild(div);
+      });
+    } else {
+      els.reviewQuizWrongSummary.classList.add("hidden");
+    }
   } else {
     renderReviewQuizQuestion();
   }
