@@ -676,15 +676,13 @@ function printReviewLesson() {
         html, body {
           margin: 0;
           padding: 0;
-          height: 100%;
           background: #fff;
-          overflow: hidden;
         }
         img {
           display: block;
           width: 100%;
-          height: 100%;
-          max-height: 100vh;
+          height: 99.2vh;
+          box-sizing: border-box;
           object-fit: contain;
           page-break-after: always;
           break-after: page;
@@ -701,12 +699,12 @@ function printReviewLesson() {
         }
         @media print {
           html, body {
-            height: 100%;
-            overflow: hidden;
+            margin: 0;
+            padding: 0;
           }
           img {
             width: 100%;
-            height: 100vh;
+            height: 99.2vh;
             object-fit: contain;
           }
         }
