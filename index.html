@@ -200,16 +200,52 @@
         </div>
       </div>
 
-      <article class="word-card" style="margin-top: 14px; padding: 12px; text-align: center;">
-        <div id="reviewImageContainer" style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; position: relative;">
-          <img id="reviewImage" src="" alt="Trang ôn tập" style="width: 100%; height: auto; border-radius: 4px; display: none; object-fit: contain;">
-          <p id="reviewEmptyPrompt" class="prompt" style="display: none;">Không có hình ảnh ôn tập nào.</p>
-        </div>
-      </article>
+      <!-- Tab toggle: View vs Quiz -->
+      <div class="filter-row" style="margin-top: 12px; justify-content: center; gap: 8px;">
+        <button id="reviewModeViewBtn" class="filter active" style="flex: 1; text-align: center; border-radius: 8px;">Xem bài học</button>
+        <button id="reviewModeQuizBtn" class="filter" style="flex: 1; text-align: center; border-radius: 8px;">Làm bài tập</button>
+      </div>
 
-      <div class="nav-row" style="margin-top: 16px;">
-        <button id="reviewPrevBtn" class="plain">Trước</button>
-        <button id="reviewNextBtn" class="plain">Sau</button>
+      <!-- Image display container (shown when View mode is active) -->
+      <div id="reviewPageContainer">
+        <article class="word-card" style="margin-top: 14px; padding: 12px; text-align: center;">
+          <div id="reviewImageContainer" style="width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; position: relative;">
+            <img id="reviewImage" src="" alt="Trang ôn tập" style="width: 100%; height: auto; border-radius: 4px; display: none; object-fit: contain;">
+            <p id="reviewEmptyPrompt" class="prompt" style="display: none;">Không có hình ảnh ôn tập nào.</p>
+          </div>
+        </article>
+
+        <div class="nav-row" style="margin-top: 16px;">
+          <button id="reviewPrevBtn" class="plain">Trước</button>
+          <button id="reviewNextBtn" class="plain">Sau</button>
+        </div>
+      </div>
+
+      <!-- Quiz display container (shown when Quiz mode is active) -->
+      <div id="reviewQuizContainer" class="hidden">
+        <!-- Quiz Run Panel -->
+        <div id="reviewQuizRun">
+          <article class="word-card" style="margin-top: 14px; padding: 20px;">
+            <div class="meta-row">
+              <span id="reviewQuizCounter">Câu 1 / 5</span>
+              <span id="reviewQuizType" style="color: var(--teal); font-weight: 800;">Từ vựng</span>
+            </div>
+            <div id="reviewQuizQuestion" style="font-size: 18px; font-weight: 800; margin: 16px 0; line-height: 1.4; word-break: keep-all;">Từ nào sau đây nghĩa là "cái giường"?</div>
+          </article>
+          <div id="reviewQuizOptions" class="options" style="margin-top: 12px;">
+            <!-- Rendered dynamically -->
+          </div>
+          <div id="reviewQuizFeedback" class="exam-feedback" style="min-height: 24px; margin-top: 12px; font-weight: 800; font-size: 16px; text-align: center;"></div>
+          <button id="reviewQuizNextBtn" class="dark wide" style="margin-top: 12px;" disabled>Câu tiếp theo</button>
+        </div>
+
+        <!-- Quiz Result Panel -->
+        <div id="reviewQuizResult" class="hidden result-panel" style="margin-top: 14px; text-align: center; padding: 24px 16px;">
+          <h3>Kết quả bài tập</h3>
+          <div id="reviewQuizScoreText" class="score" style="font-size: 48px; font-weight: 900; color: var(--teal); margin: 16px 0;">0 / 0</div>
+          <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Chúc mừng bạn đã hoàn thành bài ôn tập!</p>
+          <button id="reviewQuizRetryBtn" class="primary wide">Làm lại</button>
+        </div>
       </div>
     </section>
 
@@ -231,6 +267,7 @@
   <script src="assets/data.js"></script>
   <script src="assets/examples.js"></script>
   <script src="assets/review_data.js"></script>
+  <script src="assets/review_questions.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

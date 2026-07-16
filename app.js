@@ -22,6 +22,13 @@ const state = {
     bookId: "",
     lessonId: "",
     pageIndex: 0,
+    mode: "view",
+    quiz: {
+      questions: [],
+      index: 0,
+      score: 0,
+      selected: false
+    }
   },
   exam: {
     mode: "ko_vi",
@@ -75,6 +82,10 @@ function bindElements() {
     "speakKoBtn", "examSpeakBtn", "examStartDay", "examEndDay", "examStatusFilter",
     "reviewProgress", "reviewBookSelect", "reviewLessonSelect", "reviewImageContainer",
     "reviewImage", "reviewEmptyPrompt", "reviewPrevBtn", "reviewNextBtn", "reviewPrintBtn",
+    "reviewModeViewBtn", "reviewModeQuizBtn", "reviewPageContainer", "reviewQuizContainer",
+    "reviewQuizRun", "reviewQuizResult", "reviewQuizCounter", "reviewQuizType",
+    "reviewQuizQuestion", "reviewQuizOptions", "reviewQuizFeedback", "reviewQuizNextBtn",
+    "reviewQuizScoreText", "reviewQuizRetryBtn",
   ].forEach((id) => {
     els[id] = document.getElementById(id);
   });
@@ -166,18 +177,31 @@ function bindEvents() {
     state.review.bookId = els.reviewBookSelect.value;
     buildReviewLessonOptions();
     state.review.pageIndex = 0;
-    renderReview();
+    if (state.review.mode === "quiz") {
+      startReviewQuiz();
+    } else {
+      renderReview();
+    }
   });
 
   els.reviewLessonSelect.addEventListener("change", () => {
     state.review.lessonId = els.reviewLessonSelect.value;
     state.review.pageIndex = 0;
-    renderReview();
+    if (state.review.mode === "quiz") {
+      startReviewQuiz();
+    } else {
+      renderReview();
+    }
   });
 
   els.reviewPrevBtn.addEventListener("click", () => moveReview(-1));
   els.reviewNextBtn.addEventListener("click", () => moveReview(1));
   els.reviewPrintBtn.addEventListener("click", printReviewLesson);
+
+  els.reviewModeViewBtn.addEventListener("click", () => setReviewMode("view"));
+  els.reviewModeQuizBtn.addEventListener("click", () => setReviewMode("quiz"));
+  els.reviewQuizNextBtn.addEventListener("click", nextReviewQuiz);
+  els.reviewQuizRetryBtn.addEventListener("click", startReviewQuiz);
 }
 
 function renderHome() {
@@ -195,7 +219,7 @@ function showView(view) {
   if (view === "study") {
     renderStudy();
   } else if (view === "review") {
-    renderReview();
+    setReviewMode(state.review.mode);
   } else if (view === "exam") {
     renderExamStart();
   } else if (view === "wrong") {
@@ -724,4 +748,119 @@ function printReviewLesson() {
     </html>
   `);
   printWindow.document.close();
+}
+
+// ================= Textbook Quiz Functions =================
+
+function setReviewMode(mode) {
+  state.review.mode = mode;
+  els.reviewModeViewBtn.classList.toggle("active", mode === "view");
+  els.reviewModeQuizBtn.classList.toggle("active", mode === "quiz");
+
+  els.reviewPageContainer.classList.toggle("hidden", mode !== "view");
+  els.reviewQuizContainer.classList.toggle("hidden", mode !== "quiz");
+
+  els.reviewPrintBtn.style.display = mode === "view" ? "block" : "none";
+
+  if (mode === "view") {
+    renderReview();
+  } else {
+    startReviewQuiz();
+  }
+}
+
+function startReviewQuiz() {
+  const data = window.REVIEW_QUESTIONS;
+  const bookId = state.review.bookId;
+  const lessonId = state.review.lessonId;
+
+  let pool = [];
+  if (data && data[bookId] && data[bookId][lessonId]) {
+    pool = data[bookId][lessonId];
+  }
+
+  state.review.quiz.questions = shuffle([...pool]);
+  state.review.quiz.index = 0;
+  state.review.quiz.score = 0;
+  state.review.quiz.selected = false;
+
+  els.reviewQuizRun.classList.remove("hidden");
+  els.reviewQuizResult.classList.add("hidden");
+
+  renderReviewQuizQuestion();
+}
+
+function renderReviewQuizQuestion() {
+  const qList = state.review.quiz.questions;
+  if (!qList || qList.length === 0) {
+    els.reviewQuizCounter.textContent = "Câu 0 / 0";
+    els.reviewQuizType.textContent = "";
+    els.reviewQuizQuestion.textContent = "Không có câu hỏi ôn tập cho bài học này.";
+    els.reviewQuizOptions.innerHTML = "";
+    els.reviewQuizFeedback.textContent = "";
+    els.reviewQuizNextBtn.disabled = true;
+    return;
+  }
+
+  state.review.quiz.selected = false;
+  const qIndex = state.review.quiz.index;
+  const q = qList[qIndex];
+
+  els.reviewQuizCounter.textContent = `Câu ${qIndex + 1} / ${qList.length}`;
+  els.reviewQuizType.textContent = q.type === "vocab" ? "Từ vựng" : q.type === "grammar" ? "Ngữ pháp" : "Đàm thoại";
+  els.reviewQuizQuestion.textContent = q.question;
+  els.reviewQuizFeedback.textContent = "";
+  els.reviewQuizNextBtn.disabled = true;
+  els.reviewQuizNextBtn.textContent = qIndex + 1 === qList.length ? "Xem kết quả" : "Câu tiếp theo";
+
+  els.reviewQuizOptions.innerHTML = "";
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "option button";
+    btn.textContent = opt;
+    btn.addEventListener("click", () => selectReviewQuizOption(idx));
+    els.reviewQuizOptions.appendChild(btn);
+  });
+}
+
+function selectReviewQuizOption(idx) {
+  if (state.review.quiz.selected) return;
+  state.review.quiz.selected = true;
+
+  const qIndex = state.review.quiz.index;
+  const q = state.review.quiz.questions[qIndex];
+  const correctIdx = q.answer;
+
+  const buttons = els.reviewQuizOptions.children;
+  for (let i = 0; i < buttons.length; i++) {
+    if (i === correctIdx) {
+      buttons[i].classList.add("correct");
+    } else if (i === idx) {
+      buttons[i].classList.add("wrong");
+    }
+  }
+
+  if (idx === correctIdx) {
+    state.review.quiz.score += 1;
+    els.reviewQuizFeedback.textContent = "Chính xác! 🎉";
+    els.reviewQuizFeedback.style.color = "var(--green)";
+  } else {
+    els.reviewQuizFeedback.textContent = `Sai rồi! ❌ (Đáp án: ${q.options[correctIdx]})`;
+    els.reviewQuizFeedback.style.color = "var(--red)";
+  }
+
+  els.reviewQuizNextBtn.disabled = false;
+}
+
+function nextReviewQuiz() {
+  state.review.quiz.index += 1;
+  const qList = state.review.quiz.questions;
+
+  if (state.review.quiz.index >= qList.length) {
+    els.reviewQuizRun.classList.add("hidden");
+    els.reviewQuizResult.classList.remove("hidden");
+    els.reviewQuizScoreText.textContent = `${state.review.quiz.score} / ${qList.length}`;
+  } else {
+    renderReviewQuizQuestion();
+  }
 }
