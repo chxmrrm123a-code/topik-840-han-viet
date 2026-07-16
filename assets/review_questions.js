@@ -221,7 +221,7 @@ window.REVIEW_QUESTIONS = {
         "question": "Điền vào chỗ trống: '엄마는 부엌___ 요리를 해요.' (Mẹ nấu ăn ở trong nhà bếp)",
         "options": ["에서", "에", "도", "를"],
         "answer": 0,
-        "explanation": "Trợ từ chỉ nơi diễn ra hành động, hoạt động là '-expand'. 부엌에서 요리를 해요 = Nấu ăn trong bếp."
+        "explanation": "Trợ từ chỉ nơi diễn ra hành động, hoạt động là '-에서'. 부엌에서 요리를 해요 = Nấu ăn trong bếp."
       },
       {
         "type": "dialogue",
@@ -335,18 +335,30 @@ window.REVIEW_QUESTIONS = {
         "explanation": "몇 (mấy) + 자루 (đơn vị đếm bút) + 있어요 (có) = '몇 자루 있어요?'. Hỏi về bút bi: '볼펜은 몇 자루 있어요?'"
       },
       {
-        "type": "grammar",
-        "question": "Điền vào chỗ trống đếm trái cây: '사과가 세 ___ 있어요.' (Có 3 quả táo)",
-        "options": ["개", "명", "자루", "권"],
+        "type": "visual",
+        "image": "assets/quiz/lesson4_books.jpg",
+        "question": "Nhìn tranh và đếm số lượng sách:",
+        "options": [
+          "책이 두 권 있어요.",
+          "책이 두 자루 있어요.",
+          "책이 두 개 있어요.",
+          "책이 두 명 있어요."
+        ],
         "answer": 0,
-        "explanation": "Đơn vị đếm hoa quả, các đồ vật nhỏ tròn là '개' (quả, cái). 사과가 세 개 있어요 = Có 3 quả táo."
+        "explanation": "Trong tranh vẽ có 2 quyển sách. Lượng từ đếm sách trong tiếng Hàn là '권', số 2 thuần Hàn bổ nghĩa cho lượng từ là '두'. Kết quả: 책이 두 권 있어요."
       },
       {
-        "type": "grammar",
-        "question": "Điền vào chỗ trống đếm động vật: '강아지가 두 ___ 있어요.' (Có 2 con chó con)",
-        "options": ["마리", "명", "개", "권"],
+        "type": "visual",
+        "image": "assets/quiz/lesson4_dogs.jpg",
+        "question": "Nhìn tranh và đếm số lượng cún con:",
+        "options": [
+          "강아지가 세 마리 있어요.",
+          "강아지가 세 명 있어요.",
+          "강아지가 세 권 있어요.",
+          "강아지가 세 개 있어요."
+        ],
         "answer": 0,
-        "explanation": "Đơn vị dùng để đếm động vật (con vật) trong tiếng Hàn là '마리'. 강아지가 두 마리 있어요 = Có 2 con chó con."
+        "explanation": "Trong tranh vẽ có 3 chú cún con. Lượng từ đếm động vật trong tiếng Hàn là '마리', số 3 thuần Hàn đi với lượng từ là '세'. Kết quả: 강아지가 세 마리 있어요."
       },
       {
         "type": "dialogue",
@@ -432,28 +444,20 @@ window.REVIEW_QUESTIONS = {
         "explanation": "생일 (sinh nhật) + 언제 (khi nào) + -예요 (là) = '생일이 언제예요?'."
       },
       {
-        "type": "grammar",
-        "question": "Chọn cách nói đúng của ngày '6월 13일' (Ngày 13 tháng 6):",
-        "options": [
-          "유월 십삼일",
-          "육월 십삼일",
-          "유월 삼십일",
-          "육월 삼십일"
-        ],
+        "type": "visual",
+        "image": "assets/quiz/lesson5_cake.jpg",
+        "question": "Nhìn hình và chọn từ tương ứng:",
+        "options": ["생일 케이크", "선물 상자", "아이스크림", "시계"],
         "answer": 0,
-        "explanation": "Tháng 6 trong tiếng Hàn phát âm đặc biệt là '유월' (bỏ phụ âm 'ㄱ' trong 육). Ngày 13 là '십삼일'. Đáp án đúng: 유월 십삼일."
+        "explanation": "Hình vẽ là một chiếc bánh sinh nhật cắm nến, tiếng Hàn là '생일 케이크' (Bánh sinh nhật)."
       },
       {
-        "type": "grammar",
-        "question": "Cách nói ngày Noel 'Ngày 25 tháng 12' trong tiếng Hàn là gì?",
-        "options": [
-          "십이월 이십오일",
-          "십이월 이오일",
-          "십월 이십오일",
-          "이십월 이십오일"
-        ],
+        "type": "visual",
+        "image": "assets/quiz/lesson5_present.jpg",
+        "question": "Nhìn hình và chọn từ tương ứng:",
+        "options": ["선물", "가방", "모자", "옷"],
         "answer": 0,
-        "explanation": "Tháng 12 là '십이월' (Hán Hàn), Ngày 25 là '이십오일' (Hán Hàn). Ghép lại thành '십이월 이십오일'."
+        "explanation": "Hình vẽ là hộp quà thắt nơ xinh xắn, tiếng Hàn là '선물' (quà, món quà)."
       },
       {
         "type": "dialogue",
@@ -534,18 +538,25 @@ window.REVIEW_QUESTIONS = {
         "explanation": "회사에 다니기 (đi làm/theo làm ở công ty). Khi hỏi về bố bạn, ta thêm kính ngữ '-시-' thành '다니세요'. Do đó câu đúng là: 아버지는 회사에 다니세요?"
       },
       {
-        "type": "vocab",
-        "question": "Từ tôn kính (kính ngữ) của từ '밥' (cơm) là gì?",
-        "options": ["진지", "식사", "생신", "댁"],
+        "type": "visual",
+        "image": "assets/quiz/lesson6_grandfather.jpg",
+        "question": "Nhìn hình và chọn từ tôn kính phù hợp cho người trong ảnh:",
+        "options": ["할아버지", "어머니", "동생", "아버지"],
         "answer": 0,
-        "explanation": "Kính ngữ của 밥 (cơm) là '진지'. 식사 là bữa ăn (lịch sự), 생신 là kính ngữ của sinh nhật, 댁 là kính ngữ của nhà."
+        "explanation": "Hình vẽ là một người ông Hàn Quốc hiền hậu, tiếng Hàn kính trọng là '할아버지'."
       },
       {
-        "type": "vocab",
-        "question": "Từ tôn kính (kính ngữ) của từ '집' (nhà) là gì?",
-        "options": ["댁", "진지", "성함", "연세"],
+        "type": "visual",
+        "image": "assets/quiz/lesson6_father.jpg",
+        "question": "Nhìn hình và chọn câu mô tả phù hợp nhất:",
+        "options": [
+          "아버지는 회사에 다니세요.",
+          "어머니는 요리를 하세요.",
+          "동생은 유치원에 가요.",
+          "할아버지는 공원에서 놀아요."
+        ],
         "answer": 0,
-        "explanation": "Kính ngữ của 집 (nhà) là '댁'. Ví dụ: 할아버지 댁 (nhà của ông)."
+        "explanation": "Hình vẽ mô tả người bố đang ngồi làm việc tại công sở/văn phòng. Câu kính ngữ đúng là '아버지는 회사에 다니세요.' (Bố đi làm ở công ty)."
       },
       {
         "type": "dialogue",
@@ -626,28 +637,25 @@ window.REVIEW_QUESTIONS = {
         "explanation": "수업 (tiết học) + 몇 시에 (lúc mấy giờ) + 끝나요 (kết thúc) = '수업이 몇 시에 끝나요?'."
       },
       {
-        "type": "grammar",
-        "question": "Cách nói thời gian '1 giờ 15 phút' trong tiếng Hàn là gì?",
-        "options": [
-          "한 시 십오 분",
-          "일 시 십오 분",
-          "한 시 열다섯 분",
-          "일 시 열다섯 분"
-        ],
+        "type": "visual",
+        "image": "assets/quiz/lesson7_clock3.jpg",
+        "question": "Nhìn đồng hồ và chọn thời gian đúng tương ứng:",
+        "options": ["세 시", "네 시", "다섯 시", "여섯 시"],
         "answer": 0,
-        "explanation": "Giờ dùng số Thuần Hàn: 1시 = 한 시 (không phải 일 시). Phút dùng số Hán Hàn: 15분 = 십오 분. Kết quả: 한 시 십오 분."
+        "explanation": "Đồng hồ trong hình đang chỉ đúng 3 giờ. Đếm giờ dùng số thuần Hàn: 3 giờ = '세 시'."
       },
       {
-        "type": "grammar",
-        "question": "Cách nói thời gian '12 giờ 50 phút' trong tiếng Hàn là gì?",
+        "type": "visual",
+        "image": "assets/quiz/lesson3_market.jpg",
+        "question": "가: 시장이 아침 몇 시에 시작해요?\n나: 아침 여덟 시에 시작해요.\nDịch câu trả lời của hội thoại trên:",
         "options": [
-          "열두 시 오십 분",
-          "십이 시 오십 분",
-          "열두 시 쉰 분",
-          "십이 시 쉰 분"
+          "Chợ bắt đầu lúc 8 giờ sáng.",
+          "Chợ kết thúc lúc 8 giờ tối.",
+          "Bố đi chợ lúc 8 giờ.",
+          "Mẹ đi chợ hàng ngày."
         ],
         "answer": 0,
-        "explanation": "Giờ dùng số Thuần Hàn: 12시 = 열두 시. Phút dùng số Hán Hàn: 50분 = 오십 분. Kết quả: 열두 시 오십 분."
+        "explanation": "아침 (sáng) + 여덟 시 (8 giờ) + 에 (lúc) + 시작해요 (bắt đầu). Dịch nghĩa: Chợ bắt đầu lúc 8 giờ sáng."
       },
       {
         "type": "dialogue",
