@@ -73,9 +73,9 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n지영: 방에 무엇이 있어요?\n민우: ___________________.",
         "options": [
           "침대가 있어요",
-          "침대는 없어요",
+          "방에 없어요",
           "방에 가요",
-          "책상 옆에 있어요"
+          "부엌에 있어요"
         ],
         "answer": 0,
         "explanation": "Câu hỏi 'Trong phòng có cái gì?' (무엇이 있어요?). Câu trả lời phù hợp nhất chỉ đồ vật có trong phòng là '침대가 있어요' (Có cái giường)."
@@ -558,9 +558,9 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n가: 엄마도 회사에 다녀요?\n나: ___________________.",
         "options": [
           "아니요. 엄마는 주부예요.",
-          "네. 엄마는 회사에 다녀요.",
-          "아니요. 엄마는 요리사예요.",
-          "엄마는 바쁩니다."
+          "네. 아빠는 회사에 다녀요.",
+          "아니요. 동생은 유치원에 가요.",
+          "엄마가 방에 없어요."
         ],
         "answer": 0,
         "explanation": "Hỏi 'Mẹ bạn cũng đi làm ở công ty à?' (엄마도 회사에 다녀요?). Câu trả lời trong bài hội thoại là 'Không, mẹ mình là nội trợ' (아니요. 엄마는 주부예요)."
@@ -746,8 +746,8 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n리꽁: 영화를 자주 봐요?\n수미: ___________________.",
         "options": [
           "가끔 봐요. 한 달에 한 번 영화관에 가요.",
-          "네, 매일 영화관에 가요.",
-          "아니요, 코미디 영화가 재미없어요.",
+          "네, 영화는 공포 영화예요.",
+          "아니요, 어제 영화관에 갔어요.",
           "이따가 영화관에서 만나요."
         ],
         "answer": 0,
@@ -837,9 +837,9 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n가: 무슨 일을 하고 싶어요?\n나: ___________________.",
         "options": [
           "나는 요리사가 되고 싶어요",
-          "요리를 전혀 못 해요",
-          "가수 가방 안에 있어요",
-          "학교에서 축구를 해요"
+          "그 사람은 선생님이에요",
+          "동생은 요리사예요",
+          "공부에 다녀요"
         ],
         "answer": 0,
         "explanation": "Câu hỏi hỏi muốn làm công việc gì (무슨 일을 하고 싶어요?). Câu trả lời phù hợp nhất là '나는 요리사가 되고 싶어요' (Tôi muốn trở thành đầu bếp)."
@@ -1104,9 +1104,9 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n가: 운동을 자주 해요?\n나: ___________________.",
         "options": [
           "네, 저녁마다 운동을 해요",
-          "아니요, 아침에 운동을 시작해요",
-          "한 시간 후에 끝나요",
-          "연극은 영화관에서 봐요"
+          "네, 영화를 보러 가요",
+          "아니요, 일주일 후에 여행을 가요",
+          "아버지는 회사원이에요"
         ],
         "answer": 0,
         "explanation": "Câu hỏi hỏi có thường xuyên tập thể dục không (자주 해요?). Câu trả lời chỉ tần suất thích hợp là '네, 저녁마다 운동을 해요' (Vâng, tối nào tôi cũng tập)."
@@ -1287,8 +1287,8 @@ window.REVIEW_QUESTIONS = {
         "question": "Hoàn thành hội thoại sau:\n가: 만들기 체험은 언제예요?\n나: ___________________.",
         "options": [
           "다섯 시 삼십 분부터 한 시간 동안이에요",
-          "네, 일요일마다 만들기 체험을 해요",
-          "한 시간 전에 끝났어요",
+          "만들기 체험은 참 재미있어요",
+          "네, 일요일에 시작해요",
           "미술관은 학교 옆에 있어요"
         ],
         "answer": 0,
