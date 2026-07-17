@@ -839,9 +839,7 @@ window.REVIEW_QUESTIONS = {
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 무슨 일을 하고 싶어요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 무슨 일을 하고 싶어요?\n나: ___________________.",
         "options": [
           "나는 요리사가 되고 싶어요",
           "요리를 전혀 못 해요",
@@ -860,9 +858,7 @@ window.REVIEW_QUESTIONS = {
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
-'저희는 무용가가 되고 싶어요. 그래서 이번 방학에 발레를 배우고 싶어요. 그리고 한국 무용도 배우고 싶어요.'
-Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'저희는 무용가가 되고 싶어요. 그래서 이번 방학에 발레를 배우고 싶어요. 그리고 한국 무용도 배우고 싶어요.'\nHỏi: Nhân vật muốn trở thành gì trong tương lai?",
         "options": [
           "Vũ công (무용가)",
           "Cầu thủ bóng đá (축구 선수)",
@@ -886,7 +882,7 @@ Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
         "question": "Từ nào sau đây nghĩa là 'Vẽ tranh'?",
         "options": ["그림을 그리다", "노래를 부르다", "글을 쓰다", "잠을 자다"],
         "answer": 0,
-        "explanation": "그림을 그리다 nghĩa là vẽ tranh. 노래를 부rưda: hát, 글을 쓰다: viết chữ."
+        "explanation": "그림을 그리다 nghĩa là vẽ tranh. 노래를 부르다: hát, 글을 쓰다: viết chữ."
       },
       {
         "type": "grammar",
@@ -932,9 +928,7 @@ Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 주말에 왜 미술 학원에 가요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 주말에 왜 미술 학원에 가요?\n나: ___________________.",
         "options": [
           "그림을 배우러 가요",
           "태권도가 재미있어요",
@@ -953,8 +947,7 @@ Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và chọn phát biểu ĐÚNG:
-'성진이는 주말에 태권도를 배워요. 태권도가 운동도 되고 재미있어서 열심히 연습해요.'",
+        "question": "Đọc đoạn văn sau và chọn phát biểu ĐÚNG:\n'성진이는 주말에 태권도를 배워요. 태권도가 운동도 되고 재미있어서 열심히 연습해요.'",
         "options": [
           "Seongjin học Taekwondo vào cuối tuần vì nó vừa là vận động vừa thú vị.",
           "Seongjin học vẽ tranh vì nó dễ.",
@@ -1024,9 +1017,7 @@ Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 수연이는 장래 희망이 뭐예요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 수연이는 장래 희망이 뭐예요?\n나: ___________________.",
         "options": [
           "경찰이 되고 싶어해요",
           "컴퓨터 게임을 하고 있어요",
@@ -1045,9 +1036,7 @@ Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
-'재우의 꿈은 컴퓨터 프로그래머예요. 그래서 재우는 금요일에 학교에서 컴퓨터 수업을 들어요.'
-Hỏi: Ước mơ của Jaewoo là gì?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'재우의 꿈은 컴퓨터 프로그래머예요. 그래서 재우는 금요일에 학교에서 컴퓨터 수업을 들어요.'\nHỏi: Ước mơ của Jaewoo là gì?",
         "options": [
           "Nhà lập trình máy tính (컴퓨터 프로그래머)",
           "Vũ công (무용가)",
@@ -1085,7 +1074,7 @@ Hỏi: Ước mơ của Jaewoo là gì?",
         "question": "Điền vào chỗ trống: '저희는 일주일 ___에 여행을 가요. 아주 신나요.' (Tôi sẽ đi du lịch sau một tuần nữa)",
         "options": ["후", "전", "동안", "마다"],
         "answer": 0,
-        "explanation": "Cấu trúc '-후e' nghĩa là 'sau' hoặc 'sau khi (về mặt thời gian)'. 일주일 후에 = sau một tuần."
+        "explanation": "Cấu trúc '-후에' nghĩa là 'sau' hoặc 'sau khi (về mặt thời gian)'. 일주일 후에 = sau một tuần."
       },
       {
         "type": "dialogue",
@@ -1117,9 +1106,7 @@ Hỏi: Ước mơ của Jaewoo là gì?",
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 운동을 자주 해요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 운동을 자주 해요?\n나: ___________________.",
         "options": [
           "네, 저녁마다 운동을 해요",
           "아니요, 아침에 운동을 시작해요",
@@ -1138,9 +1125,7 @@ Hỏi: Ước mơ của Jaewoo là gì?",
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
-'연극은 열 시에 시작해요. 그리고 한 시간 후에 끝나요.'
-Hỏi: Vở kịch kết thúc lúc mấy giờ?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'연극은 열 시에 시작해요. 그리고 한 시간 후에 끝나요.'\nHỏi: Vở kịch kết thúc lúc mấy giờ?",
         "options": [
           "Lúc 11 giờ (열한 시)",
           "Lúc 10 giờ (열 시)",
@@ -1210,9 +1195,7 @@ Hỏi: Vở kịch kết thúc lúc mấy giờ?",
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 봄 축제 때 뭘 하고 싶어요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 봄 축제 때 뭘 하고 싶어요?\n나: ___________________.",
         "options": [
           "놀이 기구를 많이 타고 싶어요",
           "아침 여덟 시에 끝나요",
@@ -1236,9 +1219,7 @@ Hỏi: Vở kịch kết thúc lúc mấy giờ?",
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
-'이번 토요일에 학교에서 과학 축제를 해요. 축제는 열한 시부터 세 시까지 해요. 저는 물 로켓을 날리고 싶어요.'
-Hỏi: Lễ hội khoa học diễn ra trong mấy tiếng?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'이번 토요일에 학교에서 과학 축제를 해요. 축제는 열한 시부터 세 시까지 해요. 저는 물 로켓을 날리고 싶어요.'\nHỏi: Lễ hội khoa học diễn ra trong mấy tiếng?",
         "options": [
           "4 tiếng (네 시간)",
           "3 tiếng (세 시간)",
@@ -1308,9 +1289,7 @@ Hỏi: Lễ hội khoa học diễn ra trong mấy tiếng?",
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:
-가: 만들기 체험은 언제예요?
-나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 만들기 체험은 언제예요?\n나: ___________________.",
         "options": [
           "다섯 시 삼십 분부터 한 시간 동안이에요",
           "네, 일요일마다 만들기 체험을 해요",
@@ -1334,9 +1313,7 @@ Hỏi: Lễ hội khoa học diễn ra trong mấy tiếng?",
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
-'저희는 일주일 후에 전시회가 있어서 요즘 저녁마다 그림을 그려요. 오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요.'
-Hỏi: Hôm nay bạn nhỏ đã vẽ gì?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'저희는 일주일 후에 전시회가 있어서 요즘 저녁마다 그림을 그려요. 오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요.'\nHỏi: Hôm nay bạn nhỏ đã vẽ gì?",
         "options": [
           "Biển (바다)",
           "Tên lửa (로켓)",
