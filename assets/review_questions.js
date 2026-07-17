@@ -494,100 +494,95 @@ window.REVIEW_QUESTIONS = {
     "lesson6": [
       {
         "type": "vocab",
-        "question": "Từ tôn kính của '나이' (tuổi) là gì?",
-        "options": ["연세", "성함", "진지", "생신"],
+        "question": "Từ nào sau đây nghĩa là 'nhân viên công ty'?",
+        "options": ["회사원", "간호사", "경찰관", "요리사"],
         "answer": 0,
-        "explanation": "Từ tôn kính (kính ngữ) của '나이' là '연세'. 성함 (tên), 진지 (cơm), 생신 (sinh nhật)."
+        "explanation": "회사원 nghĩa là 'nhân viên công ty'. 간호사: y tá, 경찰관: cảnh sát, 요리사: đầu bếp."
       },
       {
         "type": "vocab",
-        "question": "Từ tôn kính của '이름' (tên) là gì?",
-        "options": ["성함", "연세", "진지", "생신"],
+        "question": "Từ nào sau đây nghĩa là 'nội trợ'?",
+        "options": ["주부", "작가", "화가", "의사"],
         "answer": 0,
-        "explanation": "Từ tôn kính (kính ngữ) của '이름' là '성함'."
+        "explanation": "주부 nghĩa là 'nội trợ'. 작가: nhà văn, 화가: họa sĩ, 의사: bác sĩ."
       },
       {
         "type": "grammar",
-        "question": "Điền vào chỗ trống: '할아버지___ 진지를 드세요.' (Ông dùng cơm)",
-        "options": ["께서", "가", "는", "께서가"],
+        "question": "Điền vào chỗ trống: '오빠___ 언니는 중학교에 다녀요.' (Anh trai và chị gái học cấp 2)",
+        "options": ["하고", "에서", "에", "을"],
         "answer": 0,
-        "explanation": "Trợ từ chủ ngữ dạng tôn kính đối với người lớn tuổi là '-께서'. 진지 là kính ngữ của 밥 (cơm), 드시다 là kính ngữ của 먹다 (ăn)."
+        "explanation": "Liên từ '-하고' dùng để nối hai danh từ mang nghĩa 'và'. 오빠하고 언니 = anh trai và chị gái."
       },
       {
         "type": "grammar",
-        "question": "Chọn câu kính ngữ đúng: 'Bố tôi đang đọc báo.'",
-        "options": [
-          "아버지는 신문을 읽으세요.",
-          "아버지는 신문을 읽어요.",
-          "아버지는 신문을 봐요.",
-          "아버지는 신문을 보세요."
-        ],
-        "answer": 3,
-        "explanation": "Đối với người lớn tuổi (bố), thay vì dùng '읽다/읽어요', ta dùng động từ tôn kính '보시다' (xem/đọc) chia thành '보세요'. Do đó câu kính ngữ hoàn chỉnh và tự nhiên nhất là '아버지는 신문을 보세요'."
+        "question": "Điền vào chỗ trống: '아빠는 한국 회사___ 다녀요.' (Bố đi làm ở công ty Hàn Quốc)",
+        "options": ["에", "에서", "를", "하고"],
+        "answer": 0,
+        "explanation": "Cấu trúc '-에 다니다' nghĩa là đi làm, đi học hoặc thường xuyên lui tới một địa điểm nào đó. 회사에 다녀요 = làm việc ở công ty."
       },
       {
         "type": "dialogue",
-        "question": "Dịch sang tiếng Hàn: 'Bố bạn làm việc ở công ty phải không?'",
+        "question": "Hoàn thành hội thoại sau:\n가: 이 사람이 누구예요?\n나: 이 사람은 제 ___________________.",
         "options": [
-          "아버지는 회사에 다니세요?",
-          "아버지는 회사에 다녀요?",
-          "어머니는 회사에 다니세요?",
-          "아버지는 무엇을 하세요?"
+          "오빠예요",
+          "회사에 다녀요",
+          "주부예요",
+          "학교에 가요"
         ],
         "answer": 0,
-        "explanation": "회사에 다니기 (đi làm/theo làm ở công ty). Khi hỏi về bố bạn, ta thêm kính ngữ '-시-' thành '다니세요'. Do đó câu đúng là: 아버지는 회사에 다니세요?"
+        "explanation": "Hỏi 'Người này là ai?' (이 사람이 누구예요?). Câu trả lời phù hợp nhất là 'Người này là anh trai tôi' (제 오빠예요)."
       },
       {
         "type": "visual",
         "image": "assets/quiz/lesson6_grandfather.jpg",
-        "question": "Nhìn hình và chọn từ tôn kính phù hợp cho người trong ảnh:",
-        "options": ["할아버지", "어머니", "동생", "아버지"],
+        "question": "Nhìn hình và chọn từ chỉ thành viên gia đình:",
+        "options": ["할아버지", "동생", "누나", "형"],
         "answer": 0,
-        "explanation": "Hình vẽ là một người ông Hàn Quốc hiền hậu, tiếng Hàn kính trọng là '할아버지'."
+        "explanation": "Hình vẽ chỉ người ông hiền hậu, tiếng Hàn là '할아버지'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/lesson6_father.jpg",
         "question": "Nhìn hình và chọn câu mô tả phù hợp nhất:",
         "options": [
-          "아버지는 회사에 다니세요.",
-          "어머니는 요리를 하세요.",
+          "아버지는 회사에 다녀요.",
+          "어머니는 요리를 해요.",
           "동생은 유치원에 가요.",
           "할아버지는 공원에서 놀아요."
         ],
         "answer": 0,
-        "explanation": "Hình vẽ mô tả người bố đang ngồi làm việc tại công sở/văn phòng. Câu kính ngữ đúng là '아버지는 회사에 다니세요.' (Bố đi làm ở công ty)."
+        "explanation": "Hình vẽ mô tả người bố đang ngồi làm việc tại công sở/văn phòng. Câu mô tả đúng là '아버지는 회사에 다녀요.' (Bố làm việc ở công ty)."
       },
       {
         "type": "dialogue",
-        "question": "Hoàn thành hội thoại sau:\n가: 어머니는 무엇을 하세요?\n나: ___________________.",
+        "question": "Hoàn thành hội thoại sau:\n가: 엄마도 회사에 다녀요?\n나: ___________________.",
         "options": [
-          "의사예요. 병원에 다니세요.",
-          "의사예요. 병원에 다녀요.",
-          "어머니는 회사에 안 가요.",
-          "어머니가 집에 있어요."
+          "아니요. 엄마는 주부예요.",
+          "네. 엄마는 회사에 다녀요.",
+          "아니요. 엄마는 요리사예요.",
+          "엄마는 바쁩니다."
         ],
         "answer": 0,
-        "explanation": "Hỏi về mẹ (어머니) dùng kính ngữ '무엇을 하세요?'. Trả lời cũng cần dùng kính ngữ tôn trọng mẹ: '의사예요. 병원에 다니세요' (Mẹ là bác sĩ. Mẹ làm việc ở bệnh viện)."
+        "explanation": "Hỏi 'Mẹ bạn cũng đi làm ở công ty à?' (엄마도 회사에 다녀요?). Câu trả lời trong bài hội thoại là 'Không, mẹ mình là nội trợ' (아니요. 엄마는 주부예요)."
       },
       {
         "type": "grammar",
-        "question": "Động từ kính ngữ của '먹다' (ăn) dùng cho người lớn tuổi là gì?",
-        "options": ["드시다 / 잡수시다", "주무시다", "계시다", "말씀하시다"],
+        "question": "Dịch cụm từ 'trường trung học cơ sở (trường cấp 2)' sang tiếng Hàn:",
+        "options": ["중학교", "초등학교", "고등학교", "유치원"],
         "answer": 0,
-        "explanation": "Kính ngữ của 먹다 (ăn) là 드시다 hoặc 잡수시다. 주무시다 là kính ngữ của 자다 (ngủ), 계시다 là kính ngữ của 있다 (ở)."
+        "explanation": "Trường trung học cơ sở (trường cấp 2) là '중학교'. 초등학교: trường tiểu học, 고등학교: trường cấp 3, 유치원: trường mầm non."
       },
       {
         "type": "reading",
-        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'우리 할아버지는 댁에 계세요. 아버지는 회사에 다니세요. 어머니는 학교에서 가르치세요.'\nHỏi: Ông nội (할아버지) hiện đang ở đâu?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'우리 가족은 아빠, 엄마, 누나, 여동생, 저입니다. 아빠는 경찰관입니다. 엄마는 은행원입니다. 그래서 은행에 다닙니다. 제 누나는 중학생입니다.'\nHỏi: Mẹ của nhân vật làm nghề gì?",
         "options": [
-          "댁(집)에 계세요.",
-          "회사에 다니세요.",
-          "학교에 계세요.",
-          "병원에 계세요."
+          "Nhân viên ngân hàng (은행원)",
+          "Cảnh sát (경찰관)",
+          "Học sinh cấp 2 (중학생)",
+          "Nội trợ (주부)"
         ],
         "answer": 0,
-        "explanation": "Đoạn văn ghi: '우리 할아버지는 댁에 계세요' (Ông chúng tôi đang ở nhà). Kính ngữ của '집에 있어요' là '댁에 계세요'. Đáp án đúng: 댁(집)에 계세요."
+        "explanation": "Đoạn văn ghi rõ: '엄마는 은행원입니다' (Mẹ là nhân viên ngân hàng). Đáp án đúng: Nhân viên ngân hàng (은행원)."
       }
     ],
     "lesson7": [
