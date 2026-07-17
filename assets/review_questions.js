@@ -646,16 +646,11 @@ window.REVIEW_QUESTIONS = {
       },
       {
         "type": "visual",
-        "image": "assets/quiz/lesson3_market.jpg",
-        "question": "가: 시장이 아침 몇 시에 시작해요?\n나: 아침 여덟 시에 시작해요.\nDịch câu trả lời của hội thoại trên:",
-        "options": [
-          "Chợ bắt đầu lúc 8 giờ sáng.",
-          "Chợ kết thúc lúc 8 giờ tối.",
-          "Bố đi chợ lúc 8 giờ.",
-          "Mẹ đi chợ hàng ngày."
-        ],
+        "image": "assets/quiz/lesson7_classroom.jpg",
+        "question": "Nhìn tranh và chọn từ tương ứng với hoạt động:",
+        "options": ["수업", "운동장", "바다", "시장"],
         "answer": 0,
-        "explanation": "아침 (sáng) + 여덟 시 (8 giờ) + 에 (lúc) + 시작해요 (bắt đầu). Dịch nghĩa: Chợ bắt đầu lúc 8 giờ sáng."
+        "explanation": "Hình vẽ mô tả cảnh các bạn học sinh đang ngồi học trong lớp nghe cô giáo giảng bài. Từ vựng chỉ 'tiết học / lớp học' là '수업'. 운동장: sân vận động, 바다: biển, 시장: chợ."
       },
       {
         "type": "dialogue",
@@ -687,6 +682,100 @@ window.REVIEW_QUESTIONS = {
         ],
         "answer": 0,
         "explanation": "Đoạn văn viết: '오후 한 시에 끝나요' (Kết thúc lúc 1 giờ chiều). Đáp án đúng: 오후 한 시."
+      }
+    ],
+    "lesson8": [
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'rạp chiếu phim'?",
+        "options": ["영화관", "도서관", "미술관", "박물관"],
+        "answer": 0,
+        "explanation": "영화관 nghĩa là 'rạp chiếu phim'. 도서관 (thư viện), 미술관 (bảo tàng mỹ thuật), 박물관 (bảo tàng)."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'phim hoạt hình'?",
+        "options": ["만화 영화", "액션 영화", "공포 영화", "멜로 영화"],
+        "answer": 0,
+        "explanation": "만화 영화 nghĩa là 'phim hoạt hình' (hoặc 애니메이션). 액션 영화 (phim hành động), 공포 영화 (phim kinh dị)."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '무슨 영화를 봐요? 코미디___ 만화 영화를 봐요.' (Mình xem phim hài hoặc hoạt hình)",
+        "options": ["나", "이나", "하고", "랑"],
+        "answer": 0,
+        "explanation": "Cấu trúc chỉ sự lựa chọn 'hoặc/hay' giữa hai danh từ là '-(이)나'. '코미디' kết thúc bằng nguyên âm nên kết hợp với '나' thành '코미디나'."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '일주일에 두 ___ 운동을 해요.' (Một tuần mình tập thể thao 2 lần)",
+        "options": ["번", "시", "개", "권"],
+        "answer": 0,
+        "explanation": "Đơn vị dùng để đếm số lần (lần) trong tiếng Hàn là '번'. 일주일에 두 번 = Một tuần 2 lần."
+      },
+      {
+        "type": "dialogue",
+        "question": "Dịch sang tiếng Hàn: 'Lát nữa bạn làm gì?'",
+        "options": [
+          "이따가 뭐 해요?",
+          "지금 어디에 가요?",
+          "영화를 자주 봐요?",
+          "주말에 무엇을 해요?"
+        ],
+        "answer": 0,
+        "explanation": "이따가 (lát nữa) + 뭐 (cái gì) + 해요 (làm) = '이따가 뭐 해요?'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson8_cinema.jpg",
+        "question": "Nhìn tranh và chọn từ tương ứng:",
+        "options": ["영화관", "도서관", "공원", "시장"],
+        "answer": 0,
+        "explanation": "Hình vẽ là rạp chiếu phim với các hàng ghế đỏ hướng về màn hình lớn, tiếng Hàn là '영화관'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson8_cartoon.jpg",
+        "question": "Nhìn hình vẽ và cho biết bạn nhỏ đang làm gì?",
+        "options": [
+          "만화 영화를 봐요.",
+          "자전거를 타요.",
+          "음악을 들어요.",
+          "잠을 자요."
+        ],
+        "answer": 0,
+        "explanation": "Hình vẽ mô tả bạn nhỏ đang ngồi xem phim hoạt hình trên màn hình tivi. Câu trả lời chính xác: '만화 영화를 봐요.' (Xem phim hoạt hình)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n리꽁: 영화를 자주 봐요?\n수미: ___________________.",
+        "options": [
+          "가끔 봐요. 한 달에 한 번 영화관에 가요.",
+          "네, 매일 영화관에 가요.",
+          "아니요, 코미디 영화가 재미없어요.",
+          "이따가 영화관에서 만나요."
+        ],
+        "answer": 0,
+        "explanation": "Lý Công hỏi: 'Bạn có thường xem phim không?' (영화를 자주 봐요?). Su-mi trả lời: 'Thỉnh thoảng mình xem. Một tháng mình đi xem phim một lần' (가끔 봐요. 한 달에 한 번 영화관에 가요)."
+      },
+      {
+        "type": "antonym",
+        "question": "Từ trái nghĩa với '자주' (thường xuyên) là gì?",
+        "options": ["가끔", "매일", "항상", "언제나"],
+        "answer": 0,
+        "explanation": "자주 (thường xuyên) trái nghĩa với 가끔 (thỉnh thoảng). 매일 (hàng ngày), 항상/언제나 (luôn luôn)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'저는 한 달에 한 번 영화관에서 영화를 봐요. 보통 액션 영화나 코미디를 봐요. ... 저는 공포 영화를 싫어해요.'\nHỏi: Nhân vật ghét thể loại phim nào?",
+        "options": [
+          "공포 영화",
+          "액션 영화",
+          "코미디 영화",
+          "만화 영화"
+        ],
+        "answer": 0,
+        "explanation": "Theo đoạn văn: '저는 공포 영화를 싫어해요' (Mình ghét phim kinh dị). Đáp án đúng: 공포 영화."
       }
     ]
   }
