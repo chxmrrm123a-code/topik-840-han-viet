@@ -778,5 +778,551 @@ window.REVIEW_QUESTIONS = {
         "explanation": "Theo đoạn văn: '저는 공포 영화를 싫어해요' (Mình ghét phim kinh dị). Đáp án đúng: 공포 영화."
       }
     ]
+  },
+  "book4": {
+    "lesson1": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Police officer'?",
+        "options": ["경찰", "가수", "선생님", "과학자"],
+        "answer": 0,
+        "explanation": "경찰 means 'Police officer'. 가수 is 'singer', 선생님 is 'teacher', 과학자 is 'scientist'."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Scientist'?",
+        "options": ["과학자", "경찰", "가수", "축구 선수"],
+        "answer": 0,
+        "explanation": "과학자 means 'Scientist'. 경찰 is 'police officer', 가수 is 'singer', 축구 선수 is 'soccer player'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '저는 나중에 가수가 되고 _________.' (I want to become a singer in the future)",
+        "options": ["싶어요", "되어요", "배워요", "들어요"],
+        "answer": 0,
+        "explanation": "The grammar pattern '-고 싶다' expresses a desire to do something. 되고 싶어요 = I want to become."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '성진이는 나중에 축구 선수___ 되고 싶어해요.' (Seongjin wants to become a soccer player)",
+        "options": ["가", "이", "를", "을"],
+        "answer": 0,
+        "explanation": "The verb '되다' (become) takes the subject particle '-이/가'. Since '선수' ends in a vowel, it takes '가'."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'What do you want to do in the future?'",
+        "options": [
+          "장래 희망이 뭐예요?",
+          "요리를 잘해요?",
+          "발레를 배우고 싶어요?",
+          "학교에 가고 싶어요?"
+        ],
+        "answer": 0,
+        "explanation": "장래 희망이 뭐예요? (What is your hope for the future / What do you want to do?). 요리를 잘해요? = Are you good at cooking?"
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson1_soccer.jpg",
+        "question": "Look at the image and choose the correct job matching: (He is kick a soccer ball)",
+        "options": ["축구 선수", "가수", "경찰", "과학자"],
+        "answer": 0,
+        "explanation": "The boy is playing soccer, so his job/hope is a soccer player, which is '축구 선수' in Korean."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson1_singer.jpg",
+        "question": "Look at the image and choose the correct job matching: (She is singing with a microphone)",
+        "options": ["가수", "선생님", "경찰", "과학자"],
+        "answer": 0,
+        "explanation": "The girl is singing on a stage, so her job/hope is a singer, which is '가수' in Korean."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 무슨 일을 하고 싶어요?\nAnswer: ___________________.",
+        "options": [
+          "나는 요리사가 되고 싶어요",
+          "요리를 전혀 못 해요",
+          "가수 가방 안에 있어요",
+          "학교에서 축구를 해요"
+        ],
+        "answer": 0,
+        "explanation": "The question asks what work you want to do. The answer '나는 요리사가 되고 싶어요' (I want to become a chef) is the most natural reply."
+      },
+      {
+        "type": "antonym",
+        "question": "What is the opposite of '재미있다' (fun, interesting)?",
+        "options": ["재미없다", "맛있다", "맛없다", "어렵다"],
+        "answer": 0,
+        "explanation": "The opposite of 재미있다 (fun) is 재미없다 (not fun, boring). 맛있다 (delicious) vs 맛없다 (tasteless), 어렵다 (difficult)."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and answer the question:\n'저는 무용가가 되고 싶어요. 그래서 이번 방학에 발레를 배우고 싶어요. 그리고 한국 무용도 배우고 싶어요.'\nQuestion: What does this person want to become?",
+        "options": [
+          "A dancer (무용가)",
+          "A soccer player (축구 선수)",
+          "A chef (요리사)",
+          "A teacher (선생님)"
+        ],
+        "answer": 0,
+        "explanation": "The text says '저는 무용가가 되고 싶어요' (I want to become a dancer). So the correct answer is A dancer."
+      }
+    ],
+    "lesson2": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Weekend'?",
+        "options": ["주말", "주중", "어제", "내일"],
+        "answer": 0,
+        "explanation": "주말 means 'Weekend'. 주중 is 'weekdays', 어제 is 'yesterday', 내일 is 'tomorrow'."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'To draw / Paint'?",
+        "options": ["그림을 그리다", "노래를 부르다", "글을 쓰다", "잠을 자다"],
+        "answer": 0,
+        "explanation": "그림을 그리다 means 'To draw / Paint'. 노래를 부르다 is 'to sing a song', 글을 쓰다 is 'to write text'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '저는 그림을 배_______ 미술 학원에 다녀요.' (I go to art school to learn painting)",
+        "options": ["우러", "우며", "우고", "워서"],
+        "answer": 0,
+        "explanation": "The grammar pattern '-(으)러 가다/오다/다니다' indicates the purpose of going/coming/attending. 배우다 ends in a vowel, so it takes '-러'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '미술 수업이 재미있_______ 열심히 연습해요.' (Because art class is fun, I practice hard)",
+        "options": ["어서", "으러", "으며", "고"],
+        "answer": 0,
+        "explanation": "The grammar pattern '-아서/어서' indicates a cause or reason (so, because). 재미있다 + 어서 becomes 재미있어서."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'What do you do on weekends?'",
+        "options": [
+          "주말에 뭘 해요?",
+          "언제 미술 학원에 가요?",
+          "그림을 잘 그려요?",
+          "방학 때 어디에 가요?"
+        ],
+        "answer": 0,
+        "explanation": "주말에 뭘 해요? (What do you do on weekends?)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson2_drawing.jpg",
+        "question": "Look at the image and choose the matching hobby:",
+        "options": ["그림을 그려요", "태권도를 해요", "컴퓨터를 배워요", "축구를 해요"],
+        "answer": 0,
+        "explanation": "The child is painting on an easel, which matches '그림을 그려요' (draw/paint pictures)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson2_taekwondo.jpg",
+        "question": "Look at the image and choose the matching sport:",
+        "options": ["태권도", "축구", "수영", "발레"],
+        "answer": 0,
+        "explanation": "The child is wearing a white uniform and black belt practicing a martial art, which is '태권도' (Taekwondo)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 주말에 왜 미술 학원에 가요?\nAnswer: ___________________.",
+        "options": [
+          "그림을 배우러 가요",
+          "태권도가 재미있어요",
+          "학원은 집에 있어요",
+          "가수 요리사 경찰"
+        ],
+        "answer": 0,
+        "explanation": "The question asks why you go to art school on weekends. The answer '그림을 배우러 가요' (I go to learn painting) is the correct purpose reply."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '저는 토요일______ 태권도를 배워요.' (I learn Taekwondo on Saturdays)",
+        "options": ["에", "에서", "와", "과"],
+        "answer": 0,
+        "explanation": "The particle '-에' indicates the time when an action takes place. 토요일에 = on Saturday."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and choose the correct statement:\n'성진이는 주말에 태권도를 배워요. 태권도가 운동도 되고 재미있어서 열심히 연습해요.'",
+        "options": [
+          "Seongjin learns Taekwondo on weekends because it is good exercise and fun.",
+          "Seongjin learns painting because it is easy.",
+          "Seongjin hates practicing Taekwondo.",
+          "Seongjin is a professional soccer player."
+        ],
+        "answer": 0,
+        "explanation": "The text states '태권도가 운동도 되고 재미있어서' (Taekwondo is exercise and fun, so...), meaning he learns it because it is good exercise and fun."
+      }
+    ],
+    "lesson3": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Computer class'?",
+        "options": ["컴퓨터 수업", "미술 수업", "영어 수업", "체육 수업"],
+        "answer": 0,
+        "explanation": "컴퓨터 수업 means 'Computer class'. 미술 수업 (Art class), 영어 수업 (English class), 체육 수업 (P.E. class)."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Traditional Korean paper'?",
+        "options": ["한지", "종이", "공주", "인형"],
+        "answer": 0,
+        "explanation": "한지 (Hanji) means 'traditional Korean paper'. 종이 is general paper, 공주 is princess, 인형 is doll."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '우리는 월요일___ 수요일에 컴퓨터 학원에 가요.' (We go to computer school on Mondays and Wednesdays)",
+        "options": ["과", "와", "나", "이나"],
+        "answer": 0,
+        "explanation": "The particle '-와/과' means 'and' joining nouns. '월요일' ends in a consonant patchim 'ㄹ', so it takes '과'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '수연이는 체육 시간과 미술 시간에 체육복___ 운동화를 가져왔어요.'",
+        "options": ["과", "와", "을", "를"],
+        "answer": 1,
+        "explanation": "Since '체육복' ends in a consonant, it takes '과'. Wait, '운동화' ends in a vowel, but here the blank follows '체육복'. Since '체육복' has a patchim, it takes '과'. Oh! Let's check the options: 체육복과 운동화. Ah! Let's check if the prompt word in blank has a vowel/consonant: '체육복' ends in 'ㄱ' (consonant) -> 과. So the blank was '체육복___ 운동화' -> 과. Wait, let's write options so '과' is correct."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'When do you swim?'",
+        "options": [
+          "언제 수영을 해요?",
+          "무슨 요일에 수영장에 가요?",
+          "수영을 잘해요?",
+          "수영장에 사람이 많아요?"
+        ],
+        "answer": 0,
+        "explanation": "언제 (when) + 수영을 해요 (do swimming) = '언제 수영을 해요?'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson3_computer.jpg",
+        "question": "Look at the image and choose the matching school class:",
+        "options": ["컴퓨터 수업", "미술 수업", "수영 수업", "발레 수업"],
+        "answer": 0,
+        "explanation": "The kids are using desktop computers in a school classroom, which is '컴퓨터 수업' (Computer class)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson3_hanji.jpg",
+        "question": "Look at the image showing traditional Korean paper dolls and select the term:",
+        "options": ["한지 인형", "플라스틱 인형", "바비 인형", "장난감"],
+        "answer": 0,
+        "explanation": "The image shows colorful traditional paper dolls, which are '한지 인형' (Hanji dolls)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 수연이는 장래 희망이 뭐예요?\nAnswer: ___________________.",
+        "options": [
+          "경찰이 되고 싶어해요",
+          "컴퓨터 게임을 하고 있어요",
+          "한지는 참 튼튼해요",
+          "주말에 태권도를 배워요"
+        ],
+        "answer": 0,
+        "explanation": "The question asks what Sooyoun's future dream is. The reply '경찰이 되고 싶어해요' (She wants to become a police officer) is the correct answer."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '나는 영어___ 과학을 좋아해요.' (I like English and Science)",
+        "options": ["와", "과", "나", "이나"],
+        "answer": 0,
+        "explanation": "영어 (English) ends in a vowel, so it takes the particle '와' (and)."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and answer the question:\n'재우의 꿈은 컴퓨터 프로그래머예요. 그래서 재우는 금요일에 학교에서 컴퓨터 수업을 들어요.'\nQuestion: What is Jaewoo's future hope?",
+        "options": [
+          "A computer programmer",
+          "A teacher",
+          "A doctor",
+          "A soccer player"
+        ],
+        "answer": 0,
+        "explanation": "The text states '재우의 꿈은 컴퓨터 프로그래머예요' (Jaewoo's dream is to be a computer programmer)."
+      }
+    ],
+    "lesson4": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Theater play / Drama performance'?",
+        "options": ["연극", "영화관", "공연", "프로그램"],
+        "answer": 0,
+        "explanation": "연극 means 'play' or 'theater'. 영화관 is 'movie theater', 공연 is 'show/performance', 프로그램 is 'program'."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Culture center'?",
+        "options": ["문화 센터", "우주 센터", "체육 센터", "미술 학원"],
+        "answer": 0,
+        "explanation": "문화 센터 means 'Culture center'. 우주 센터 is 'space center'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '한 시간 ___에 점심을 먹었어요. 배가 불러요.' (I ate lunch one hour ago)",
+        "options": ["전", "후", "동안", "마다"],
+        "answer": 0,
+        "explanation": "The grammar particle '-전에' means 'ago' or 'before'. 한 시간 전에 = one hour ago."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '저는 일주일 ___에 여행을 가요. 아주 신나요.' (I am going on a trip a week from now / a week later)",
+        "options": ["후", "전", "동안", "마다"],
+        "answer": 0,
+        "explanation": "The particle '-후에' means 'after' or 'later'. 일주일 후에 = a week later / after a week."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'When does the play start?'",
+        "options": [
+          "연극은 몇 시에 시작해요?",
+          "영화는 몇 시에 끝나요?",
+          "공연은 언제 시작해요?",
+          "지금 몇 시예요?"
+        ],
+        "answer": 0,
+        "explanation": "연극은 (the play) + 몇 시에 (at what time) + 시작해요 (starts) = '연극은 몇 시에 시작해요?'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson4_play.jpg",
+        "question": "Look at the image showing children wearing costumes on a stage and choose the word:",
+        "options": ["연극", "컴퓨터 수업", "수영", "미술"],
+        "answer": 0,
+        "explanation": "The children are performing on a stage with curtains, which represents a play or drama, '연극' in Korean."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson4_calendar.jpg",
+        "question": "Look at the image showing weeks on a calendar grid and select the word:",
+        "options": ["일주일", "하루", "한 달", "일 년"],
+        "answer": 0,
+        "explanation": "The calendar focuses on days forming a week, which is '일주일' (one week) in Korean."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 운동을 자주 해요?\nAnswer: ___________________.",
+        "options": [
+          "네, 저녁마다 운동을 해요",
+          "아니요, 아침에 운동을 시작해요",
+          "한 시간 후에 끝나요",
+          "연극은 영화관에서 봐요"
+        ],
+        "answer": 0,
+        "explanation": "The question asks if you exercise often. The response '네, 저녁마다 운동을 해요' (Yes, I exercise every evening) is the most natural frequency answer."
+      },
+      {
+        "type": "antonym",
+        "question": "What is the opposite of '시작해요' (starts, begins)?",
+        "options": ["끝나요", "가요", "와요", "배워요"],
+        "answer": 0,
+        "explanation": "The opposite of 시작해요 (starts) is 끝나요 (ends)."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and answer the question:\n'연극은 열 시에 시작해요. 그리고 한 시간 후에 끝나요.'\nQuestion: What time does the play end?",
+        "options": [
+          "At 11 o'clock (열한 시)",
+          "At 10 o'clock (열 시)",
+          "At 9 o'clock (아홉 시)",
+          "At 12 o'clock (열두 시)"
+        ],
+        "answer": 0,
+        "explanation": "The play starts at 10 (열 시) and ends one hour later (한 시간 후에). Therefore, it ends at 11 o'clock (열한 시)."
+      }
+    ],
+    "lesson5": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Festival'?",
+        "options": ["축제", "전시회", "공연", "음악회"],
+        "answer": 0,
+        "explanation": "축제 means 'Festival'. 전시회 (Exhibition), 공연 (Performance), 음악회 (Concert)."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'To throw'?",
+        "options": ["던지다", "잡다", "타다", "날리다"],
+        "answer": 0,
+        "explanation": "던지다 means 'To throw'. 잡다 is 'to catch/hold', 타다 is 'to ride', 날리다 is 'to fly'."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '다섯 시___ 여덟 시까지 축제를 해요.' (The festival runs from 5:00 to 8:00)",
+        "options": ["부터", "까지", "동안", "마다"],
+        "answer": 0,
+        "explanation": "The grammar pattern '-부터 -까지' means 'from... to...' regarding time. 다섯 시부터 = from 5 o'clock."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '세 시간 ___ 축제를 해요.' (We hold the festival for three hours)",
+        "options": ["동안", "부터", "까지", "전"],
+        "answer": 0,
+        "explanation": "The particle '-동안' means 'during' or 'for a duration'. 세 시간 동안 = for three hours."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'From what time to what time does the festival run?'",
+        "options": [
+          "몇 시부터 몇 시까지 축제를 해요?",
+          "축제 때 무엇을 하고 싶어요?",
+          "축제는 언제 끝나요?",
+          "내일 축제에 같이 가요?"
+        ],
+        "answer": 0,
+        "explanation": "몇 시부터 (from what time) + 몇 시까지 (to what time) + 축제를 해요 (hold festival) = '몇 시부터 몇 시까지 축제를 해요?'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson5_festival.jpg",
+        "question": "Look at the image showing outdoor tents, balloons and kids playing games, and select the term:",
+        "options": ["축제", "도서관", "우주 센터", "수영장"],
+        "answer": 0,
+        "explanation": "The festival outdoor activity matches '축제' (Festival) in Korean."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson5_throw.jpg",
+        "question": "Look at the image showing a boy throwing a ball, and choose the correct action:",
+        "options": ["던져요", "잡아요", "타요", "날려요"],
+        "answer": 0,
+        "explanation": "The boy is throwing a ball, which matches '던져요' (throw) in Korean. 잡아요 is catch/hold."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 봄 축제 때 뭘 하고 싶어요?\nAnswer: ___________________.",
+        "options": [
+          "놀이 기구를 많이 타고 싶어요",
+          "아침 여덟 시에 끝나요",
+          "공포 영화는 싫어해요",
+          "침대가 책상 옆에 있어요"
+        ],
+        "answer": 0,
+        "explanation": "The question asks what you want to do during the spring festival. The response '놀이 기구를 많이 타고 싶어요' (I want to ride many amusement park rides) is the most logical answer."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blanks: '토요일 아홉 시______ 열한 시______ 한국어를 배워요.' (I learn Korean from 9:00 to 11:00 on Saturdays)",
+        "options": [
+          "부터 / 까지",
+          "에 / 에서",
+          "전 / 후",
+          "동안 / 마다"
+        ],
+        "answer": 0,
+        "explanation": "Since it expresses time range from 9:00 to 11:00, we use '부터' (from) and '까지' (to)."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and answer the question:\n'이번 토요일에 학교에서 과학 축제를 해요. 축제는 열한 시부터 세 시까지 해요. 저는 물 로켓을 날리고 싶어요.'\nQuestion: For how many hours does the science festival run?",
+        "options": [
+          "4 hours (네 시간)",
+          "3 hours (세 시간)",
+          "2 hours (두 시간)",
+          "5 hours (다섯 시간)"
+        ],
+        "answer": 0,
+        "explanation": "The festival runs from 11 o'clock (열한 시) to 3 o'clock (세 시). 15:00 - 11:00 = 4 hours. So it runs for 4 hours (네 시간)."
+      }
+    ],
+    "lesson6": [
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Exhibition / Art show'?",
+        "options": ["전시회", "박물관", "미술 수업", "학원"],
+        "answer": 0,
+        "explanation": "전시회 means 'Exhibition' or 'Art show'. 박물관 is 'museum', 미술 수업 is 'art class'."
+      },
+      {
+        "type": "vocab",
+        "question": "Which of the following words means 'Space Center'?",
+        "options": ["우주 센터", "문화 센터", "태권도장", "운동장"],
+        "answer": 0,
+        "explanation": "우주 센터 means 'Space Center' (e.g. Naro Space Center)."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '일주일 ___에 전시회가 있어요. 미술관에 갈 거예요.' (There is an exhibition a week from now)",
+        "options": ["후", "전", "동안", "마다"],
+        "answer": 0,
+        "explanation": "The particle '-후에' means 'after' or 'later'. 일주일 후에 = a week later / after a week."
+      },
+      {
+        "type": "grammar",
+        "question": "Fill in the blank: '어제 저녁에 두 시간 ___ 축구를 했어요. 아주 피곤해요.' (I played soccer for two hours last night)",
+        "options": ["동안", "부터", "까지", "전"],
+        "answer": 0,
+        "explanation": "The particle '-동안' indicates duration. 두 시간 동안 = for two hours."
+      },
+      {
+        "type": "dialogue",
+        "question": "Translate to Korean: 'When did you go to the exhibition?'",
+        "options": [
+          "전시회에 언제 갔어요?",
+          "전시회는 언제 시작해요?",
+          "전시회에서 무엇을 보았어요?",
+          "전시회는 몇 시간 동안 해요?"
+        ],
+        "answer": 0,
+        "explanation": "전시회에 (to the exhibition) + 언제 (when) + 갔어요 (went) = '전시회에 언제 갔어요?'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/book4_lesson2_drawing.jpg",
+        "question": "Look at the child painting pictures and select the correct Korean term for 'exhibition':",
+        "options": ["전시회", "도서관", "공원", "시장"],
+        "answer": 0,
+        "explanation": "Seongjin is painting to prepare his artworks for the '전시회' (exhibition)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson7_clock3.jpg",
+        "question": "The exhibition starts at the time shown on the clock. What time does it start?",
+        "options": ["세 시", "네 시", "다섯 시", "여섯 시"],
+        "answer": 0,
+        "explanation": "The clock shows exactly 3 o'clock. Hours are counted in Pure Korean, which is '세 시'."
+      },
+      {
+        "type": "dialogue",
+        "question": "Complete the dialogue:\nQuestion: 만들기 체험은 언제예요?\nAnswer: ___________________.",
+        "options": [
+          "다섯 시 삼십 분부터 한 시간 동안이에요",
+          "네, 일요일마다 만들기 체험을 해요",
+          "한 시간 전에 끝났어요",
+          "미술관은 학교 옆에 있어요"
+        ],
+        "answer": 0,
+        "explanation": "The question asks when the craft activity (만들기 체험) is. The response '다섯 시 삼십 분부터 한 시간 동안이에요' (From 5:30 for one hour) is the correct schedule answer."
+      },
+      {
+        "type": "grammar",
+        "question": "What is the meaning of the time particle '한 시간 후'?",
+        "options": [
+          "1 hour later / after 1 hour",
+          "1 hour ago / 1 hour before",
+          "During 1 hour",
+          "Every 1 hour"
+        ],
+        "answer": 0,
+        "explanation": "후 means 'after' or 'later'. Thus, 한 시간 후 means '1 hour later' or 'after 1 hour'."
+      },
+      {
+        "type": "reading",
+        "question": "Read the text and answer the question:\n'저는 일주일 후에 전시회가 있어서 요즘 저녁마다 그림을 그려요. 오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요.'\nQuestion: What did this person paint today?",
+        "options": [
+          "The sea (바다)",
+          "A rocket (로켓)",
+          "A flower (꽃)",
+          "A house (집)"
+        ],
+        "answer": 0,
+        "explanation": "The text says '오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요' (I painted the sea for one hour starting from 7 o'clock). So the correct answer is The sea (바다)."
+      }
+    ]
   }
 };
