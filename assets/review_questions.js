@@ -783,35 +783,35 @@ window.REVIEW_QUESTIONS = {
     "lesson1": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Police officer'?",
+        "question": "Từ nào sau đây nghĩa là 'Cảnh sát'?",
         "options": ["경찰", "가수", "선생님", "과학자"],
         "answer": 0,
-        "explanation": "경찰 means 'Police officer'. 가수 is 'singer', 선생님 is 'teacher', 과학자 is 'scientist'."
+        "explanation": "경찰 nghĩa là cảnh sát. 가수: ca sĩ, 선생님: giáo viên, 과학자: nhà khoa học."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Scientist'?",
+        "question": "Từ nào sau đây nghĩa là 'Nhà khoa học'?",
         "options": ["과학자", "경찰", "가수", "축구 선수"],
         "answer": 0,
-        "explanation": "과학자 means 'Scientist'. 경찰 is 'police officer', 가수 is 'singer', 축구 선수 is 'soccer player'."
+        "explanation": "과학자 nghĩa là nhà khoa học. 경찰: cảnh sát, 가수: ca sĩ, 축구 선수: cầu thủ bóng đá."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '저는 나중에 가수가 되고 _________.' (I want to become a singer in the future)",
+        "question": "Điền vào chỗ trống: '저희는 나중에 가수가 되고 _________.' (Tôi muốn trở thành ca sĩ)",
         "options": ["싶어요", "되어요", "배워요", "들어요"],
         "answer": 0,
-        "explanation": "The grammar pattern '-고 싶다' expresses a desire to do something. 되고 싶어요 = I want to become."
+        "explanation": "Cấu trúc '-고 싶다' diễn tả nguyện vọng, mong muốn làm gì đó. '되고 싶어요' = muốn trở thành."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '성진이는 나중에 축구 선수___ 되고 싶어해요.' (Seongjin wants to become a soccer player)",
+        "question": "Điền vào chỗ trống: '성진이는 나중에 축구 선수___ 되고 싶어해요.' (Seongjin muốn trở thành cầu thủ bóng đá)",
         "options": ["가", "이", "를", "을"],
         "answer": 0,
-        "explanation": "The verb '되다' (become) takes the subject particle '-이/가'. Since '선수' ends in a vowel, it takes '가'."
+        "explanation": "Động từ '되다' (trở thành) đi với trợ từ chủ ngữ '-이/가'. Vì '선수' kết thúc bằng nguyên âm nên chọn '가'."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'What do you want to do in the future?'",
+        "question": "Dịch sang tiếng Hàn: 'Hy vọng tương lai của bạn là gì?'",
         "options": [
           "장래 희망이 뭐예요?",
           "요리를 잘해요?",
@@ -819,27 +819,29 @@ window.REVIEW_QUESTIONS = {
           "학교에 가고 싶어요?"
         ],
         "answer": 0,
-        "explanation": "장래 희망이 뭐예요? (What is your hope for the future / What do you want to do?). 요리를 잘해요? = Are you good at cooking?"
+        "explanation": "장래 희망 (hy vọng tương lai/ước mơ), 뭐예요? (là gì?). Câu hoàn chỉnh: '장래 희망이 뭐예요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson1_soccer.jpg",
-        "question": "Look at the image and choose the correct job matching: (He is kick a soccer ball)",
+        "question": "Nhìn hình và chọn từ tương ứng với nghề nghiệp:",
         "options": ["축구 선수", "가수", "경찰", "과학자"],
         "answer": 0,
-        "explanation": "The boy is playing soccer, so his job/hope is a soccer player, which is '축구 선수' in Korean."
+        "explanation": "Hình vẽ bạn nhỏ đang đá bóng, nghề nghiệp mơ ước tương ứng là cầu thủ bóng đá: '축구 선수'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson1_singer.jpg",
-        "question": "Look at the image and choose the correct job matching: (She is singing with a microphone)",
+        "question": "Nhìn hình và chọn từ tương ứng với nghề nghiệp:",
         "options": ["가수", "선생님", "경찰", "과학자"],
         "answer": 0,
-        "explanation": "The girl is singing on a stage, so her job/hope is a singer, which is '가수' in Korean."
+        "explanation": "Hình vẽ bạn nhỏ đang hát trên sân khấu với micro, nghề nghiệp mơ ước tương ứng là ca sĩ: '가수'."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 무슨 일을 하고 싶어요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 무슨 일을 하고 싶어요?
+나: ___________________.",
         "options": [
           "나는 요리사가 되고 싶어요",
           "요리를 전혀 못 해요",
@@ -847,60 +849,62 @@ window.REVIEW_QUESTIONS = {
           "학교에서 축구를 해요"
         ],
         "answer": 0,
-        "explanation": "The question asks what work you want to do. The answer '나는 요리사가 되고 싶어요' (I want to become a chef) is the most natural reply."
+        "explanation": "Câu hỏi hỏi muốn làm công việc gì (무슨 일을 하고 싶어요?). Câu trả lời phù hợp nhất là '나는 요리사가 되고 싶어요' (Tôi muốn trở thành đầu bếp)."
       },
       {
         "type": "antonym",
-        "question": "What is the opposite of '재미있다' (fun, interesting)?",
+        "question": "Từ trái nghĩa với '재미있다' (thú vị, hay) là gì?",
         "options": ["재미없다", "맛있다", "맛없다", "어렵다"],
         "answer": 0,
-        "explanation": "The opposite of 재미있다 (fun) is 재미없다 (not fun, boring). 맛있다 (delicious) vs 맛없다 (tasteless), 어렵다 (difficult)."
+        "explanation": "Trái nghĩa với 재미있다 (thú vị) là 재미없다 (nhàm chán, không hay)."
       },
       {
         "type": "reading",
-        "question": "Read the text and answer the question:\n'저는 무용가가 되고 싶어요. 그래서 이번 방학에 발레를 배우고 싶어요. 그리고 한국 무용도 배우고 싶어요.'\nQuestion: What does this person want to become?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
+'저희는 무용가가 되고 싶어요. 그래서 이번 방학에 발레를 배우고 싶어요. 그리고 한국 무용도 배우고 싶어요.'
+Hỏi: Nhân vật muốn trở thành gì trong tương lai?",
         "options": [
-          "A dancer (무용가)",
-          "A soccer player (축구 선수)",
-          "A chef (요리사)",
-          "A teacher (선생님)"
+          "Vũ công (무용가)",
+          "Cầu thủ bóng đá (축구 선수)",
+          "Đầu bếp (요리사)",
+          "Giáo viên (선생님)"
         ],
         "answer": 0,
-        "explanation": "The text says '저는 무용가가 되고 싶어요' (I want to become a dancer). So the correct answer is A dancer."
+        "explanation": "Trong đoạn văn có viết '저희는 무용가가 되고 싶어요' (Tôi muốn trở thành vũ công). Do đó đáp án đúng là Vũ công (무용가)."
       }
     ],
     "lesson2": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Weekend'?",
+        "question": "Từ nào sau đây nghĩa là 'Cuối tuần'?",
         "options": ["주말", "주중", "어제", "내일"],
         "answer": 0,
-        "explanation": "주말 means 'Weekend'. 주중 is 'weekdays', 어제 is 'yesterday', 내일 is 'tomorrow'."
+        "explanation": "주말 nghĩa là cuối tuần. 주중: trong tuần, 어제: hôm qua, 내일: ngày mai."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'To draw / Paint'?",
+        "question": "Từ nào sau đây nghĩa là 'Vẽ tranh'?",
         "options": ["그림을 그리다", "노래를 부르다", "글을 쓰다", "잠을 자다"],
         "answer": 0,
-        "explanation": "그림을 그리다 means 'To draw / Paint'. 노래를 부르다 is 'to sing a song', 글을 쓰다 is 'to write text'."
+        "explanation": "그림을 그리다 nghĩa là vẽ tranh. 노래를 부rưda: hát, 글을 쓰다: viết chữ."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '저는 그림을 배_______ 미술 학원에 다녀요.' (I go to art school to learn painting)",
+        "question": "Điền vào chỗ trống: '저희는 그림을 배_______ 미술 학원에 다녀요.' (Tôi đến học viện mỹ thuật để học vẽ)",
         "options": ["우러", "우며", "우고", "워서"],
         "answer": 0,
-        "explanation": "The grammar pattern '-(으)러 가다/오다/다니다' indicates the purpose of going/coming/attending. 배우다 ends in a vowel, so it takes '-러'."
+        "explanation": "Cấu trúc '-(으)러 가다/오다/다니다' chỉ mục đích di chuyển để thực hiện hành động. 배우다 kết thúc bằng nguyên âm nên đi với '-러'."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '미술 수업이 재미있_______ 열심히 연습해요.' (Because art class is fun, I practice hard)",
+        "question": "Điền vào chỗ trống: '미술 수업이 재미있_______ 열심히 연습해요.' (Vì giờ học vẽ thú vị nên tôi luyện tập chăm chỉ)",
         "options": ["어서", "으러", "으며", "고"],
         "answer": 0,
-        "explanation": "The grammar pattern '-아서/어서' indicates a cause or reason (so, because). 재미있다 + 어서 becomes 재미있어서."
+        "explanation": "Cấu trúc '-아서/어서' chỉ nguyên nhân, lý do (vì... nên). 재미있다 + 어서 biến thành 재미있어서."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'What do you do on weekends?'",
+        "question": "Dịch sang tiếng Hàn: 'Cuối tuần bạn làm gì?'",
         "options": [
           "주말에 뭘 해요?",
           "언제 미술 학원에 가요?",
@@ -908,27 +912,29 @@ window.REVIEW_QUESTIONS = {
           "방학 때 어디에 가요?"
         ],
         "answer": 0,
-        "explanation": "주말에 뭘 해요? (What do you do on weekends?)."
+        "explanation": "주말에 (vào cuối tuần) + 뭘 해요 (làm gì) = '주말에 뭘 해요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson2_drawing.jpg",
-        "question": "Look at the image and choose the matching hobby:",
+        "question": "Nhìn hình vẽ và chọn hoạt động tương ứng:",
         "options": ["그림을 그려요", "태권도를 해요", "컴퓨터를 배워요", "축구를 해요"],
         "answer": 0,
-        "explanation": "The child is painting on an easel, which matches '그림을 그려요' (draw/paint pictures)."
+        "explanation": "Tranh vẽ bạn nhỏ đang ngồi vẽ trên giá vẽ tranh, tương ứng là hoạt động '그림을 그려요' (vẽ tranh)."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson2_taekwondo.jpg",
-        "question": "Look at the image and choose the matching sport:",
+        "question": "Nhìn hình vẽ và chọn môn thể thao tương ứng:",
         "options": ["태권도", "축구", "수영", "발레"],
         "answer": 0,
-        "explanation": "The child is wearing a white uniform and black belt practicing a martial art, which is '태권도' (Taekwondo)."
+        "explanation": "Tranh vẽ bạn nhỏ mặc võ phục và thắt đai đen, đó là môn võ '태권도' (Taekwondo)."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 주말에 왜 미술 학원에 가요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 주말에 왜 미술 학원에 가요?
+나: ___________________.",
         "options": [
           "그림을 배우러 가요",
           "태권도가 재미있어요",
@@ -936,60 +942,61 @@ window.REVIEW_QUESTIONS = {
           "가수 요리사 경찰"
         ],
         "answer": 0,
-        "explanation": "The question asks why you go to art school on weekends. The answer '그림을 배우러 가요' (I go to learn painting) is the correct purpose reply."
+        "explanation": "Câu hỏi hỏi lý do tại sao đến học viện mỹ thuật vào cuối tuần (왜 미술 학원에 가요?). Câu trả lời chỉ mục đích phù hợp là '그림을 배우러 가요' (Đến để học vẽ)."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '저는 토요일______ 태권도를 배워요.' (I learn Taekwondo on Saturdays)",
+        "question": "Điền vào chỗ trống: '저희는 토요일______ 태권도를 배워요.' (Tôi học Taekwondo vào thứ Bảy)",
         "options": ["에", "에서", "와", "과"],
         "answer": 0,
-        "explanation": "The particle '-에' indicates the time when an action takes place. 토요일에 = on Saturday."
+        "explanation": "Trợ từ '-에' dùng để chỉ mốc thời gian diễn ra hành động. 토요일에 = vào thứ Bảy."
       },
       {
         "type": "reading",
-        "question": "Read the text and choose the correct statement:\n'성진이는 주말에 태권도를 배워요. 태권도가 운동도 되고 재미있어서 열심히 연습해요.'",
+        "question": "Đọc đoạn văn sau và chọn phát biểu ĐÚNG:
+'성진이는 주말에 태권도를 배워요. 태권도가 운동도 되고 재미있어서 열심히 연습해요.'",
         "options": [
-          "Seongjin learns Taekwondo on weekends because it is good exercise and fun.",
-          "Seongjin learns painting because it is easy.",
-          "Seongjin hates practicing Taekwondo.",
-          "Seongjin is a professional soccer player."
+          "Seongjin học Taekwondo vào cuối tuần vì nó vừa là vận động vừa thú vị.",
+          "Seongjin học vẽ tranh vì nó dễ.",
+          "Seongjin ghét luyện tập Taekwondo.",
+          "Seongjin là cầu thủ bóng đá chuyên nghiệp."
         ],
         "answer": 0,
-        "explanation": "The text states '태권도가 운동도 되고 재미있어서' (Taekwondo is exercise and fun, so...), meaning he learns it because it is good exercise and fun."
+        "explanation": "Đoạn văn viết '태권도가 운동도 되고 재미있어서 열심히 연습해요' (Taekwondo vừa là thể dục vừa thú vị nên chăm chỉ luyện tập). Đáp án đúng là Seongjin học Taekwondo vào cuối tuần vì nó vừa là vận động vừa thú vị."
       }
     ],
     "lesson3": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Computer class'?",
+        "question": "Từ nào sau đây nghĩa là 'Giờ học máy tính'?",
         "options": ["컴퓨터 수업", "미술 수업", "영어 수업", "체육 수업"],
         "answer": 0,
-        "explanation": "컴퓨터 수업 means 'Computer class'. 미술 수업 (Art class), 영어 수업 (English class), 체육 수업 (P.E. class)."
+        "explanation": "컴퓨터 수업 nghĩa là giờ học máy tính. 미술 수업 (học vẽ), 영어 수업 (học tiếng Anh), 체육 수업 (học thể dục)."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Traditional Korean paper'?",
+        "question": "Từ nào sau đây nghĩa là 'Giấy truyền thống Hàn Quốc'?",
         "options": ["한지", "종이", "공주", "인형"],
         "answer": 0,
-        "explanation": "한지 (Hanji) means 'traditional Korean paper'. 종이 is general paper, 공주 is princess, 인형 is doll."
+        "explanation": "한지 (Hanji) nghĩa là giấy truyền thống của Hàn Quốc. 종이: giấy thông thường."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '우리는 월요일___ 수요일에 컴퓨터 학원에 가요.' (We go to computer school on Mondays and Wednesdays)",
+        "question": "Điền vào chỗ trống: '우리는 월요일___ 수요일에 컴퓨터 학원에 가요.' (Chúng tôi đi đến học viện máy tính vào thứ Hai và thứ Tư)",
         "options": ["과", "와", "나", "이나"],
         "answer": 0,
-        "explanation": "The particle '-와/과' means 'and' joining nouns. '월요일' ends in a consonant patchim 'ㄹ', so it takes '과'."
+        "explanation": "Liên từ '와/과' mang nghĩa là 'và'. '월요일' kết thúc bằng phụ âm 'ㄹ' nên đi với '과'."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '수연이는 체육 시간과 미술 시간에 체육복___ 운동화를 가져왔어요.'",
+        "question": "Điền vào chỗ trống: '체육복___ 운동화를 가져오세요.' (Hãy mang theo đồng phục thể dục và giày thể thao)",
         "options": ["과", "와", "을", "를"],
-        "answer": 1,
-        "explanation": "Since '체육복' ends in a consonant, it takes '과'. Wait, '운동화' ends in a vowel, but here the blank follows '체육복'. Since '체육복' has a patchim, it takes '과'. Oh! Let's check the options: 체육복과 운동화. Ah! Let's check if the prompt word in blank has a vowel/consonant: '체육복' ends in 'ㄱ' (consonant) -> 과. So the blank was '체육복___ 운동화' -> 과. Wait, let's write options so '과' is correct."
+        "answer": 0,
+        "explanation": "'체육복' kết thúc bằng phụ âm 'ㄱ' nên liên từ 'và' thích hợp đi kèm là '과'."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'When do you swim?'",
+        "question": "Dịch sang tiếng Hàn: 'Khi nào bạn bơi?'",
         "options": [
           "언제 수영을 해요?",
           "무슨 요일에 수영장에 가요?",
@@ -997,27 +1004,29 @@ window.REVIEW_QUESTIONS = {
           "수영장에 사람이 많아요?"
         ],
         "answer": 0,
-        "explanation": "언제 (when) + 수영을 해요 (do swimming) = '언제 수영을 해요?'."
+        "explanation": "언제 (khi nào) + 수영을 해요 (bơi) = '언제 수영을 해요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson3_computer.jpg",
-        "question": "Look at the image and choose the matching school class:",
+        "question": "Nhìn hình vẽ và chọn tiết học tương ứng:",
         "options": ["컴퓨터 수업", "미술 수업", "수영 수업", "발레 수업"],
         "answer": 0,
-        "explanation": "The kids are using desktop computers in a school classroom, which is '컴퓨터 수업' (Computer class)."
+        "explanation": "Hình vẽ các bạn học sinh đang sử dụng máy tính trong lớp học, đó là tiết học máy tính: '컴퓨터 수업'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson3_hanji.jpg",
-        "question": "Look at the image showing traditional Korean paper dolls and select the term:",
+        "question": "Nhìn hình búp bê giấy truyền thống Hàn Quốc và chọn từ tương ứng:",
         "options": ["한지 인형", "플라스틱 인형", "바비 인형", "장난감"],
         "answer": 0,
-        "explanation": "The image shows colorful traditional paper dolls, which are '한지 인형' (Hanji dolls)."
+        "explanation": "Hình vẽ búp bê được làm từ giấy Hanji truyền thống của Hàn Quốc, tiếng Hàn là '한지 인형'."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 수연이는 장래 희망이 뭐예요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 수연이는 장래 희망이 뭐예요?
+나: ___________________.",
         "options": [
           "경찰이 되고 싶어해요",
           "컴퓨터 게임을 하고 있어요",
@@ -1025,60 +1034,62 @@ window.REVIEW_QUESTIONS = {
           "주말에 태권도를 배워요"
         ],
         "answer": 0,
-        "explanation": "The question asks what Sooyoun's future dream is. The reply '경찰이 되고 싶어해요' (She wants to become a police officer) is the correct answer."
+        "explanation": "Câu hỏi hỏi ước mơ tương lai của Sooyoun là gì. Câu trả lời thích hợp là '경찰이 되고 싶어해요' (Cậu ấy muốn trở thành cảnh sát)."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '나는 영어___ 과학을 좋아해요.' (I like English and Science)",
+        "question": "Điền vào chỗ trống: '나는 영어___ 과학을 좋아해요.' (Tôi thích tiếng Anh và khoa học)",
         "options": ["와", "과", "나", "이나"],
         "answer": 0,
-        "explanation": "영어 (English) ends in a vowel, so it takes the particle '와' (and)."
+        "explanation": "'영어' kết thúc bằng nguyên âm 'ㅓ' nên đi với liên từ '와' (và)."
       },
       {
         "type": "reading",
-        "question": "Read the text and answer the question:\n'재우의 꿈은 컴퓨터 프로그래머예요. 그래서 재우는 금요일에 학교에서 컴퓨터 수업을 들어요.'\nQuestion: What is Jaewoo's future hope?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
+'재우의 꿈은 컴퓨터 프로그래머예요. 그래서 재우는 금요일에 학교에서 컴퓨터 수업을 들어요.'
+Hỏi: Ước mơ của Jaewoo là gì?",
         "options": [
-          "A computer programmer",
-          "A teacher",
-          "A doctor",
-          "A soccer player"
+          "Nhà lập trình máy tính (컴퓨터 프로그래머)",
+          "Vũ công (무용가)",
+          "Bác sĩ (의사)",
+          "Cầu thủ bóng đá (축구 선수)"
         ],
         "answer": 0,
-        "explanation": "The text states '재우의 꿈은 컴퓨터 프로그래머예요' (Jaewoo's dream is to be a computer programmer)."
+        "explanation": "Theo đoạn văn: '재우의 꿈은 컴퓨터 프로그래머예요' (Ước mơ của Jaewoo là nhà lập trình máy tính)."
       }
     ],
     "lesson4": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Theater play / Drama performance'?",
+        "question": "Từ nào sau đây nghĩa là 'Kịch / Vở kịch'?",
         "options": ["연극", "영화관", "공연", "프로그램"],
         "answer": 0,
-        "explanation": "연극 means 'play' or 'theater'. 영화관 is 'movie theater', 공연 is 'show/performance', 프로그램 is 'program'."
+        "explanation": "연극 nghĩa là kịch/vở kịch. 영화관: rạp phim, 공연: buổi biểu diễn, 프로그램: chương trình."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Culture center'?",
+        "question": "Từ nào sau đây nghĩa là 'Trung tâm văn hóa'?",
         "options": ["문화 센터", "우주 센터", "체육 센터", "미술 학원"],
         "answer": 0,
-        "explanation": "문화 센터 means 'Culture center'. 우주 센터 is 'space center'."
+        "explanation": "문화 센터 nghĩa là trung tâm văn hóa. 우주 센터: trung tâm vũ trụ."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '한 시간 ___에 점심을 먹었어요. 배가 불러요.' (I ate lunch one hour ago)",
+        "question": "Điền vào chỗ trống: '한 시간 ___에 점심을 먹었어요. 배가 불러요.' (Tôi đã ăn trưa một tiếng trước)",
         "options": ["전", "후", "동안", "마다"],
         "answer": 0,
-        "explanation": "The grammar particle '-전에' means 'ago' or 'before'. 한 시간 전에 = one hour ago."
+        "explanation": "Cấu trúc '-전에' nghĩa là 'trước' hoặc 'trước đây (về mặt thời gian)'. 한 시간 전에 = một tiếng trước."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '저는 일주일 ___에 여행을 가요. 아주 신나요.' (I am going on a trip a week from now / a week later)",
+        "question": "Điền vào chỗ trống: '저희는 일주일 ___에 여행을 가요. 아주 신나요.' (Tôi sẽ đi du lịch sau một tuần nữa)",
         "options": ["후", "전", "동안", "마다"],
         "answer": 0,
-        "explanation": "The particle '-후에' means 'after' or 'later'. 일주일 후에 = a week later / after a week."
+        "explanation": "Cấu trúc '-후e' nghĩa là 'sau' hoặc 'sau khi (về mặt thời gian)'. 일주일 후에 = sau một tuần."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'When does the play start?'",
+        "question": "Dịch sang tiếng Hàn: 'Vở kịch bắt đầu lúc mấy giờ?'",
         "options": [
           "연극은 몇 시에 시작해요?",
           "영화는 몇 시에 끝나요?",
@@ -1086,27 +1097,29 @@ window.REVIEW_QUESTIONS = {
           "지금 몇 시예요?"
         ],
         "answer": 0,
-        "explanation": "연극은 (the play) + 몇 시에 (at what time) + 시작해요 (starts) = '연극은 몇 시에 시작해요?'."
+        "explanation": "연극은 (vở kịch) + 몇 시에 (mấy giờ) + 시작해요 (bắt đầu) = '연극은 몇 시에 시작해요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson4_play.jpg",
-        "question": "Look at the image showing children wearing costumes on a stage and choose the word:",
+        "question": "Nhìn hình các bạn học sinh mặc trang phục biểu diễn trên sân khấu và chọn từ tương ứng:",
         "options": ["연극", "컴퓨터 수업", "수영", "미술"],
         "answer": 0,
-        "explanation": "The children are performing on a stage with curtains, which represents a play or drama, '연극' in Korean."
+        "explanation": "Hình vẽ các bạn nhỏ đang diễn kịch trên sân khấu trường học, tiếng Hàn là '연극' (kịch)."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson4_calendar.jpg",
-        "question": "Look at the image showing weeks on a calendar grid and select the word:",
+        "question": "Nhìn hình tờ lịch chỉ thời gian và chọn từ phù hợp:",
         "options": ["일주일", "하루", "한 달", "일 년"],
         "answer": 0,
-        "explanation": "The calendar focuses on days forming a week, which is '일주일' (one week) in Korean."
+        "explanation": "Hình vẽ tờ lịch đánh dấu chu kỳ 7 ngày, đó là một tuần, tiếng Hàn là '일주일'."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 운동을 자주 해요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 운동을 자주 해요?
+나: ___________________.",
         "options": [
           "네, 저녁마다 운동을 해요",
           "아니요, 아침에 운동을 시작해요",
@@ -1114,60 +1127,62 @@ window.REVIEW_QUESTIONS = {
           "연극은 영화관에서 봐요"
         ],
         "answer": 0,
-        "explanation": "The question asks if you exercise often. The response '네, 저녁마다 운동을 해요' (Yes, I exercise every evening) is the most natural frequency answer."
+        "explanation": "Câu hỏi hỏi có thường xuyên tập thể dục không (자주 해요?). Câu trả lời chỉ tần suất thích hợp là '네, 저녁마다 운동을 해요' (Vâng, tối nào tôi cũng tập)."
       },
       {
         "type": "antonym",
-        "question": "What is the opposite of '시작해요' (starts, begins)?",
+        "question": "Từ trái nghĩa với '시작해요' (bắt đầu) là gì?",
         "options": ["끝나요", "가요", "와요", "배워요"],
         "answer": 0,
-        "explanation": "The opposite of 시작해요 (starts) is 끝나요 (ends)."
+        "explanation": "시작해요 (bắt đầu) trái nghĩa với 끝나요 (kết thúc)."
       },
       {
         "type": "reading",
-        "question": "Read the text and answer the question:\n'연극은 열 시에 시작해요. 그리고 한 시간 후에 끝나요.'\nQuestion: What time does the play end?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
+'연극은 열 시에 시작해요. 그리고 한 시간 후에 끝나요.'
+Hỏi: Vở kịch kết thúc lúc mấy giờ?",
         "options": [
-          "At 11 o'clock (열한 시)",
-          "At 10 o'clock (열 시)",
-          "At 9 o'clock (아홉 시)",
-          "At 12 o'clock (열두 시)"
+          "Lúc 11 giờ (열한 시)",
+          "Lúc 10 giờ (열 시)",
+          "Lúc 9 giờ (아홉 시)",
+          "Lúc 12 giờ (열두 시)"
         ],
         "answer": 0,
-        "explanation": "The play starts at 10 (열 시) and ends one hour later (한 시간 후에). Therefore, it ends at 11 o'clock (열한 시)."
+        "explanation": "Vở kịch bắt đầu lúc 10 giờ (열 시) và kết thúc sau đó 1 tiếng (한 시간 후에). Do đó vở kịch kết thúc lúc 11 giờ (열한 시)."
       }
     ],
     "lesson5": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Festival'?",
+        "question": "Từ nào sau đây nghĩa là 'Lễ hội'?",
         "options": ["축제", "전시회", "공연", "음악회"],
         "answer": 0,
-        "explanation": "축제 means 'Festival'. 전시회 (Exhibition), 공연 (Performance), 음악회 (Concert)."
+        "explanation": "축제 nghĩa là lễ hội. 전시회 (triển lãm), 공연 (biểu diễn), 음악회 (hòa nhạc)."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'To throw'?",
+        "question": "Từ nào sau đây nghĩa là 'Ném'?",
         "options": ["던지다", "잡다", "타다", "날리다"],
         "answer": 0,
-        "explanation": "던지다 means 'To throw'. 잡다 is 'to catch/hold', 타다 is 'to ride', 날리다 is 'to fly'."
+        "explanation": "던지다 nghĩa là ném. 잡다: bắt/cầm, 타다: đi xe, 날리다: thả bay."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '다섯 시___ 여덟 시까지 축제를 해요.' (The festival runs from 5:00 to 8:00)",
+        "question": "Điền vào chỗ trống: '다섯 시___ 여덟 시까지 축제를 해요.' (Lễ hội diễn ra từ 5 giờ đến 8 giờ)",
         "options": ["부터", "까지", "동안", "마다"],
         "answer": 0,
-        "explanation": "The grammar pattern '-부터 -까지' means 'from... to...' regarding time. 다섯 시부터 = from 5 o'clock."
+        "explanation": "Cấu trúc '-부터 -까지' nghĩa là 'từ... đến...' (dùng cho mốc thời gian). 다섯 시부터 = từ 5 giờ."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '세 시간 ___ 축제를 해요.' (We hold the festival for three hours)",
+        "question": "Điền vào chỗ trống: '세 시간 ___ 축제를 해요.' (Lễ hội diễn ra trong vòng 3 tiếng)",
         "options": ["동안", "부터", "까지", "전"],
         "answer": 0,
-        "explanation": "The particle '-동안' means 'during' or 'for a duration'. 세 시간 동안 = for three hours."
+        "explanation": "Trợ từ '-동안' nghĩa là 'trong vòng/suốt một khoảng thời gian'. 세 시간 동안 = trong vòng 3 tiếng."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'From what time to what time does the festival run?'",
+        "question": "Dịch sang tiếng Hàn: 'Lễ hội diễn ra từ mấy giờ đến mấy giờ?'",
         "options": [
           "몇 시부터 몇 시까지 축제를 해요?",
           "축제 때 무엇을 하고 싶어요?",
@@ -1175,27 +1190,29 @@ window.REVIEW_QUESTIONS = {
           "내일 축제에 같이 가요?"
         ],
         "answer": 0,
-        "explanation": "몇 시부터 (from what time) + 몇 시까지 (to what time) + 축제를 해요 (hold festival) = '몇 시부터 몇 시까지 축제를 해요?'."
+        "explanation": "몇 시부터 (từ mấy giờ) + 몇 시까지 (đến mấy giờ) + 축제를 해요 (tổ chức lễ hội) = '몇 시부터 몇 시까지 축제를 해요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson5_festival.jpg",
-        "question": "Look at the image showing outdoor tents, balloons and kids playing games, and select the term:",
+        "question": "Nhìn hình vẽ các gian hàng lễ hội ngoài trời và chọn từ tương ứng:",
         "options": ["축제", "도서관", "우주 센터", "수영장"],
         "answer": 0,
-        "explanation": "The festival outdoor activity matches '축제' (Festival) in Korean."
+        "explanation": "Hình vẽ các hoạt động vui chơi lễ hội ngoài trời của học sinh, tiếng Hàn là '축제' (lễ hội)."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson5_throw.jpg",
-        "question": "Look at the image showing a boy throwing a ball, and choose the correct action:",
+        "question": "Nhìn hình bạn nhỏ đang ném bóng và chọn động từ tương ứng:",
         "options": ["던져요", "잡아요", "타요", "날려요"],
         "answer": 0,
-        "explanation": "The boy is throwing a ball, which matches '던져요' (throw) in Korean. 잡아요 is catch/hold."
+        "explanation": "Bạn nhỏ đang thực hiện động tác ném bóng, tiếng Hàn là '던져요' (ném). 잡아요 là cầm/bắt."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 봄 축제 때 뭘 하고 싶어요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 봄 축제 때 뭘 하고 싶어요?
+나: ___________________.",
         "options": [
           "놀이 기구를 많이 타고 싶어요",
           "아침 여덟 시에 끝나요",
@@ -1203,11 +1220,11 @@ window.REVIEW_QUESTIONS = {
           "침대가 책상 옆에 있어요"
         ],
         "answer": 0,
-        "explanation": "The question asks what you want to do during the spring festival. The response '놀이 기구를 많이 타고 싶어요' (I want to ride many amusement park rides) is the most logical answer."
+        "explanation": "Câu hỏi hỏi muốn làm gì vào lễ hội mùa xuân (뭘 하고 싶어요?). Câu trả lời phù hợp nhất là '놀이 기구를 많이 타고 싶어요' (Tôi muốn đi nhiều trò chơi cảm giác mạnh)."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blanks: '토요일 아홉 시______ 열한 시______ 한국어를 배워요.' (I learn Korean from 9:00 to 11:00 on Saturdays)",
+        "question": "Điền vào chỗ trống: '토요일 아홉 시______ 열한 시______ 한국어를 배워요.' (Tôi học tiếng Hàn từ 9 giờ đến 11 giờ thứ Bảy)",
         "options": [
           "부터 / 까지",
           "에 / 에서",
@@ -1215,53 +1232,55 @@ window.REVIEW_QUESTIONS = {
           "동안 / 마다"
         ],
         "answer": 0,
-        "explanation": "Since it expresses time range from 9:00 to 11:00, we use '부터' (from) and '까지' (to)."
+        "explanation": "Biểu thị khoảng thời gian từ 9 giờ đến 11 giờ, ta dùng cấu trúc '부터' (từ) và '까지' (đến)."
       },
       {
         "type": "reading",
-        "question": "Read the text and answer the question:\n'이번 토요일에 학교에서 과학 축제를 해요. 축제는 열한 시부터 세 시까지 해요. 저는 물 로켓을 날리고 싶어요.'\nQuestion: For how many hours does the science festival run?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
+'이번 토요일에 학교에서 과학 축제를 해요. 축제는 열한 시부터 세 시까지 해요. 저는 물 로켓을 날리고 싶어요.'
+Hỏi: Lễ hội khoa học diễn ra trong mấy tiếng?",
         "options": [
-          "4 hours (네 시간)",
-          "3 hours (세 시간)",
-          "2 hours (두 시간)",
-          "5 hours (다섯 시간)"
+          "4 tiếng (네 시간)",
+          "3 tiếng (세 시간)",
+          "2 tiếng (두 시간)",
+          "5 tiếng (다섯 시간)"
         ],
         "answer": 0,
-        "explanation": "The festival runs from 11 o'clock (열한 시) to 3 o'clock (세 시). 15:00 - 11:00 = 4 hours. So it runs for 4 hours (네 시간)."
+        "explanation": "Lễ hội diễn ra từ 11 giờ (열한 시) đến 3 giờ chiều (세 시). Khoảng thời gian từ 11:00 đến 15:00 là đúng 4 tiếng (네 시간)."
       }
     ],
     "lesson6": [
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Exhibition / Art show'?",
+        "question": "Từ nào sau đây nghĩa là 'Triển lãm / Buổi triển lãm'?",
         "options": ["전시회", "박물관", "미술 수업", "학원"],
         "answer": 0,
-        "explanation": "전시회 means 'Exhibition' or 'Art show'. 박물관 is 'museum', 미술 수업 is 'art class'."
+        "explanation": "전시회 nghĩa là triển lãm/buổi triển lãm. 박물관 (bảo tàng), 미술 수업 (giờ học vẽ), 학원 (học viện)."
       },
       {
         "type": "vocab",
-        "question": "Which of the following words means 'Space Center'?",
+        "question": "Từ nào sau đây nghĩa là 'Trung tâm vũ trụ'?",
         "options": ["우주 센터", "문화 센터", "태권도장", "운동장"],
         "answer": 0,
-        "explanation": "우주 센터 means 'Space Center' (e.g. Naro Space Center)."
+        "explanation": "우주 센터 nghĩa là trung tâm vũ trụ (ví dụ: Trung tâm vũ trụ Naro). 문화 센터: trung tâm văn hóa."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '일주일 ___에 전시회가 있어요. 미술관에 갈 거예요.' (There is an exhibition a week from now)",
+        "question": "Điền vào chỗ trống: '일주일 ___에 전시회가 있어요. 미술관에 갈 거예요.' (Sau một tuần nữa sẽ có triển lãm)",
         "options": ["후", "전", "동안", "마다"],
         "answer": 0,
-        "explanation": "The particle '-후에' means 'after' or 'later'. 일주일 후에 = a week later / after a week."
+        "explanation": "Cấu trúc '-후에' nghĩa là 'sau' hoặc 'sau khi (về mặt thời gian)'. 일주일 후에 = sau một tuần."
       },
       {
         "type": "grammar",
-        "question": "Fill in the blank: '어제 저녁에 두 시간 ___ 축구를 했어요. 아주 피곤해요.' (I played soccer for two hours last night)",
+        "question": "Điền vào chỗ trống: '어제 저녁에 두 시간 ___ 축구를 했어요. 아주 피곤해요.' (Tối qua tôi đã đá bóng suốt 2 tiếng)",
         "options": ["동안", "부터", "까지", "전"],
         "answer": 0,
-        "explanation": "The particle '-동안' indicates duration. 두 시간 동안 = for two hours."
+        "explanation": "Biểu thị thời gian kéo dài (trong vòng 2 tiếng), ta dùng trợ từ '-동안'. 두 시간 동안 = trong vòng 2 tiếng."
       },
       {
         "type": "dialogue",
-        "question": "Translate to Korean: 'When did you go to the exhibition?'",
+        "question": "Dịch sang tiếng Hàn: 'Bạn đã đi triển lãm khi nào?'",
         "options": [
           "전시회에 언제 갔어요?",
           "전시회는 언제 시작해요?",
@@ -1269,27 +1288,29 @@ window.REVIEW_QUESTIONS = {
           "전시회는 몇 시간 동안 해요?"
         ],
         "answer": 0,
-        "explanation": "전시회에 (to the exhibition) + 언제 (when) + 갔어요 (went) = '전시회에 언제 갔어요?'."
+        "explanation": "전시회에 (đến triển lãm) + 언제 (khi nào) + 갔어요 (đã đi) = '전시회에 언제 갔어요?'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/book4_lesson2_drawing.jpg",
-        "question": "Look at the child painting pictures and select the correct Korean term for 'exhibition':",
+        "question": "Nhìn hình bạn nhỏ đang vẽ tranh để chuẩn bị tác phẩm, và chọn từ tiếng Hàn chỉ 'triển lãm':",
         "options": ["전시회", "도서관", "공원", "시장"],
         "answer": 0,
-        "explanation": "Seongjin is painting to prepare his artworks for the '전시회' (exhibition)."
+        "explanation": "Bạn nhỏ vẽ tranh để trưng bày tại buổi triển lãm, tiếng Hàn là '전시회'."
       },
       {
         "type": "visual",
         "image": "assets/quiz/lesson7_clock3.jpg",
-        "question": "The exhibition starts at the time shown on the clock. What time does it start?",
+        "question": "Buổi triển lãm bắt đầu vào thời gian chỉ trên đồng hồ. Trận triển lãm bắt đầu lúc mấy giờ?",
         "options": ["세 시", "네 시", "다섯 시", "여섯 시"],
         "answer": 0,
-        "explanation": "The clock shows exactly 3 o'clock. Hours are counted in Pure Korean, which is '세 시'."
+        "explanation": "Đồng hồ chỉ đúng 3 giờ. Giờ trong tiếng Hàn dùng số thuần Hàn là '세 시'."
       },
       {
         "type": "dialogue",
-        "question": "Complete the dialogue:\nQuestion: 만들기 체험은 언제예요?\nAnswer: ___________________.",
+        "question": "Hoàn thành hội thoại sau:
+가: 만들기 체험은 언제예요?
+나: ___________________.",
         "options": [
           "다섯 시 삼십 분부터 한 시간 동안이에요",
           "네, 일요일마다 만들기 체험을 해요",
@@ -1297,31 +1318,33 @@ window.REVIEW_QUESTIONS = {
           "미술관은 학교 옆에 있어요"
         ],
         "answer": 0,
-        "explanation": "The question asks when the craft activity (만들기 체험) is. The response '다섯 시 삼십 분부터 한 시간 동안이에요' (From 5:30 for one hour) is the correct schedule answer."
+        "explanation": "Câu hỏi hỏi trải nghiệm làm đồ handmade vào lúc nào. Câu trả lời chỉ thời gian thích hợp là '다섯 시 삼십 분부터 한 시간 동안이에요' (Từ 5 giờ 30 phút trong vòng 1 tiếng)."
       },
       {
         "type": "grammar",
-        "question": "What is the meaning of the time particle '한 시간 후'?",
+        "question": "Cụm từ chỉ thời gian '한 시간 후' có nghĩa là gì trong tiếng Việt?",
         "options": [
-          "1 hour later / after 1 hour",
-          "1 hour ago / 1 hour before",
-          "During 1 hour",
-          "Every 1 hour"
+          "1 tiếng sau / sau 1 tiếng",
+          "1 tiếng trước / trước 1 tiếng",
+          "Trong vòng 1 tiếng",
+          "Mỗi 1 tiếng"
         ],
         "answer": 0,
-        "explanation": "후 means 'after' or 'later'. Thus, 한 시간 후 means '1 hour later' or 'after 1 hour'."
+        "explanation": "후 nghĩa là sau. Do đó '한 시간 후' nghĩa là 1 tiếng sau / sau 1 tiếng."
       },
       {
         "type": "reading",
-        "question": "Read the text and answer the question:\n'저는 일주일 후에 전시회가 있어서 요즘 저녁마다 그림을 그려요. 오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요.'\nQuestion: What did this person paint today?",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:
+'저희는 일주일 후에 전시회가 있어서 요즘 저녁마다 그림을 그려요. 오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요.'
+Hỏi: Hôm nay bạn nhỏ đã vẽ gì?",
         "options": [
-          "The sea (바다)",
-          "A rocket (로켓)",
-          "A flower (꽃)",
-          "A house (집)"
+          "Biển (바다)",
+          "Tên lửa (로켓)",
+          "Hoa (꽃)",
+          "Ngôi nhà (집)"
         ],
         "answer": 0,
-        "explanation": "The text says '오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요' (I painted the sea for one hour starting from 7 o'clock). So the correct answer is The sea (바다)."
+        "explanation": "Đoạn văn viết: '오늘도 일곱 시부터 한 시간 동안 바다를 그렸어요' (Hôm nay tôi cũng đã vẽ biển suốt 1 tiếng từ 7 giờ). Do đó đáp án đúng là Biển (바다)."
       }
     ]
   }
