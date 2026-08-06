@@ -772,6 +772,90 @@ window.REVIEW_QUESTIONS = {
         "answer": 0,
         "explanation": "Theo đoạn văn: '저는 공포 영화를 싫어해요' (Mình ghét phim kinh dị). Đáp án đúng: 공포 영화."
       }
+    ],
+    "lesson9": [
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'thư viện'?",
+        "options": ["도서관", "미술관", "영화관", "박물관"],
+        "answer": 0,
+        "explanation": "도서관 nghĩa là 'thư viện'. Các từ khác: 미술관 (bảo tàng mỹ thuật), 영화관 (rạp chiếu phim), 박물관 (bảo tàng)."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'bài tập về nhà'?",
+        "options": ["숙제", "공부", "수업", "시험"],
+        "answer": 0,
+        "explanation": "숙제 nghĩa là 'bài tập về nhà'. 공부: sự học tập, 수업: tiết học, 시험: kỳ thi."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '지금 집에 ___ 가요. 도서관에 가요.' (Bây giờ mình không về nhà. Mình đi thư viện.)",
+        "options": ["안", "못", "지", "도"],
+        "answer": 0,
+        "explanation": "Phó từ phủ định '안' đứng trước động từ để diễn tả phủ định 'không làm gì'. 안 가요 = không đi."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '도서관___ 숙제를 해요.' (Mình làm bài tập ở thư viện)",
+        "options": ["에서", "에", "하고", "를"],
+        "answer": 0,
+        "explanation": "Trợ từ '-에서' đi sau danh từ chỉ địa điểm để diễn tả nơi diễn ra hành động. 도서관에서 숙제를 해요 = Làm bài tập ở thư viện."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 지금 집에 가요?\n나: 아니요, ___________________.",
+        "options": [
+          "집에 안 가요. 도서관에 가요.",
+          "학교에서 공부를 안 해요.",
+          "동생은 유치원에 가요.",
+          "선생님이 교실에 있어요."
+        ],
+        "answer": 0,
+        "explanation": "Hỏi 'Bây giờ bạn về nhà à?' (지금 집에 가요?). Đã trả lời '아니요' (Không) nên câu tiếp theo phù hợp nhất là '집에 안 가요. 도서관에 가요' (Mình không về nhà. Mình đi thư viện)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson9_library.jpg",
+        "question": "Nhìn hình các bạn học sinh đang đọc sách và chọn nơi chốn phù hợp:",
+        "options": ["도서관", "공원", "시장", "영화관"],
+        "answer": 0,
+        "explanation": "Hình vẽ các bạn học sinh đang đọc sách trong không gian yên tĩnh của thư viện, tiếng Hàn là '도서관'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson9_homework.jpg",
+        "question": "Nhìn hình bạn nhỏ đang làm bài tập và chọn cụm từ tương ứng:",
+        "options": ["숙제를 해요", "노래를 불러요", "자전거를 타요", "잠을 자요"],
+        "answer": 0,
+        "explanation": "Hình vẽ bạn nhỏ đang tập trung làm bài tập tại bàn học, tiếng Hàn là '숙제를 해요' (làm bài tập về nhà)."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '도서관에서 숙제를 해요. 동화책___ 빌려요.' (Mình làm bài tập ở thư viện. Cũng mượn cả sách truyện nữa.)",
+        "options": ["도", "에", "에서", "하고"],
+        "answer": 0,
+        "explanation": "Trợ từ '-도' mang nghĩa là 'cũng / cả'. 동화책도 빌려요 = Cũng mượn cả sách truyện thiếu nhi."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'sách truyện thiếu nhi'?",
+        "options": ["동화책", "공책", "만화책", "잡지"],
+        "answer": 0,
+        "explanation": "동화책 nghĩa là 'sách truyện thiếu nhi'. 공책: vở ghi, 만화책: truyện tranh, 잡지: tạp chí."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'지금 집에 안 가요. 도서관에 가요. 도서관에서 숙제를 해요. 동화책도 빌려요.'\nHỏi: Nhân vật làm gì ở thư viện?",
+        "options": [
+          "Làm bài tập và mượn truyện thiếu nhi (숙제를 하고 동화책을 빌려요)",
+          "Xem phim hoạt hình (만화 영화를 봐요)",
+          "Đá bóng với bạn (친구하고 축구를 해요)",
+          "Đi chợ mua hoa quả (시장에서 과일을 사요)"
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn viết: '도서관에서 숙제를 해요. 동화책도 빌려요' (Làm bài tập ở thư viện. Cũng mượn truyện thiếu nhi). Do đó đáp án đúng là làm bài tập và mượn truyện thiếu nhi."
+      }
     ]
   },
   "book4": {

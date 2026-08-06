@@ -105,6 +105,19 @@ window.REVIEW_DATA = {
       "3.png",
       "4.png"
     ]
+  },
+  {
+    "id": "lesson9",
+    "title": "9과",
+    "pages": [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png"
+    ]
   }
 ]
     },
