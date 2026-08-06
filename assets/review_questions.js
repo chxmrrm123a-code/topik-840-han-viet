@@ -856,6 +856,90 @@ window.REVIEW_QUESTIONS = {
         "answer": 0,
         "explanation": "Đoạn văn viết: '도서관에서 숙제를 해요. 동화책도 빌려요' (Làm bài tập ở thư viện. Cũng mượn truyện thiếu nhi). Do đó đáp án đúng là làm bài tập và mượn truyện thiếu nhi."
       }
+    ],
+    "lesson10": [
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'cơm trộn Hàn Quốc'?",
+        "options": ["비빔밥", "김밥", "불고기", "김치"],
+        "answer": 0,
+        "explanation": "비빔밥 nghĩa là 'cơm trộn Hàn Quốc'. 김밥 (cơm cuộn), 불고기 (thịt bò nướng), 김치 (kimchi)."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây nghĩa là 'ngon' (thức ăn ngon)?",
+        "options": ["맛있다", "맵다", "달다", "싱겁다"],
+        "answer": 0,
+        "explanation": "맛있다 nghĩa là 'ngon'. 맵다: cay, 달다: ngọt, 싱겁다: nhạt."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '저는 김치___ 비빔밥을 좋아해요.' (Tôi thích kimchi và cơm trộn)",
+        "options": ["하고", "에서", "에", "를"],
+        "answer": 0,
+        "explanation": "Liên từ '-하고' nối hai danh từ chỉ đồ ăn mang nghĩa 'và'. 김치하고 비빔밥 = kimchi và cơm trộn."
+      },
+      {
+        "type": "grammar",
+        "question": "Điền vào chỗ trống: '저는 매운 음식을 조금 ___ 좋아해요.' (Tôi hơi không thích món ăn cay)",
+        "options": ["안", "못", "지", "도"],
+        "answer": 0,
+        "explanation": "Phó từ phủ định '안' đứng trước '좋아해요' để tạo thành câu phủ định '안 좋아해요' (không thích)."
+      },
+      {
+        "type": "dialogue",
+        "question": "Hoàn thành hội thoại sau:\n가: 무슨 음식을 좋아해요?\n나: ___________________.",
+        "options": [
+          "불고기하고 비빔밥을 좋아해요",
+          "한국어 수업이 재미있어요",
+          "도서관에서 숙제를 해요",
+          "주말에 축구를 가요"
+        ],
+        "answer": 0,
+        "explanation": "Câu hỏi 'Bạn thích món ăn gì?' (무슨 음식을 좋아해요?). Câu trả lời phù hợp chỉ món ăn yêu thích là '불고기하고 비빔밥을 좋아해요' (Tôi thích bulgogi và cơm trộn)."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson10_bibimbap.jpg",
+        "question": "Nhìn hình món cơm trộn Hàn Quốc và chọn từ tiếng Hàn tương ứng:",
+        "options": ["비빔밥", "김밥", "떡볶이", "라면"],
+        "answer": 0,
+        "explanation": "Hình vẽ tô cơm trộn với nhiều loại rau củ và trứng, tiếng Hàn là '비빔밥'."
+      },
+      {
+        "type": "visual",
+        "image": "assets/quiz/lesson10_bulgogi.jpg",
+        "question": "Nhìn hình món thịt bò nướng Hàn Quốc và chọn từ tương ứng:",
+        "options": ["불고기", "김치", "삼겹살", "갈비탕"],
+        "answer": 0,
+        "explanation": "Hình vẽ đĩa thịt bò nướng Hàn Quốc tẩm ướp đậm đà, tiếng Hàn là '불고기'."
+      },
+      {
+        "type": "vocab",
+        "question": "Từ nào sau đây mô tả vị 'cay' của món kimchi?",
+        "options": ["매워요", "달아요", "짜요", "시원해요"],
+        "answer": 0,
+        "explanation": "매워요 (원형: 맵다) nghĩa là 'cay'. 달아요: ngọt, 짜요: mặn."
+      },
+      {
+        "type": "antonym",
+        "question": "Cụm từ trái nghĩa với '좋아해요' (thích) là gì?",
+        "options": ["안 좋아해요", "잘해요", "많이 먹어요", "가요"],
+        "answer": 0,
+        "explanation": "Trái nghĩa với 좋아해요 (thích) là 안 좋아해요 (không thích)."
+      },
+      {
+        "type": "reading",
+        "question": "Đọc đoạn văn sau và trả lời câu hỏi:\n'저는 한국 음식을 좋아해요. 김치하고 비빔밥을 좋아해요. 김치는 조금 매워요. 하지만 맛있어요. 김밥은 조금 안 좋아해요.'\nHỏi: Nhân vật cảm thấy món kimchi (김치) như thế nào?",
+        "options": [
+          "Hơi cay nhưng ngon (조금 매워요. 하지만 맛있어요)",
+          "Rất ngọt và nhạt (아주 달고 싱거워요)",
+          "Không ngon (맛없어요)",
+          "Rất dở (전혀 안 맛있어요)"
+        ],
+        "answer": 0,
+        "explanation": "Đoạn văn viết: '김치는 조금 매워요. 하지만 맛있어요' (Kimchi hơi cay nhưng ngon). Do đó đáp án đúng là Hơi cay nhưng ngon."
+      }
     ]
   },
   "book4": {
